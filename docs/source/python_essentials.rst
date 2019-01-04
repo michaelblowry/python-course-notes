@@ -1,61 +1,56 @@
 .. _python_essentials:
 
-
 Python Essentials
-*****************
+=================
 
 This page includes the essentials for python.
 
 Data Types
-==========
+----------
 
 Integer
--------
+~~~~~~~
 
 integers are cool
 
 
 Float
------
+~~~~~~~
 
 
 String
-------
+~~~~~~~
 
 
 List
-----
+~~~~~~~
 
 Dictionary
-----------
+~~~~~~~~~~
 
 NumPy Array
------------
-
-
-SymPy Symbol
-------------
+~~~~~~~~~~~
 
 
 Pandas Dataframe
-----------------
+~~~~~~~~~~~~~~~~
 
 
 If Statement
-============
+------------
 
 
 
 
 For Loop
-========
+--------
 
 
 
 
 
 Functions
-=========
+---------
 
 
 
