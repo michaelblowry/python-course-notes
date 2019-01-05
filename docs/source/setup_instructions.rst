@@ -21,7 +21,7 @@ Python is...
 If you do a Google search for best computer languages, you will find that most experts rank Python as number one or \
 least in the top five. For example, here are the rankings from IEEE (Institute of Electrical and Electronics Engineers):
 `Top Programming Languages. <https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2018>`_
-Note you can change the rankings based on various aspects, including the number of jobs available.
+(Note on the IEEE page you can change the rankings based on various aspects, including the number of jobs available.)
 
 
 What is Python?
@@ -29,10 +29,10 @@ What is Python?
 There are lots and lots of computer languages. New languages are being created by smart computer scientists every year. \
 The first "modern" language is simply called "*C*". The reason is because in 1972 the guys at Bell Labs that invented it \
 had previously created a language that they called "*A*" and then they created something better that they called "*B*". \
-When got to "*C*" it was so good that they \
+When they got to "*C*" it was so good they \
 stopped trying to improve it. *C* became the main programming language for many years and continues to be a leading language.
 
-Improvements have been made to *C* and called *C++* and *C#*. Other languages are Fortran, Java, PHP, R, GO, and Pearl.
+Improvements were eventually made to *C* and became distinct languages such as *C++* and *C#*. Other languages are Fortran, Java, PHP, R, GO, and Pearl.
 
 =========================== =======================================================
 Programming Method          Characteristics
@@ -60,7 +60,7 @@ adding and updating packages.
 
 
 .. note:: There were significant changes from Python version 2.7 to Python 3. Consequently, the Anaconda people still \
-    make Python 2.7 available for legacy applications that people might still be using. You should install the newest version, \
+    make Python 2.7 available for legacy applications that some people might still be using. You should install the newest version, \
     which is currently Python 3.7.
 
 
@@ -77,7 +77,7 @@ program, click More, and click Pin to taskbar.
 .. image:: images/spyder-pin-to-taskbar.png
 
 
-When you first open Spyder it should look somthing like image shown below. The layout in Spyder is completely customizable, \
+When you first open Spyder it should look something like the image shown below. The layout in Spyder is completely customizable, \
 which means you can close, open, and rearrange the windows how you please. I recommend keeping the default layout with \
 the three windows (calle panes) shown below.
 
@@ -90,7 +90,7 @@ The third window pane is a good place to read help files or to explore data that
 might not be useful so could be closed.
 
 I recommend that today and throughout your learning that you explore the Spyder GUI (graphical user interface), \
-i.e. close and move windows, push different buttons and menus, etc. Don't worry you won't break it. And you can always \
+i.e. close and move windows, push different buttons and menus, etc. Don't worry, you won't break it. And you can always \
 put everything back to normal by going to Tools/Reset Spyder to factory defaults. For example, some people like to have \
 certain panes on or off, which can be done at View/Panes.
 
@@ -124,8 +124,8 @@ right pane. Now type a + b and hit enter to see how Python can be used as calcul
 "The" official Python Tutorial begins its introduction by showing how the Console (also called the Interpreter) can be used as a calculator.
 See `An Informal Introduction to Python <https://docs.python.org/3.7/tutorial/introduction.html>`_
 
-The Console can be useful for quick calculations or to check output. But for long calculation procedures it is better to \
-use the Editor. The Editor allows you to save the code and rerun it later. Furthermore, if you only use the Console, then once you \
+Indeed the Console can be useful for quick calculations or to check output. But for long procedures (i.e. multiple calculations in a sequence) \
+it is better to use the Editor. The Editor allows you to save the code as a "script" and re-run the script later. Furthermore, if you only use the Console, then once you \
 close Spyder all the variables will be lost.
 
 
