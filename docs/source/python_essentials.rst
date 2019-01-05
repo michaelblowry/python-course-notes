@@ -5,8 +5,10 @@ Python Essentials
 
 This page includes the essentials for python.
 
+
 Data Types
 ----------
+
 
 Integer
 ~~~~~~~
@@ -34,6 +36,10 @@ NumPy Array
 
 Pandas Dataframe
 ~~~~~~~~~~~~~~~~
+
+
+Math Operations
+---------------
 
 
 If Statement

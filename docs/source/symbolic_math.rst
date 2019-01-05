@@ -1,5 +1,6 @@
 .. _symbolic_math:
 
+
 Symbolic Math
 =============
 

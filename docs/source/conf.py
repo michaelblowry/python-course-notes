@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Python for CE 215'
+project = 'CE 215 Python Notes'
 copyright = '2018, Mike Lowry'
 author = 'Mike Lowry'
 
@@ -108,6 +108,9 @@ html_static_path = ['_static']
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'PythonforCE215doc'
 
+# If true, the reST sources are included in the HTML build as _sources/<name>.
+html_copy_source = False
+
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -155,8 +158,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'PythonforCE215', 'Python for CE 215 Documentation',
-     author, 'PythonforCE215', 'One line description of project.',
-     'Miscellaneous'),
+     author, 'PythonforCE215', 'Class Notes',
+     'Tutorial'),
 ]
 
 

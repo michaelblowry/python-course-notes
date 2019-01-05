@@ -1,8 +1,8 @@
 ..  -*- coding: utf-8 -*-
 
 
-Statistics
-==========
+Statistical Analysis
+====================
 
 OLS Regression
 --------------
