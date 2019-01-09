@@ -19,6 +19,7 @@ Click here for the `course syllabus. <https://www.webpages.uidaho.edu/~mlowry/Te
    setup_instructions
    python_essentials
    symbolic_math
+   functions
    creating_plots
    input_output
    statistics
