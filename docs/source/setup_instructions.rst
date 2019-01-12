@@ -144,7 +144,7 @@ close Spyder all the variables will be lost.
 
 Now type ``a = 500`` and ``b = 600`` in the Editor. This is a program and doesn't do anything until we *Run* the
 program. Also, type ``print(a + b)``. And, for fun, also type ``print("Hello World")`` (There is a long running
-tradition in computer programming that your first program should say "Hello World".) To run your program hit the
+tradition in computer programming that your first program should say "Hello World".) To run your program, hit the
 green play button. You will first need to save your script. For this class, you will put scripts in your U: drive folder
 CE215/Python. Name the file with your last name, the word Practice, and the lab number (all
 separated by underscores)
