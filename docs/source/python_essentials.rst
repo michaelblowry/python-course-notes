@@ -88,8 +88,6 @@ languages. You can determine the data type of something with the built-in functi
     >>> type(x)
     int
 
-.. nbplot::
-
     >>> y = [1, 5, 6, 22]
     >>> type(y)
     list
@@ -108,12 +106,15 @@ text.
     >>> type(diameter)
     int
 
-.. nbplot::
-
     >>> depth = 8.6 # This is a floating point (because it has a decimal point).
     >>> velocity = 5.0 # This is also a floating point.
     >>> type(velocity)
     float
+
+    >>> """If a float is included anywhere in a math operation, then the result will be a float."""
+    >>> bearing_stress = 4 * (12 + 3.5)
+    62.0
+
 
 For someone new to computer programming it might seem strange to distinguish between an ``int`` and ``float``. There
 are many reasons why this distinction is important, one reason is that in computer programming we often repeat
@@ -127,12 +128,16 @@ following messages.
 
 .. nbplot::
 
-    >>> success_message = "The cross section area is below the limit."
-    >>> fail_message = "The cross section area exceeds the limit."
-    >>> if cross_area >= 250:
-    ...     print(success_message)
-    >>> else:
+    >>> allowable_stress = 50
+    >>> success_message = "The bearing stress is below the limit."
+    >>> fail_message = "Warning: The bearing stress exceeds the limit."
+    >>> if bearing_stress >= allowable_stress:
     ...     print(fail_message)
+    >>> else:
+    ...     print(success_message)
+    Warning: The bearing stress exceeds the limit.
+
+
 
 The use of double quotes or single quotes does not matter. For example, ``material = "concrete"`` and ``material =
 "concrete"`` are identical as far as Python is concerned. I tend to use double quotes.
@@ -142,11 +147,7 @@ There are lots of things you can do with strings. For example,
 .. nbplot::
 
     >>> message = "The pipe was ."
-    >>> fail_message = "The cross section area exceeds the limit."
-    >>> if cross_area >= 250:
-    ...     print(success_message)
-    >>> else:
-    ...     print(fail_message)
+
 
 
 List
@@ -172,13 +173,9 @@ frequently mentioned in online help and discussion boards related to data analys
     >>> a
     array([12, 55,  6, 33])
 
-.. nbplot::
-
     >>> b = np.arange(0, 2, 0.3)  # This creates a numpy array from 0 to 2 by 0.3 increments.
     >>> b
     array([0. , 0.3, 0.6, 0.9, 1.2, 1.5, 1.8])
-
-.. nbplot::
 
     >>> c = np.linspace(0, 2, 9)  # This creates a numpy array from 0 to 2 with exactly 9 elements.
     >>> c
@@ -210,15 +207,11 @@ Now I can *reference* the attributes and *call* the methods associated with the 
     >>> a.size
     4
 
-.. nbplot::
-
     >>> """A method is called by its name using a dotted expression with parenthesis. object.method()
     ... For example, the sort method for the numpy array a can be called like this:"""
     >>> a.sort()
     >>> a
     array([ 6, 12, 33, 55])
-
-.. nbplot::
 
     >>> """Sometimes methods can also be called using the imported module. module.method(object)
     ... For example, the sort can also be called like this:"""
