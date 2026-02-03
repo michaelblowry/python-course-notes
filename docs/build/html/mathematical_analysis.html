@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mathematical Analysis &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Analysis" href="data_analysis.html" />
+    <link rel="prev" title="Reading Input and Writing Output" href="input_output.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mathematical Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#finding-roots-solver">Finding Roots (Solver)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-minima-maxima-optimization">Finding Minima/Maxima (Optimization)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-the-slope-derivatives">Finding the Slope (Derivatives)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finding-area-under-a-curve-integration">Finding Area Under a Curve (Integration)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Mathematical Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="mathematical-analysis">
+<span id="id1"></span><h1>Mathematical Analysis<a class="headerlink" href="#mathematical-analysis" title="Permalink to this headline"></a></h1>
+<p>Mathematical analysis is done to find (i.e. solve for) the following:</p>
+<ol class="arabic simple">
+<li><p><strong>Roots</strong>: Find <em>x</em> at <em>f(x)</em> = 0 or <em>f(x)</em> - <em>c(x)</em> = 0.</p></li>
+<li><p><strong>Optimals</strong>: Find both <em>x</em> and <em>f(x)</em> at minima and maxima.</p></li>
+<li><p><strong>Derivatives</strong>: Find the slope of <em>f(x)</em> at a location <em>x</em>.</p></li>
+<li><p><strong>Integrals</strong>: Find the area under <em>f(x)</em> between <em>x</em> = <em>a</em> and <em>x</em> = <em>b</em>.</p></li>
+</ol>
+<p>All four analyses are solved using the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> package, which uses the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span></code> format.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+</pre></div>
+</div>
+<p>Consider for example the following mathematical function</p>
+<div class="math notranslate nohighlight">
+\[f(x) = 0.9x^4 - 4x^3 + 0.5x^2 + 11x - 4.5\]</div>
+<p>This function is defined and plotted in Python like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span>  <span class="mf">0.9</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">11</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">4.5</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="mathematical_analysis-2.png">png</a>, <a class="reference external" href="mathematical_analysis-2.hires.png">hires.png</a>, <a class="reference external" href="mathematical_analysis-2.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/mathematical_analysis-2.png" src="_images/mathematical_analysis-2.png" />
+</div>
+<p>Imagine this function is a mathematical model representing something in the real world (e.g.imagine <em>x</em> is the electricity input into a motor, and <em>y</em> is the resulting speed output).
+Mathematical analysis is done to find a 1) root, or 2) minimum, or 3) slope, or 4) area under the curve for this model.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">scipy</span></code> package uses <strong>iterative methods</strong> for mathematical analysis (i.e. not symbolic methods like you learn in a math class). Consequently, the solutions
+are only <em>approximations</em>, with <em>error</em>. The underlying algorithms are sophisticated procedures that have been developed
+by brilliant computer scientists and mathematicians (some of which have been in development for hundreds of years).
+Iterative alorithms are also called <strong>numerical methods</strong> because they involve interaring over numbers. There are
+many different numerical methods described in the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> documentation. On a basic level, you can think of these algorithms as a series of <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and <code class="docutils literal notranslate"><span class="pre">if</span></code> statements that iteratively crank out hundreds of calculations to “search” for an answer.
+An algorithm terminates when it “converges” to a certain limit of approximation.</p>
+<p>(Other relevant pages: <a class="reference external" href="functions.html">Defining Functions</a>, <a class="reference external" href="creating_plots.html#plot">Creating Plots</a>, and <a class="reference external" href="python_essentials.html#import-modules">Import Modules</a>).</p>
+<div class="section" id="finding-roots-solver">
+<h2>Finding Roots (Solver)<a class="headerlink" href="#finding-roots-solver" title="Permalink to this headline"></a></h2>
+<p>By inspection of the plot it appears <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> has four roots. A root is the x-intercept, in other words, the location
+where <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">0</span></code> (The word root comes from the idea that a plant grows up from its roots and the x-axis is like the
+ground). Without inspecting a plot or having some other knowledge it is not possible to know how many roots a function has. For
+polynomial functions, the order of the highest exponent, in this case 4, is equal to the number of <em>possible</em> roots.
+Thus, <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">x**3</span> <span class="pre">...</span></code> will have 3 or fewer roots and <code class="docutils literal notranslate"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">x**8</span> <span class="pre">...</span></code> will have 8 or few roots. Furthermore,
+an even number exponent will have an even number of roots and an odd degree polynomial will have an odd number of roots.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">axhline</span></code> to add a horizontal like to a plot. In this case, we want a horizontal line at <code class="docutils literal notranslate"><span class="pre">y=0</span></code>. Zoom into
+the figure to visually identify the roots (Read the <a class="reference external" href="creating_plots.html#popup-tip">tip about popup windows in Creating Plots</a> for
+zoom in/out instructions.)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/root-figure.png" src="_images/root-figure.png" />
+<p>To find a root we must provide an initial guess that will be the starting point for the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> algorithm to search.
+Let’s find the root near <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-2</span></code> first.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example finding roots.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">    fjac: array([[-1.]])</span>
+<span class="go">     fun: array([-3.55271368e-15])</span>
+<span class="go"> message: &#39;The solution converged.&#39;</span>
+<span class="go">    nfev: 9</span>
+<span class="go">     qtf: array([-2.20458318e-09])</span>
+<span class="go">       r: array([33.28953419])</span>
+<span class="go">  status: 1</span>
+<span class="go"> success: True</span>
+<span class="go">       x: array([-1.55782277])</span>
+</pre></div>
+</div>
+<p>The output is explained in the documentation; it says <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html">scipy.optimize.root</a>
+returns a “OptimizeResult” object. The important attribute of the object is <code class="docutils literal notranslate"><span class="pre">x</span></code>, the solution as a numpy array.
+Printing the result object above revealed all the attributes, including <code class="docutils literal notranslate"><span class="pre">x</span></code>. Here forward, we will only print the <code class="docutils literal notranslate"><span class="pre">x</span></code> attribute (See <a class="reference external" href="data_types.html#class-and-object">Class and Object</a>).
+Furthermore, if the input argument is a sequence of values, then the result will be an array of multiple roots.</p>
+<p>Let’s find all the roots that are near -2, 0.5, 2, and 3.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[-1.55782281  0.42629992  2.29415865  3.28180865]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The result is a numpy array, so you can use <code class="docutils literal notranslate"><span class="pre">np.round</span></code> to round all the elements at the same time.
+(See Tip box under <a class="reference external" href="functions.html#mathematical-functions">Defining Mathematical Functions</a> for more numpy shortcuts.)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">solution</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span>
+<span class="go">[-1.56  0.43  2.29  3.28]</span>
+</pre></div>
+</div>
+</div>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">optimize.root</span></code> to find <em>x</em> at other values such <em>f(x)</em> = <em>c</em> or <em>f(x)</em> = <em>c(x)</em>. For example, suppose we want to solve:</p>
+<div class="math notranslate nohighlight">
+\[0.9x^4 - 4x^3 + 0.5x^2 + 11x - 4.5 = 7\]</div>
+<p>The first step is to get a sense of how many solutions there might be. The same principals apply to finding roots.
+We can investigate visually by adding adding the right hand side to the plot. In this example the right hand side is a constant,
+so we add a horizontal line at <code class="docutils literal notranslate"><span class="pre">y=7</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/root-at-7.png" src="_images/root-at-7.png" />
+<p>It appears there are solutions near -2 and 3.</p>
+<p>The next step is to transform the function by setting it equal to zero. The new function <code class="docutils literal notranslate"><span class="pre">f2</span></code> can now be solved for its roots near the initial guess values -2 and 3.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example using a transformed function to solve for x.</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">7</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">root</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[-1.73573581  3.63147902]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finding-minima-maxima-optimization">
+<h2>Finding Minima/Maxima (Optimization)<a class="headerlink" href="#finding-minima-maxima-optimization" title="Permalink to this headline"></a></h2>
+<p>To find a minima and maxima we must provide an initial guess that will be the starting point for the <code class="docutils literal notranslate"><span class="pre">scipy</span></code>
+algorithm to search. By inspection of the plot it appears there is a minimum near <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1</span></code> (In fact, the
+plot shows it is the global minimum).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example finding minimum.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">      fun: -10.57170310882053</span>
+<span class="go"> hess_inv: array([[0.03556876]])</span>
+<span class="go">      jac: array([1.1920929e-07])</span>
+<span class="go">  message: &#39;Optimization terminated successfully.&#39;</span>
+<span class="go">     nfev: 18</span>
+<span class="go">      nit: 4</span>
+<span class="go">     njev: 6</span>
+<span class="go">   status: 0</span>
+<span class="go">  success: True</span>
+<span class="go">        x: array([-0.82450405])</span>
+</pre></div>
+</div>
+<p>The documentation for <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize.html">scipy.optimize.minimize</a>
+says it returns a “OptimizeResult” object. The important attributes of the object are <code class="docutils literal notranslate"><span class="pre">fun</span></code>, the value of the minimum
+that was found, and <code class="docutils literal notranslate"><span class="pre">x</span></code>, the location of the minimum. Here forward, we will only print those attributes
+from the object (See <a class="reference external" href="data_types.html#class-and-object">Class and Object</a>). The result attribute <code class="docutils literal notranslate"><span class="pre">x</span></code> is a numpy array, but
+we there is only one item, so we will print <code class="docutils literal notranslate"><span class="pre">x[0]</span></code> (Unlike root, it is not possible to solve multiple arguments at once).</p>
+<p>There is another minimum (a local minimum) near <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">3</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Minimum = &quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;at location x = &quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">Minimum =  -2.309700223712568</span>
+<span class="go">at location x =  2.86375715</span>
+</pre></div>
+</div>
+<p>By inspection of the plot the global maximum is infinity at x = -infinity and x = infinity. There also
+appears to be a local maximum near <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code>. Note the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> function explicitly finds the <em>minimum</em>. Consequently,
+to find a maximum we need to write a new function that negates the original function (effectively turning it upside
+down). For example we define a new function <code class="docutils literal notranslate"><span class="pre">f2</span></code>. Next we run the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> search algorithm on the new function <code class="docutils literal notranslate"><span class="pre">f2</span></code>
+and remember to <strong>negate</strong> the <code class="docutils literal notranslate"><span class="pre">fun</span></code> attribute of the result object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example finding maximum using a transformed function.</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span>  <span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maximum = &quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">result</span><span class="o">.</span><span class="n">fun</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;at x location &quot;</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="go">Maximum =  4.42769962882684</span>
+<span class="go">at x location  1.29407959</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The examples above find <em>local</em> minima/maxima near an initial guess for <em>smooth</em>, <em>continuous</em>, <em>convex/concave</em>
+functions. <code class="docutils literal notranslate"><span class="pre">scipy</span></code> has other optimization methods for other situations. For example, <code class="docutils literal notranslate"><span class="pre">scipy.optimize.differential_evolution</span></code>
+will find <em>global</em> minima/maxima and can be used on <em>non-smooth</em> functions.</p>
+</div>
+</div>
+<div class="section" id="finding-the-slope-derivatives">
+<h2>Finding the Slope (Derivatives)<a class="headerlink" href="#finding-the-slope-derivatives" title="Permalink to this headline"></a></h2>
+<p>It seems finding derivatives was an after thought for the people at <code class="docutils literal notranslate"><span class="pre">scipy</span></code> because they put it in their “miscellaneous”
+module. <code class="docutils literal notranslate"><span class="pre">misc.derivative</span></code> uses an <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference#finite_difference_approximation">iterative method</a>
+with precision dependent on the parameter <code class="docutils literal notranslate"><span class="pre">dx</span></code>. For illustration,
+let’s find the slope (derivative) of <code class="docutils literal notranslate"><span class="pre">f(x)</span></code> at <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">0.7</span></code>, which is written symbolically in two different ways:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+&amp; f' (0.7) \\
+\text{or} \\
+&amp; \frac{dy}{dx} \vert_{0.7} \\
+\end{align*}\end{split}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example finding the slope.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.0000001</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">7.054799997519012</span>
+</pre></div>
+</div>
+<p>The documentation for <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.misc.derivative.html">scipy.misc.derivative</a>
+says the keyword parameter <code class="docutils literal notranslate"><span class="pre">dx</span></code> is the spacing, with smaller spacing producing better results.</p>
+<p>A tangent line can be added to the plot using the following function</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">tangent_line</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_values</span><span class="p">,</span> <span class="n">tangent_location</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="sd">&quot;&quot;&quot;Returns points along a line tangent to a function.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">        Args:</span>
+<span class="gp">... </span><span class="sd">            f: A function.</span>
+<span class="gp">... </span><span class="sd">            x_values: Numpy array of x values for the tangent line.</span>
+<span class="gp">... </span><span class="sd">            tanget_location: x location.</span>
+<span class="gp">... </span><span class="sd">    &quot;&quot;&quot;</span>
+<span class="gp">... </span>    <span class="n">slope</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">tangent_location</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">points_along_tangent</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_values</span> <span class="o">-</span> <span class="n">tangent_location</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">tangent_location</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">points_along_tangent</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tangent_points</span> <span class="o">=</span> <span class="n">tangent_line</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tangent_points</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/mathematical_function_tangent.png" src="_images/mathematical_function_tangent.png" />
+<p>We can verify that the slope at at a minimum location is zero (well approximately zero).
+Lets first find the global minimum near <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">-1.5</span></code> and then find the slope at that minimum location.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">optimize</span><span class="o">.</span><span class="n">minimize</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">min_location</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">slope</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">min_location</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.0000001</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+<span class="go">-2.398081733190338e-07</span>
+</pre></div>
+</div>
+<p>To find higher order derivatives, then include the parameter <code class="docutils literal notranslate"><span class="pre">n</span></code>. For example, the 2nd order derivative at the minimum location is:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">min_location</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mf">0.0000001</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">29.93001234401565</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="finding-area-under-a-curve-integration">
+<h2>Finding Area Under a Curve (Integration)<a class="headerlink" href="#finding-area-under-a-curve-integration" title="Permalink to this headline"></a></h2>
+<p>There are variouis numeric methods to approximate an integral. These include <a class="reference external" href="https://en.wikipedia.org/wiki/Simpson%27s_rule">Simpson’s Rule</a>,
+<a class="reference external" href="https://en.wikipedia.org/wiki/Trapezoidal_rule">Trapezoidal Rule</a>, and
+<a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_quadrature">Quadrature</a>. Through these methods the integral is approximated by dividing the area
+under the curve into shapes and summing each shape area in what is called a <a class="reference external" href="https://en.wikipedia.org/wiki/Riemann_sum">Riemann’s Sum</a>.</p>
+<p>All of these methods are available with <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. The preferred method is quadrature.
+Consider for example, finding the area under <em>f(x)</em> from 0.5 to 2.5, , which is written symbolically like this:</p>
+<div class="math notranslate nohighlight">
+\[\int_{0.5}^{2.5} f(x) dx\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example finding the area under a curve (integral).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">(5.155833333333335, 6.008597318532352e-14)</span>
+</pre></div>
+</div>
+<p>The documentation for <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html">scipy.integrate.quad</a>
+says the basic output includes two items: the integral and an estimate of the error.</p>
+<p>Sometimes we might have <em>x</em> and <em>y</em> values but we don’t know the functional form of <em>f(x)</em>. For example,
+suppose measurements were recorded in a laboratory for the <em>y</em> values that correspond to certain <em>x</em> values.
+We can plot the data to see an approximation of the curve.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Data recorded as field observations.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot of observed data.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="mathematical_analysis-7.png">png</a>, <a class="reference external" href="mathematical_analysis-7.hires.png">hires.png</a>, <a class="reference external" href="mathematical_analysis-7.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/mathematical_analysis-7.png" src="_images/mathematical_analysis-7.png" />
+</div>
+<p>In this situations we need to use one of the other numerical integration methods. The preferred method is Simpson’s rule.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example finding the area under points when f(x) is  not known.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">simps</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">212.0</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The methods described on this webpage are <em>numeric methods</em>, which means they use iterative algorithms
+to search over numeric calculations to find an approximate solution. Alternatively, there is a Python package that can do
+symbolic mathematics called <code class="docutils literal notranslate"><span class="pre">sympy</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="input_output.html" class="btn btn-neutral float-left" title="Reading Input and Writing Output" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_analysis.html" class="btn btn-neutral float-right" title="Data Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

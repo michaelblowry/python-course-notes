@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Analysis &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Statistical Analysis" href="statistical_analysis.html" />
+    <link rel="prev" title="Mathematical Analysis" href="mathematical_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-pandas-dataframe">Introduction to Pandas DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#selecting-and-copying-data">Selecting and Copying Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-new-columns">Creating New Columns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#simple-calculations">Simple Calculations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#complicated-calculations">Complicated Calculations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-columns">Plotting Columns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#querying-a-dataframe">Querying a DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pivoting-a-dataframe">Pivoting a DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#counting-values">Counting Values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Data Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="data-analysis">
+<span id="id1"></span><h1>Data Analysis<a class="headerlink" href="#data-analysis" title="Permalink to this headline"></a></h1>
+<p>Data Analysis is the process of cleaning, organizing, examining, describing, visualizing, and modeling data. In recent years,
+the proliferation of sensor technology, data storage capabilities, and computer power has created the possibiltiy for
+data analysis of <em>huge</em> datasets. Python is a powerful tool for data analysis.</p>
+<p>This page focuses on the tasks of organizing and inspecting data. Topics include creating data structures,
+selecting data, and creating new data fields. For other aspects of data analysis, see <a class="reference external" href="creating_plots.html">Creating Plots</a> and
+<a class="reference external" href="statistical_analysis.html">Statistical Analysis</a>.</p>
+<p>This page focuses on how to use <code class="docutils literal notranslate"><span class="pre">pandas</span></code>, a powerful and popular package for data analysis.</p>
+<p>Import matplotlib, numpy, and pandas like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<div class="section" id="introduction-to-pandas-dataframe">
+<h2>Introduction to Pandas DataFrame<a class="headerlink" href="#introduction-to-pandas-dataframe" title="Permalink to this headline"></a></h2>
+<p>A pandas DataFrame stores tabular data (i.e. with rows and columns) and is created by reading an Excel spreadsheet or csv file
+(See <a class="reference external" href="input_output.html">Reading Input and Writing Output</a>).</p>
+<p>The following example reads an Excel file into a DataFrame called “df”. Any name can be used
+(perhaps “temperature_data” would be a good name), but “df” is short and easy to type.</p>
+<p>One useful setting for pandas is to set the print display to show all columns when priting to the console in Spyder.
+This setting is <code class="docutils literal notranslate"><span class="pre">pd.set_option('display.max_columns',</span> <span class="pre">None)</span></code></p>
+<p>It is common practice to start a script in this order: docstring, imports, settings, and folder paths.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">Examples of data analysis using pandas.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">@author: Mike Lowry</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Part2_Python\Output&#39;</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example creating a dataframe called &quot;df&quot;.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_data_file</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\Temperature_Data.xlsx&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">my_data_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>DataFrames can be viewed in Spyder’s Variable explorer.</p>
+<img alt="_images/dataframe.png" src="_images/dataframe.png" />
+<p>Another way to look at a DataFrame is to print <code class="docutils literal notranslate"><span class="pre">df.head(n)</span></code> or <code class="docutils literal notranslate"><span class="pre">df.tail(n)</span></code>
+to print the first <em>n</em> rows or last <em>n</em> rows, respectively. The default is <code class="docutils literal notranslate"><span class="pre">n=5</span></code>. This is useful is printing the entire
+DataFrame would be too long.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example printing the first rows (default n=5).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="go">   Time_Minutes     Gas1    Gas2    Gas3</span>
+<span class="go">0             0  103.764  42.666  59.036</span>
+<span class="go">1             2  118.377  42.595  67.425</span>
+<span class="go">2             4   99.893  53.041  67.499</span>
+<span class="go">3             6  118.005  57.925  74.474</span>
+<span class="go">4             8   97.713  59.223  73.892</span>
+</pre></div>
+</div>
+<p>A pandas dataframe is a class with various attributes and methods (See <a class="reference external" href="data_types.html#class-and-object">Class and Object</a>). You can see the list
+of pandas attributes and methods by scrolling down the page here: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas.DataFrame</a>
+The following are a few useful attributes of a DataFrame.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example DataFrame attributes.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>  <span class="c1"># The dimensions.</span>
+<span class="go">(21, 4)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">size</span>  <span class="c1"># The number of elements.</span>
+<span class="go">84</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>  <span class="c1"># The column labels.</span>
+<span class="go">Index([&#39;Time_Minutes&#39;, &#39;Gas1&#39;, &#39;Gas2&#39;, &#39;Gas3&#39;], dtype=&#39;object&#39;)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">index</span>  <span class="c1"># The row labels, which are given automatically.</span>
+<span class="go">RangeIndex(start=0, stop=21, step=1)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="selecting-and-copying-data">
+<h2>Selecting and Copying Data<a class="headerlink" href="#selecting-and-copying-data" title="Permalink to this headline"></a></h2>
+<p>The best way to access specific rows and columns (i.e. index and slice) is with <code class="docutils literal notranslate"><span class="pre">.loc</span></code> which stands for <em>locate</em>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example: Select row 7 and all columns.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+<span class="go">Time_Minutes    14.000</span>
+<span class="go">Gas1            92.186</span>
+<span class="go">Gas2            79.430</span>
+<span class="go">Gas3            75.569</span>
+<span class="go">Name: 7, dtype: float64</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example: Select row 3 for columns Gas1 and Gas2.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">,</span> <span class="s1">&#39;Gas2&#39;</span><span class="p">]]</span>
+<span class="go">Gas1    118.005</span>
+<span class="go">Gas2     57.925</span>
+<span class="go">Name: 3, dtype: object</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example: Rows 3 and 6. Columns Gas1 and Gas2.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">,</span> <span class="s1">&#39;Gas2&#39;</span><span class="p">]]</span>
+<span class="go">      Gas1    Gas2</span>
+<span class="go">3  118.005  57.925</span>
+<span class="go">6   99.847  65.443</span>
+</pre></div>
+</div>
+<p>If you want to select the whole column, then <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is not needed.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example selecting a whole column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span>
+<span class="go">0     103.764</span>
+<span class="go">1     118.377</span>
+<span class="go">2      99.893</span>
+<span class="go">3     118.005</span>
+<span class="go">4      97.713</span>
+<span class="go">5      90.936</span>
+<span class="go">6      99.847</span>
+<span class="go">7      92.186</span>
+<span class="go">8      87.843</span>
+<span class="go">9      78.924</span>
+<span class="go">10     78.805</span>
+<span class="go">11     73.800</span>
+<span class="go">12     75.979</span>
+<span class="go">13     67.115</span>
+<span class="go">14     59.350</span>
+<span class="go">15     69.208</span>
+<span class="go">16     71.903</span>
+<span class="go">17     74.239</span>
+<span class="go">18     47.062</span>
+<span class="go">19     64.976</span>
+<span class="go">20     45.363</span>
+<span class="go">Name: Gas1, dtype: float64</span>
+</pre></div>
+</div>
+<p>A selection actually creates a new DataFrame. The following examples select data and assign the result to a
+new DataFrame called <code class="docutils literal notranslate"><span class="pre">d</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example creating a new DataFrame from one column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (technically this is called a Series because it only has one column).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="go">0    103.764</span>
+<span class="go">1    118.377</span>
+<span class="go">2     99.893</span>
+<span class="go">3    118.005</span>
+<span class="go">4     97.713</span>
+<span class="go">Name: Gas1, dtype: float64</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example creating a new DataFrame from multiple columns.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note the double brackets [[]] for a list of column labels.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">,</span> <span class="s1">&#39;Gas3&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="go">      Gas1    Gas3</span>
+<span class="go">0  103.764  59.036</span>
+<span class="go">1  118.377  67.425</span>
+<span class="go">2   99.893  67.499</span>
+<span class="go">3  118.005  74.474</span>
+<span class="go">4   97.713  73.892</span>
+</pre></div>
+</div>
+<p>Any name could be used for the new dataframes. Perhaps better names for the examples above would be
+<code class="docutils literal notranslate"><span class="pre">gas1</span> <span class="pre">=</span> <span class="pre">df['Gas1']</span></code> and <code class="docutils literal notranslate"><span class="pre">gas_data</span> <span class="pre">=</span> <span class="pre">df[['Gas1',</span> <span class="pre">'Gas3']]</span></code></p>
+</div>
+<div class="section" id="creating-new-columns">
+<h2>Creating New Columns<a class="headerlink" href="#creating-new-columns" title="Permalink to this headline"></a></h2>
+<div class="section" id="simple-calculations">
+<h3>Simple Calculations<a class="headerlink" href="#simple-calculations" title="Permalink to this headline"></a></h3>
+<p>For <strong>simple calculations</strong>, new columns can be created by referenceing existing column names.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example creating new columns with simple calculations.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Combined&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas2&#39;</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Another example creating new columns with simple calculations.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;SuperGas&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">     Time_Minutes     Gas1    Gas2    Gas3  Combined  SuperGas</span>
+<span class="go">0               0  103.764  42.666  59.036   146.430  103764.0</span>
+<span class="go">1               2  118.377  42.595  67.425   160.972  118377.0</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Existing column names that do not have any spaces, can be referenced with a dot <code class="docutils literal notranslate"><span class="pre">.</span></code> because the columns are technically <em>attributes</em> of the
+DataFrame object.  This approach is often easier and faster to write. For example, the following are identical procedures.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example showing that columns can be referenced with square brackets or a dot.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># These calculations are exactly the same.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Combined&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas2&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Combined&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Gas1</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">Gas2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="complicated-calculations">
+<h3>Complicated Calculations<a class="headerlink" href="#complicated-calculations" title="Permalink to this headline"></a></h3>
+<p>For <strong>complicated calculations</strong>, new columns can be created by defining a function and then <em>applying</em> the function to every <em>row</em>
+(There are other ways to do this, but this is the most straight forward and modifiable way for beginner programmers).</p>
+<p>The function is defined with <code class="docutils literal notranslate"><span class="pre">row</span></code> as the parameter because the function will be applied row by row
+(The function can have any name; such as <code class="docutils literal notranslate"><span class="pre">f</span></code> for simplicity). Then, within the
+function the columns are referenced to select data as needed (in this example only one column <code class="docutils literal notranslate"><span class="pre">Gas1</span></code> is used, but more columns could be
+referenced in the function to select additional data).</p>
+<p>Finally, <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> is used to create the new column. <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> loops over each row and performs the function.
+The parameter <code class="docutils literal notranslate"><span class="pre">axis='columns'</span></code> designates that the function is to be applied down the column(s).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example applying a function to create a new column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">temp_f</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">temp_c</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_f</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">temp_c</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1_C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">     Time_Minutes     Gas1    Gas2    Gas3  Combined  SuperGas     Gas1_C</span>
+<span class="go">0               0  103.764  42.666  59.036   146.430  103764.0  39.868889</span>
+<span class="go">1               2  118.377  42.595  67.425   160.972  118377.0  47.987222</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-columns">
+<h2>Plotting Columns<a class="headerlink" href="#plotting-columns" title="Permalink to this headline"></a></h2>
+<p>Columns can be plotted easily (See <a class="reference external" href="creating_plots.html">Creating Plots</a>).</p>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code> and <code class="docutils literal notranslate"><span class="pre">scatter</span></code> can be used for <em>numeric</em> data.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example plotting numeric data.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Time_Minutes&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Gas 1 Temperature (F)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="data_analysis-11.png">png</a>, <a class="reference external" href="data_analysis-11.hires.png">hires.png</a>, <a class="reference external" href="data_analysis-11.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/data_analysis-11.png" src="_images/data_analysis-11.png" />
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pie</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span></code>, and <code class="docutils literal notranslate"><span class="pre">barh</span></code> can be used for <em>categorical</em> (nominal) data. Consider for example the categorical data on a different sheet called Gases in the same Excel file.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example plotting categorical data.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">my_data_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Gases&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="go">   Gas ID      Name  Moles</span>
+<span class="go">0       1    Helium   10.5</span>
+<span class="go">1       2    Oxygen    8.6</span>
+<span class="go">2       3  Nitrogen    9.8</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Pie Chart</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Moles&quot;</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">],</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%0.0f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Bar Chart</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Moles&quot;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Moles&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Horizantal Bar Chart</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Moles&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Moles&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="figure align-default" id="id4">
+<img alt="_images/data_analysis-12_00.png" src="_images/data_analysis-12_00.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="data_analysis-12_00.png">png</a>, <a class="reference external" href="data_analysis-12_00.hires.png">hires.png</a>, <a class="reference external" href="data_analysis-12_00.pdf">pdf</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-default" id="id5">
+<img alt="_images/data_analysis-12_01.png" src="_images/data_analysis-12_01.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="data_analysis-12_01.png">png</a>, <a class="reference external" href="data_analysis-12_01.hires.png">hires.png</a>, <a class="reference external" href="data_analysis-12_01.pdf">pdf</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image"></a></p>
+</div>
+<div class="figure align-default" id="id6">
+<img alt="_images/data_analysis-12_02.png" src="_images/data_analysis-12_02.png" />
+<p class="caption"><span class="caption-text">(<a class="reference external" href="data_analysis-12_02.png">png</a>, <a class="reference external" href="data_analysis-12_02.hires.png">hires.png</a>, <a class="reference external" href="data_analysis-12_02.pdf">pdf</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+</div>
+</div>
+<div class="section" id="querying-a-dataframe">
+<h2>Querying a DataFrame<a class="headerlink" href="#querying-a-dataframe" title="Permalink to this headline"></a></h2>
+<p>There are a various ways to query a DataFrame. One way is to use <code class="docutils literal notranslate"><span class="pre">.query()</span></code>
+with a logical condition in quotes between the parenthesis. See the table of <a class="reference external" href="if_statement_for_loop.html#logic-conditions">logic conditions</a>.</p>
+<p>Consider for example a dataset that is from a company’s project database. The dataset has
+information about all the projects that have been completed, including the name of the project manager,
+the start date, budget, and actual costs. Lets begin by getting to know the DataFrame with
+<code class="docutils literal notranslate"><span class="pre">df.shape</span></code>, <code class="docutils literal notranslate"><span class="pre">df.columns</span></code>, and <code class="docutils literal notranslate"><span class="pre">df.head</span></code>. We discover that the DataFrame has 500 rows and 10 columns.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Part2_Python\Output&#39;</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example dataset from a company&#39;s project database.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_data_file</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\Company_Project_Data.xlsx&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">my_data_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Projects&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(501, 9)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<span class="go">Index([&#39;ProjectID&#39;, &#39;Engineer&#39;, &#39;ManagerID&#39;, &#39;StartDate&#39;, &#39;EstimatedDays&#39;,</span>
+<span class="go">       &#39;ActualDays&#39;, &#39;EstimatedCost&#39;, &#39;ActualCost&#39;, &#39;CategoryID&#39;],</span>
+<span class="go">      dtype=&#39;object&#39;)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Now suppose we want to query the dataset for all projects with an actual cost less than $1,000,000. We
+use <code class="docutils literal notranslate"><span class="pre">.query()</span></code> which returns a new DataFrame we wil call <code class="docutils literal notranslate"><span class="pre">d</span></code>. We can inspect the
+shape of <code class="docutils literal notranslate"><span class="pre">d</span></code> and find that 173 rows meet the condition out of the original 500 rows.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example query.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;ActualCost &lt;= 1000000&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(195, 9)</span>
+</pre></div>
+</div>
+<p>Here are a few more examples. Notice any name could be used for the resulting DataFrame
+that is returned by the query, but for simplicity we use and overwrite <code class="docutils literal notranslate"><span class="pre">d</span></code> each time. When we complete a query, we could print <code class="docutils literal notranslate"><span class="pre">d</span></code> to see the result, or we
+could inspect it using the Variable explorer in Spyder. In the examples below we simply look at <code class="docutils literal notranslate"><span class="pre">d.shape</span></code> to note the query result.</p>
+<p>Example 2 shows it is good practice to wrap the logical condition in double quotes
+so that strings within the expression can be in single quotes, such as <code class="docutils literal notranslate"><span class="pre">&quot;Manager</span> <span class="pre">==</span> <span class="pre">'Woods,</span> <span class="pre">Susan'&quot;</span></code>.
+Example 3 shows a compound logical condition.
+Example 4 shows queries that are done on already queried DataFrames. Each line of code overwrites <code class="docutils literal notranslate"><span class="pre">d</span></code> with the latest result.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example 1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;ActualCost &lt;= 1000000&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(173, 10)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example 2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;Manager == &#39;Woods, Susan&#39;&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(48, 9)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example 3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;EstimatedDays &gt;= 30 and EstimatedDays &lt;= 60&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(201, 9)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example 4 (Queries on already queried DataFrames)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;CategoryID == 5&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;EstimatedDays &gt; 20&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;EstimatedCost &gt; 500000&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(77, 9)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Python language is famous for being very readable. Python Style
+stresses using variable names that are readable. However, for data analysis it is common to
+use short, simple variable names like <code class="docutils literal notranslate"><span class="pre">df</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code>, and <code class="docutils literal notranslate"><span class="pre">d1</span></code>, etc. because you are frequently creating
+and overwriting DataFrames with queries and pivot tables.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Another way to query is to use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to locate rows that satisfy the logical condition. The following is identical to Example 1.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example 1 again using .loc</span>
+<span class="go">   &gt;&gt;&gt; d = df.loc[df[&quot;ActualCost&quot;] &lt;= 1000000]</span>
+<span class="go">   &gt;&gt;&gt; d.shape</span>
+<span class="go">   (195, 9)</span>
+</pre></div>
+</div>
+<p>This can be nice because at the same time you can also limit the columns that are returned. Below only three columns are returned to the new DataFrame.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example 1 again using .loc and limiting the columns returned.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;ActualCost&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">1000000</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;Engineer&quot;</span><span class="p">,</span> <span class="s2">&quot;EstimatedCost&quot;</span><span class="p">,</span> <span class="s2">&quot;ActualCost&quot;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(195, 3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pivoting-a-dataframe">
+<h2>Pivoting a DataFrame<a class="headerlink" href="#pivoting-a-dataframe" title="Permalink to this headline"></a></h2>
+<p>Data analysts often want to look at data from all different angles to answer questions, i.e. they want to “pivot” the data.
+This might be achieved simply through selecting and querying the data, but sometimes more sophisticated methods are needed.</p>
+<p>This section describes how to create cross tables using <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code>.</p>
+<p>A table has rows, columns, and values.</p>
+<img alt="_images/pivot-table.png" src="_images/pivot-table.png" />
+<p>The primary parameters are:</p>
+<p><code class="docutils literal notranslate"><span class="pre">.pivot_table(values,</span> <span class="pre">index,</span> <span class="pre">columns,</span> <span class="pre">aggfunc,</span> <span class="pre">fill_value)</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">values</span></code> the df column that will be aggregated to fill the table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">index</span></code> the df column that will become the rows of the table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> the df column that will beome the columns of the table.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">aggfunc</span></code> is how to aggregate the values, such as <code class="docutils literal notranslate"><span class="pre">&quot;count&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;sum&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;mean&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;max&quot;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&quot;min&quot;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill_value</span></code> fills empty cells in the table.</p></li>
+</ul>
+<p>For example, suppose we want to know the average number of actual days for each manager by project category ID.
+We will create a table that has Manager in the rows, CategoryID in the columns, and ActualDays for the values that are averaged (mean).</p>
+<p>Often the most challenging aspect of pivoting data is trying to think of what is needed to answer the question, i.e. what
+is needed for rows, columns, and values. The best way to proceed is to try and try again. In other words, pivot with
+something in the rows and columns; and then pivot again with something different, each time looking at the resulting DataFrame
+in Variable explorer. Generally, it is good to have the number of rows be more than the number of columns.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example Pivot Table to calculate mean values.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;ActualDays&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Engineer&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;CategoryID&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">CategoryID                  1          2           3          4           5</span>
+<span class="go">Manager</span>
+<span class="go">Boyce, Bruce        75.962500  48.933333   60.525000  73.075000   81.612500</span>
+<span class="go">Colton, Greg        73.700000  77.000000   63.500000  81.980000  104.300000</span>
+<span class="go">Degas, Josh         76.216667  64.666667   69.966667  79.950000   71.575000</span>
+<span class="go">Guza, Adina         88.533333  71.500000   69.383333  57.525000   59.433333</span>
+<span class="go">Jaffe, Jerry        48.125000  61.316667   51.140000  78.055556   65.525000</span>
+<span class="go">Marlow, Daniel      69.366667  68.900000   56.600000  55.900000   91.000000</span>
+<span class="go">Murphy, Mary        66.983333  71.637500   69.961538  51.060000   61.025000</span>
+<span class="go">Pac, Su Li          72.612500  50.520000   66.600000  77.633333   70.487500</span>
+<span class="go">Rivera, Titus       59.083333  62.466667   69.212500  79.000000   72.083333</span>
+<span class="go">Steele, Richard     67.718182  73.684211  101.300000  58.340000   53.611111</span>
+<span class="go">Stone, Jeff         79.150000  85.100000   66.750000  77.700000   69.066667</span>
+<span class="go">Turnage, Leslie     53.785714  82.850000   83.125000  69.866667   75.325000</span>
+<span class="go">Weaver, Diane       63.166667  72.971429   83.266667  71.325000   71.071429</span>
+<span class="go">Wolff, Carolyn      50.730000  74.857143   67.130000  61.780000   70.685714</span>
+<span class="go">Woods, Susan        73.640000  79.890909   78.190000  54.320000   77.425000</span>
+</pre></div>
+</div>
+<p>In a similar way we could find the maximum numer of days by using <code class="docutils literal notranslate"><span class="pre">aggfunc=&quot;max&quot;</span></code> or the sum using <code class="docutils literal notranslate"><span class="pre">aggfunc=&quot;sum&quot;</span></code>.</p>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">columns</span></code> is optional and if it is not included then the table is collapsed to a table without column categories.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example without the columns parameter.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;ActualDays&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Engineer&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">                 ActualDays</span>
+<span class="go">Manager</span>
+<span class="go">Boyce, Bruce      69.998000</span>
+<span class="go">Colton, Greg      77.705882</span>
+<span class="go">Degas, Josh       70.708333</span>
+<span class="go">Guza, Adina       68.942857</span>
+<span class="go">Jaffe, Jerry      62.091667</span>
+<span class="go">Marlow, Daniel    62.418750</span>
+<span class="go">Murphy, Mary      66.219444</span>
+<span class="go">Pac, Su Li        69.115385</span>
+<span class="go">Rivera, Titus     68.080645</span>
+<span class="go">Steele, Richard   67.863043</span>
+<span class="go">Stone, Jeff       75.921739</span>
+<span class="go">Turnage, Leslie   69.356522</span>
+<span class="go">Weaver, Diane     71.200000</span>
+<span class="go">Wolff, Carolyn    65.474510</span>
+<span class="go">Woods, Susan      74.954167</span>
+</pre></div>
+</div>
+<p>Often data analysts want to create a special table called a “Frequency Cross Table” that has a <strong>count</strong> of the occurences for the row and column pairs.
+However, there needs to be soemthing to count. One way to do this is to create a column called <code class="docutils literal notranslate"><span class="pre">dummy</span></code> that is equal to <code class="docutils literal notranslate"><span class="pre">1</span></code> and then set <code class="docutils literal notranslate"><span class="pre">values=&quot;dummy&quot;</span></code> and
+<code class="docutils literal notranslate"><span class="pre">aggfunc=&quot;count&quot;</span></code>.</p>
+<p>For example, suppose we want to know the count of projects done by each manager for each project category ID. We first create the <code class="docutils literal notranslate"><span class="pre">dummy</span></code> column.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example creating a Frequency Cross Table.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># First, create a dummy column and then count the number of occurances.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;dummy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;dummy&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Engineer&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;CategoryID&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">CategoryID           1   2   3   4   5</span>
+<span class="go">Manager</span>
+<span class="go">Boyce, Bruce         8   6   8  20   8</span>
+<span class="go">Colton, Greg         4   5   2   5   1</span>
+<span class="go">Degas, Josh          6  12   6   4   8</span>
+<span class="go">Guza, Adina          3   5   6   4   3</span>
+<span class="go">Jaffe, Jerry         8   6   5   9   8</span>
+<span class="go">Marlow, Daniel       3   2   4   6   1</span>
+<span class="go">Murphy, Mary         6   8  13   5   4</span>
+<span class="go">Pac, Su Li           8   5   9   9   8</span>
+<span class="go">Rivera, Titus        6   6   8   5   6</span>
+<span class="go">Steele, Richard     11  19   2   5   9</span>
+<span class="go">Stone, Jeff          2   7   4   4   6</span>
+<span class="go">Turnage, Leslie      7   2   4   6   4</span>
+<span class="go">Weaver, Diane        6   7   3   4   7</span>
+<span class="go">Wolff, Carolyn      10  14  10  10   7</span>
+<span class="go">Woods, Susan        10  11  10   5  12</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="counting-values">
+<h2>Counting Values<a class="headerlink" href="#counting-values" title="Permalink to this headline"></a></h2>
+<p>There are two ways to count the values (occurences) of a column. One way is to create a Frequency Cross Table using <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> with only the index.
+The easier way is to use <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> directly on the column. The order of the output might be different between these two methods, but the result is identical.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example using .pivot_table to get the count of a column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dummy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s2">&quot;dummy&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;Engineer&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">                 dummy</span>
+<span class="go">Manager</span>
+<span class="go">Boyce, Bruce        50</span>
+<span class="go">Colton, Greg        17</span>
+<span class="go">Degas, Josh         36</span>
+<span class="go">Guza, Adina         21</span>
+<span class="go">Jaffe, Jerry        36</span>
+<span class="go">Marlow, Daniel      16</span>
+<span class="go">Murphy, Mary        36</span>
+<span class="go">Pac, Su Li          39</span>
+<span class="go">Rivera, Titus       31</span>
+<span class="go">Steele, Richard     46</span>
+<span class="go">Stone, Jeff         23</span>
+<span class="go">Turnage, Leslie     23</span>
+<span class="go">Weaver, Diane       27</span>
+<span class="go">Wolff, Carolyn      51</span>
+<span class="go">Woods, Susan        48</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example using .value_counts() to get the count of a column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Engineer&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+<span class="go">Wolff, Carolyn     51</span>
+<span class="go">Boyce, Bruce       50</span>
+<span class="go">Woods, Susan       48</span>
+<span class="go">Steele, Richard    46</span>
+<span class="go">Pac, Su Li         39</span>
+<span class="go">Degas, Josh        36</span>
+<span class="go">Jaffe, Jerry       36</span>
+<span class="go">Murphy, Mary       36</span>
+<span class="go">Rivera, Titus      31</span>
+<span class="go">Weaver, Diane      27</span>
+<span class="go">Stone, Jeff        23</span>
+<span class="go">Turnage, Leslie    23</span>
+<span class="go">Guza, Adina        21</span>
+<span class="go">Colton, Greg       17</span>
+<span class="go">Marlow, Daniel     16</span>
+<span class="go">Name: Manager, dtype: int64</span>
+</pre></div>
+</div>
+<p>Value counts are often used for <code class="docutils literal notranslate"><span class="pre">pie</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span></code>, and <code class="docutils literal notranslate"><span class="pre">barh</span></code> charts. Using either <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> or <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>
+the result is a one dimensional DataFrame (technically called a Series) with the index being the unique categories.</p>
+<p>Therefore in this example, the counts are <code class="docutils literal notranslate"><span class="pre">d</span></code> and the categories are <code class="docutils literal notranslate"><span class="pre">d.index</span></code>.
+The following are plots for count values. (Notice the parameter order is different for <code class="docutils literal notranslate"><span class="pre">pie</span></code> and <code class="docutils literal notranslate"><span class="pre">barh</span></code>. See the Note on <a class="reference external" href="creating_plots.html">Creating Plots</a> for information about parameter order)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example horizontal bar chart from a DataFrame column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the count for each Engineer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Engineer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">d</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Projects&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="data_analysis-16.png">png</a>, <a class="reference external" href="data_analysis-16.hires.png">hires.png</a>, <a class="reference external" href="data_analysis-16.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/data_analysis-16.png" src="_images/data_analysis-16.png" />
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example pie chart from a DataFrame column.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get the count for each category.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;CategoryID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%0.0f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Categories&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="data_analysis-17.png">png</a>, <a class="reference external" href="data_analysis-17.hires.png">hires.png</a>, <a class="reference external" href="data_analysis-17.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/data_analysis-17.png" src="_images/data_analysis-17.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="mathematical_analysis.html" class="btn btn-neutral float-left" title="Mathematical Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="statistical_analysis.html" class="btn btn-neutral float-right" title="Statistical Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

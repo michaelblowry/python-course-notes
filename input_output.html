@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reading Input and Writing Output &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Mathematical Analysis" href="mathematical_analysis.html" />
+    <link rel="prev" title="Creating Plots" href="creating_plots.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reading Input and Writing Output</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#excel-files">Excel files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#csv-files">csv files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#html-tables">HTML tables</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Reading Input and Writing Output</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="reading-input-and-writing-output">
+<span id="input-output"></span><h1>Reading Input and Writing Output<a class="headerlink" href="#reading-input-and-writing-output" title="Permalink to this headline"></a></h1>
+<p>Engineers often use tabular data that can be stored in spreadsheets like Excel, i.e. in columns and rows. Consequently,
+this page focuses on reading and writing tabular data. Furthermore, this page only considers the most common file formats,
+with these endings:</p>
+<ol class="arabic simple">
+<li><p><strong>.xls</strong> and <strong>.xlsx</strong></p></li>
+<li><p><strong>.csv</strong></p></li>
+</ol>
+<p>The best Python package for reading, writing, and analyzing these file formats is <code class="docutils literal notranslate"><span class="pre">pandas</span></code> which stores data in a
+<code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>. If you are not familiar with this data structure, please read <a class="reference external" href="data_analysis.html">Data Analysis</a> before proceeding.
+Additionally, I recommend reading <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html">10 Minutes to pandas</a>.</p>
+<p>Import matplotlib, numpy, and pandas like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+<p>If a file is not located in the same folder as the Python script, then the path must be provided. One
+way to get the path is to navigate to the folder in File Explorer and click on the path bar.</p>
+<img alt="_images/data-files-path.png" src="_images/data-files-path.png" />
+<p>Copy and paste the path into your script, surround it with quotes (single or double), and put the letter <code class="docutils literal notranslate"><span class="pre">r</span></code> in front of it
+(the letter r stands for “raw string” and is needed to make sure the backslashes do not do unwanted things, like n newline).
+Any file can be referenced by combining the folder path with the file name–also in quotes, with a backslash, and <code class="docutils literal notranslate"><span class="pre">r</span></code> before the first quote.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of how to access a specific folder and files.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_data_file</span> <span class="o">=</span> <span class="n">input_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\ExampleData.xlsx&#39;</span>  <span class="c1"># Note the backslash to separate the path and file name.</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method will work on a Windows computer. Paths are written differently on Linux and Mac computers. Mac computers do not have drives
+and use forward slash instead of backward slash. So on a Mac the folder path would be:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Path on a Mac computer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/Users/mlowry/OneDrive - University of Idaho/Courses/CE215/Data_Files&#39;</span>
+</pre></div>
+</div>
+<p>Acutally, the best approach, because it will work on any operating system, is to use <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">pathlib</span> <span class="pre">import</span> <span class="pre">Path</span></code>.</p>
+</div>
+<div class="section" id="excel-files">
+<h2>Excel files<a class="headerlink" href="#excel-files" title="Permalink to this headline"></a></h2>
+<p>Consider for example an Excel file with data for the temperatures of three gases taken every 2 minutes:</p>
+<img alt="_images/excel-file.PNG" src="_images/excel-file.PNG" />
+<p>The code below reads in the file as a DataFrame, performs some analysis to create a new DataFrame, and then writes the
+new DataFrame as a new Excel file. It is good Python style to put all folder paths together at the top of the script, one line below the imports.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Folder paths</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Part2_Python\Output&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Read Input</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_data_file</span> <span class="o">=</span> <span class="n">input_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\Temperature_Data.xlsx&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">my_data_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;Sheet1&quot;</span><span class="p">)</span> <span class="c1"># Creates a DataFrame called &quot;df&quot;.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Do analysis or create plots, etc.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Combined&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Gas2&#39;</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Write output.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_file</span> <span class="o">=</span> <span class="n">output_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\Output.xlsx&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Results&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csv-files">
+<h2>csv files<a class="headerlink" href="#csv-files" title="Permalink to this headline"></a></h2>
+<p>A Commas Separated Values (csv) file is simple and popular way to store tabular data.</p>
+<p>The example below reads data about wage rates for all public employees in the City of Seattle. The data is located here:
+<a class="reference external" href="https://data.seattle.gov/City-Business/City-of-Seattle-Wage-Data/2khk-5ukd">https://data.seattle.gov/City-Business/City-of-Seattle-Wage-Data/2khk-5ukd</a></p>
+<p>There are various ways to access the data. Click <strong>Export</strong> (i.e. download) to see a few options. Download the data to your computer and
+move it to a desired folder.</p>
+<p>The code below reads in the file as a DataFrame,
+performs some analysis to create a new DataFrame, and then writes the
+new DataFrame as a new csv file (the output could be any format, including Excel).
+It is good Python style to put all folder paths together at the top of the script, one line below the imports.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Part2_Python\Output&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This is the csv file in a folder on your computer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">csv_file</span> <span class="o">=</span> <span class="n">input_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\City_of_Seattle_Wage_Data.csv&#39;</span>  <span class="c1"># Note the backslash to separate the path and file name.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example reading a csv file to create a DataFrame called &quot;df&quot;.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example data analysis that creates a new DataFrame called &quot;d&quot;.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Annual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">52</span> <span class="o">*</span> <span class="mi">40</span>  <span class="c1"># Note the data has an odd space after Hourly Rate.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Last Name&#39;</span><span class="p">,</span> <span class="s1">&#39;Hourly Rate &#39;</span><span class="p">,</span> <span class="s1">&#39;Annual&#39;</span><span class="p">]]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example writing a DataFrame to a csv file.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_file</span> <span class="o">=</span> <span class="n">output_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\Output.csv&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>A better way to acces data from the internet is to use the <strong>API</strong> (application programming interface), especially if you
+plan to repeatedly access the dataset. When you click on API you will see the url to the API Endpoint, often in json or csv format.
+Copy the url and read it in as a DataFrame. Sometimes the data provider limits API access and/or requires you to register
+to get a username and password (or token). For example, the City of Seattle will only allow the first 1000 rows to be accessed without
+a token, however, you can register for free to get a token that allows you to access more data. This process allows the data provider
+to monitor the traffic to their servers where the data is stored and perhaps regulate excessive use. For example, Google provides
+an API to Google Map data, like business location data. Their API allows people to create interesting apps. Google allows a certain number of “pings”
+to their database servers for free (like a few thousand per day), but then starts to charge the app creater if the number of pings per day is super high.</p>
+</div>
+</div>
+<div class="section" id="html-tables">
+<h2>HTML tables<a class="headerlink" href="#html-tables" title="Permalink to this headline"></a></h2>
+<p>Pandas can read tables from webpages.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;https://en.wikipedia.org/wiki/List_of_mountains_by_elevation&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_html</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df1</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df2</span> <span class="o">=</span> <span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="creating_plots.html" class="btn btn-neutral float-left" title="Creating Plots" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mathematical_analysis.html" class="btn btn-neutral float-right" title="Mathematical Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

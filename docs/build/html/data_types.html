@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Types &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="If Statement and For Loop" href="if_statement_for_loop.html" />
+    <link rel="prev" title="Python Essentials" href="python_essentials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#integer-float-and-string">Integer, Float, and String</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#integer-and-floating-point">Integer and Floating Point</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#string">String</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#list-tuple-set-and-numpy-array">List, Tuple, Set, and Numpy Array</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list">List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tuple">Tuple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set">Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numpy-array">NumPy Array</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dictionary">Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#numpy-matrix">NumPy Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pandas-dataframe">Pandas DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#class-and-object">Class and Object</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Data Types</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="data-types">
+<span id="id1"></span><h1>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline"></a></h1>
+<p>All computer languages have a way to structure and store data. The data types in
+Python are similar to other languages. You can determine the data type of anything with the built-in function <code class="docutils literal notranslate"><span class="pre">type()</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">int</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">22</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">list</span>
+</pre></div>
+</div>
+<p>In my course <em>CE 215</em> students use the 10 most common data types:</p>
+<ul class="simple">
+<li><p>Integer</p></li>
+<li><p>Floating point</p></li>
+<li><p>String</p></li>
+<li><p>List</p></li>
+<li><p>Tuple</p></li>
+<li><p>Set</p></li>
+<li><p>NumPy array</p></li>
+<li><p>Dictionary</p></li>
+<li><p>NumPy matrix</p></li>
+<li><p>Pandas DataFrame</p></li>
+</ul>
+<p>The code block below shows all 10 of the most common data types. The subsequent
+sections provide more information for each. The final section explains the concept of <code class="docutils literal notranslate"><span class="pre">class</span></code> and <code class="docutils literal notranslate"><span class="pre">object</span></code>, because each data type is, in fact, a <code class="docutils literal notranslate"><span class="pre">class</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The following are examples of data types commonly used</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># for engineering, science, and data analysis.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Basic data types</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Integer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="mf">5.3</span>  <span class="c1"># Floating point.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x3</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>  <span class="c1"># String.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sequence data types</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x4</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>  <span class="c1"># List.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x5</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="c1"># Tuple.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x6</span> <span class="o">=</span> <span class="p">{</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">}</span> <span class="c1"># Set.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span> <span class="c1"># NumPy array.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Lookup, Rectangular, and Spreadsheet-like data types.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x8</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;plastic&quot;</span><span class="p">:</span> <span class="mf">0.009</span><span class="p">,</span> <span class="s2">&quot;steel&quot;</span><span class="p">:</span> <span class="mf">0.012</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">:</span> <span class="mf">0.015</span><span class="p">}</span>  <span class="c1"># Dictionary.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x9</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>  <span class="c1"># NumPy matrix.</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url_csv_file</span> <span class="o">=</span> <span class="s2">&quot;https://www.webpages.uidaho.edu/~mlowry/ExampleData/alcohol_data.csv&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x10</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_csv_file</span><span class="p">)</span> <span class="c1"># Pandas DataFrame.</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All of the above data types, except <code class="docutils literal notranslate"><span class="pre">set</span></code>, can be viewed in Sypder’s Variable explorer.
+To view the example, write <code class="docutils literal notranslate"><span class="pre">x6</span></code> in the console, the output will be <code class="docutils literal notranslate"><span class="pre">{5,</span> <span class="pre">8,</span> <span class="pre">12}</span></code>.</p>
+</div>
+<div class="section" id="integer-float-and-string">
+<h2>Integer, Float, and String<a class="headerlink" href="#integer-float-and-string" title="Permalink to this headline"></a></h2>
+<p>The most <strong>basic data types</strong> are <em>Integer</em>, <em>Floating Point</em>, and <em>String</em>. The names for these data types might seem odd,
+but they have a long history in computer programming. The first two are simply numbers.</p>
+<div class="section" id="integer-and-floating-point">
+<h3>Integer and Floating Point<a class="headerlink" href="#integer-and-floating-point" title="Permalink to this headline"></a></h3>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">diameter</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># This is an integer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">diameter</span><span class="p">)</span>
+<span class="go">int</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">depth</span> <span class="o">=</span> <span class="mf">8.6</span>  <span class="c1"># This is a floating point (because it has a decimal point).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity</span> <span class="o">=</span> <span class="mf">5.0</span>  <span class="c1"># This is also a floating point.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">velocity</span><span class="p">)</span>
+<span class="go">float</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># If at least one float is included anywhere in a math operation,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># then the result will be a float.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bearing_stress</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="mi">12</span> <span class="o">+</span> <span class="mf">3.5</span><span class="p">)</span>
+<span class="go">62.0</span>
+</pre></div>
+</div>
+<p>For someone new to computer programming it might seem strange to distinguish between an <code class="docutils literal notranslate"><span class="pre">int</span></code> and <code class="docutils literal notranslate"><span class="pre">float</span></code>. There
+are many reasons why this distinction is important, one reason is that in computer programming we often repeat
+things for a certain number of times. For example you might want to do a calculation for <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">5</span></code> times, but it
+doesn’t make sense to do something for <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">6.2</span></code> times. For the latter, if you tell Python to repeat <code class="docutils literal notranslate"><span class="pre">n</span></code> times it will throw an error.</p>
+</div>
+<div class="section" id="string">
+<h3>String<a class="headerlink" href="#string" title="Permalink to this headline"></a></h3>
+<p><em>String</em> is computer-speak for text, i.e. words. A string is defined by using single-quotes or double-quotes.
+This is not to be confused with comments and docstrings which the computer ignores when you <em>Run</em> your program.
+In Spyder docstrings and strings are given the same color green so they appear similar. However, they are very different.
+A docstring provides information to someone reading the script and has no purpose when the script is <em>Run</em>. On the other hand,
+a string is actually used or analyzed when the script is <em>Run</em>. For example, you might want the script to print messages.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The strings below are used to print a message.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">allowable_stress</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">success_message</span> <span class="o">=</span> <span class="s2">&quot;The bearing stress is below the limit.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fail_message</span> <span class="o">=</span> <span class="s2">&quot;Warning: The bearing stress exceeds the limit.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">bearing_stress</span> <span class="o">&gt;=</span> <span class="n">allowable_stress</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">fail_message</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">success_message</span><span class="p">)</span>
+<span class="go">&#39;Warning: The bearing stress exceeds the limit.&#39;</span>
+</pre></div>
+</div>
+<p>The use of double-quotes or single-quotes does not matter. For example, <code class="docutils literal notranslate"><span class="pre">material</span> <span class="pre">=</span> <span class="pre">&quot;concrete&quot;</span></code>
+and <code class="docutils literal notranslate"><span class="pre">material</span> <span class="pre">=</span> <span class="pre">'concrete'</span></code> are identical as far as Python is concerned. Most style guides make no preference.
+Some people like to use single-quotes for short strings and double-quotes for long sentences. I tend to use double quotes for everything.</p>
+<p>As you do more and more programming you will find that string manipulation is a common task. There are lots of things that can be done to strings, such as the following:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;The pipe material: plastic&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">message</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;plastic&quot;</span><span class="p">,</span> <span class="s2">&quot;concrete&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="go">&#39;The pipe material: concrete&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parts</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>  <span class="c1"># Creates a list with space as the deliminator.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+<span class="go">[&#39;The&#39;, &#39;pipe&#39;, &#39;material:&#39;, &#39;concrete&#39;]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">parts</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>  <span class="c1"># Creates a list with colon as the deliminator.</span>
+<span class="go">[&#39;The pipe material&#39;, &#39; concrete&#39;]</span>
+</pre></div>
+</div>
+<p>The characters of a string can be accessed as follows. This can be confusing and takes trial and error to master.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">caption</span> <span class="o">=</span> <span class="s2">&quot;The program started 18/01/1977&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">letter</span> <span class="o">=</span> <span class="n">caption</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># The fourth character from the left starting with 0.</span>
+<span class="go">&#39;m&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_date</span> <span class="o">=</span> <span class="n">caption</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>  <span class="c1"># Keep from the right 10 characters.</span>
+<span class="go">&#39;18/01/1977&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">day_month</span> <span class="o">=</span> <span class="n">start_date</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># Keep from the left 5 characters.</span>
+<span class="go">&#39;18/01&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">month</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">day_month</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>  <span class="c1"># Remove from the left 3 characters.</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="list-tuple-set-and-numpy-array">
+<h2>List, Tuple, Set, and Numpy Array<a class="headerlink" href="#list-tuple-set-and-numpy-array" title="Permalink to this headline"></a></h2>
+<p>List, Tuple, Set, and Numpy Array are <strong>sequence data types</strong> (also called “collection” or “compound” data types).</p>
+<div class="section" id="list">
+<h3>List<a class="headerlink" href="#list" title="Permalink to this headline"></a></h3>
+<p>As the name implies, a <code class="docutils literal notranslate"><span class="pre">list</span></code> contains a list of integers, floats, or strings.
+The items in a list are separated by commas and a list is defined with square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An example of a list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The items of a list can be accessed by putting the desired index in brackets. <strong>In Python indexing starts at zero</strong> and this is often a challenge for beginners to remember.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of accessing an item with its index.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The first item is accessed with index 0.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The second item is accessed with index 1.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># A list can be &quot;sliced&quot; to get a subset of the items.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Items are sliced with a colon : between indices.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The slice is from the start index until but not including the end index.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">[56, 34, 11]</span>
+</pre></div>
+</div>
+<p>Lists can be combined.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of combining lists.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">66</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="go">[12, 4, 56, 34, 11, 11, 62, 44, 5, 66]</span>
+</pre></div>
+</div>
+<p>You can add new items at the end of a list by using the <code class="docutils literal notranslate"><span class="pre">append()</span></code> method.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of appending a new item to the end of a list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">k</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">77</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="go">[12, 55, 12, 45, 77]</span>
+</pre></div>
+</div>
+<p>Various functions can be used to explore a list. Here are a few ways to explore a list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Determine the length or number of items.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Determine the maximum value (for numeric lists).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">62</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Determine the minimum value (for numeric lists).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate the sum (for numeric lists).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">190</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A function is used by putting the list between the parentheses, such as <code class="docutils literal notranslate"><span class="pre">len(x)</span></code>.
+A method is used by putting a dot after the list and then writing parentheses with the argument (if an argument is needed), such as <code class="docutils literal notranslate"><span class="pre">x.append(77)</span></code>.</p>
+</div>
+<p>There are other methods for a list. Here are a few other methods.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sort the items of the list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[4, 11, 11, 12, 34, 56, 62]</span>
+<span class="go"> &gt;&gt;&gt; # Reverse the items of the list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[62, 56, 34, 12, 11, 11, 4]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Count the number of times an item appears in the list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="go">2</span>
+</pre></div>
+</div>
+<p>The items of a list can be any data type, such as integer, float, strings, etc.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sequence data types such as <code class="docutils literal notranslate"><span class="pre">list</span></code> are often given plural variable names for good Pythonic style,
+like <code class="docutils literal notranslate"><span class="pre">values</span> <span class="pre">=</span> <span class="pre">[12,</span> <span class="pre">34,</span> <span class="pre">66]</span></code> or <code class="docutils literal notranslate"><span class="pre">measurements</span> <span class="pre">=</span> <span class="pre">[1.2,</span> <span class="pre">5.1,</span> <span class="pre">4.4,</span> <span class="pre">1.7]</span></code>.</p>
+</div>
+<p>Often we want to loop over a list.  Python’s <code class="docutils literal notranslate"><span class="pre">for</span></code> statement iterates over the items of any sequence (list, tuple, etc),
+in the order that they appear in the sequence (See <a class="reference external" href="if_statement_for_loop.html#for-loop">Controlling Flow: For Loop</a>).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example looping over a list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="go">orange</span>
+<span class="go">apple</span>
+<span class="go">pear</span>
+<span class="go">banana</span>
+<span class="go">kiwi</span>
+<span class="go">apple</span>
+<span class="go">banana</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of looping over a list and filling a new list with append.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measurements_inches</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measurements_cms</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># This is an empty list that will be filled with append.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">measurements_inches</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">measurements_cms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">measurements_cms</span><span class="p">)</span>
+<span class="go">[30.0, 10.0, 140.0, 85.0, 27.5, 27.5, 155.0]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tuple">
+<h3>Tuple<a class="headerlink" href="#tuple" title="Permalink to this headline"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">tuple</span></code> is very similar to a list. In fact, you may never notice the difference. For someone who is a beginner
+programmer the only difference is that a tuple is defined with curved parentheses or with no braces at all.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of defining a tuple.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">56</span><span class="p">)</span>
+<span class="go">(12, 34, 56)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Tuples can also be defined without parentheses.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The ouput in the console will show the parentheses.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">99</span>
+<span class="go">(22, 45, 99)</span>
+</pre></div>
+</div>
+<p>Functions that return more than one item often use tuples. For example, <code class="docutils literal notranslate"><span class="pre">divmod(a,</span> <span class="pre">b)</span></code> returns
+a tuple consisting of the quotient and remainder of <code class="docutils literal notranslate"><span class="pre">a</span></code> divided by <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of a function that returns a tuple.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The result can be &quot;unpacked&quot; using indexing.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="go">(3, 1)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">r</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quotient =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot;and remainder =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="go">quotient = 3 and remainder = 1</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Alternatively, the tuple can be &quot;unpacked&quot; directly when calling the function.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;quotient =&quot;</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="s2">&quot;and remainder =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>
+<span class="go">quotient = 3 and remainder = 1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="set">
+<h3>Set<a class="headerlink" href="#set" title="Permalink to this headline"></a></h3>
+<p>A <code class="docutils literal notranslate"><span class="pre">set</span></code> is like a list but with unique values (no duplicates). It is defined with curly braces or
+by using the <code class="docutils literal notranslate"><span class="pre">set()</span></code> function on a list. Either way, duplicates are removed.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of defining a set.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">{</span><span class="mi">22</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">64</span><span class="p">}</span>
+<span class="go">{8, 22, 45, 64}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sets can also be defined using the set function on a list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">])</span>
+<span class="go">{&#39;apple&#39;, &#39;banana&#39;, &#39;kiwi&#39;, &#39;orange&#39;, &#39;pear&#39;}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="numpy-array">
+<h3>NumPy Array<a class="headerlink" href="#numpy-array" title="Permalink to this headline"></a></h3>
+<p>A numpy array is another sequence data type that is very similar to a <code class="docutils literal notranslate"><span class="pre">list</span></code>. Numpy arrays are faster
+than lists and have some extra functionality. Consequently, for mathematical and statistical analysis, a
+numpy array is preferred. To define a numpy array you must import the <code class="docutils literal notranslate"><span class="pre">numpy</span></code>
+package (See <a class="reference external" href="python_essentials.html#import-modules">Python Essentials: Import Modules</a>).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example numpy array.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">12</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">33</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([12, 55,  6, 33])</span>
+</pre></div>
+</div>
+<p>Numpy arrays can also be created using the functions <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example numpy array created using the arange() function.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The arguments are start, stop-but-not-including, and the increment size.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This example creates a numpy array from 0 to 2 by 0.3 increments.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">array([0.0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example numpy array created using the linspace() function.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The arguments are start, stop-but-not-including, and the number of desired elements.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This example creates a numpy array from 0 to 2 with exactly 9 elements.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="go">array([0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0])</span>
+</pre></div>
+</div>
+<p>If you know the spacing you want between items, then use <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code>. On the other hand, if you
+know how many items you want, then use <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>.</p>
+<p>Often we want to loop over <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> (See <a class="reference external" href="if_statement_for_loop.html#for-loop">For Loop</a>).</p>
+</div>
+</div>
+<div class="section" id="dictionary">
+<h2>Dictionary<a class="headerlink" href="#dictionary" title="Permalink to this headline"></a></h2>
+<p>A dictionary is a powerful Python lookup data type not covered in this course.</p>
+</div>
+<div class="section" id="numpy-matrix">
+<h2>NumPy Matrix<a class="headerlink" href="#numpy-matrix" title="Permalink to this headline"></a></h2>
+<p>A matrix is a rectangular array (i.e. with rows and columns). It is defined by adding an extra set of square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>
+to a numpy array (See <a class="reference external" href="matrix_analysis.html">Matrix Analysis</a> for more information).</p>
+</div>
+<div class="section" id="pandas-dataframe">
+<h2>Pandas DataFrame<a class="headerlink" href="#pandas-dataframe" title="Permalink to this headline"></a></h2>
+<p>A pandas DataFrame stores tabular data (i.e. with rows and columns) and is created by reading an Excel spreadsheet or csv file
+(See <a class="reference external" href="data_analysis.html">Data Analysis</a> for more information).</p>
+</div>
+<div class="section" id="class-and-object">
+<h2>Class and Object<a class="headerlink" href="#class-and-object" title="Permalink to this headline"></a></h2>
+<p>Writing a “class” for “object oriented programming” is an advanced topic that we will not cover in this course. All
+you need to know is the basic concept that a <code class="docutils literal notranslate"><span class="pre">class</span></code> is a kind of thing and an <code class="docutils literal notranslate"><span class="pre">object</span></code> is a specific
+instance of that thing. A <code class="docutils literal notranslate"><span class="pre">class</span></code> (and its objects) can have attributes and functionality (which in computer-speak
+we call <em>methods</em>). For an analogy, a <em>dog</em> is a class and my dog <em>Simon</em> is an object of that class. All dogs,
+including my dog, have certain <em>attributes</em> and can do certain things (<em>methods</em>).</p>
+<p>We use objects often. For example, a numpy array is a class. And if I create <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">np.array([12,</span> <span class="pre">55,</span> <span class="pre">6,</span> <span class="pre">33])</span></code>
+then <code class="docutils literal notranslate"><span class="pre">x</span></code> is a numpy array object.</p>
+<p>Now I can <em>reference</em> the attributes or <em>call</em> the methods associated with the numpy array object.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># An attribute is referenced by placing a dot &quot;.&quot; between</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the object and the desired attribute.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># object.attribute</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># For example, the size attribute for a numpy array a can be referenced like this:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">size</span>
+<span class="go">4</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># A method is called by placing a dot &quot;.&quot; between</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># the object and the method with parenthesis.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># object.method()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># For example, the sort method for a numpy array a can be called and used like this:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([ 6, 12, 33, 55])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Some methods can alternatively be called like a function from the imported module.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># module.method(object)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1">#</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># For example, the sort method can also be called and used like a function:</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([ 6, 12, 33, 55])</span>
+</pre></div>
+</div>
+<p>A numpy array (actually called a n dimensional array) has many attributes and methods. You can see the list
+by scrolling down the page here: <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.15.0/reference/generated/numpy.ndarray.html#numpy.ndarray">numpy.ndarray</a></p>
+<p>A pandas dataframe is a class with various attributes and methods. You can see the list
+by scrolling down the page here: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas.DataFrame</a></p>
+<p>Spyder shows the attributes and methods when you type a dot after an object. If you type <code class="docutils literal notranslate"><span class="pre">x.</span></code> and pause this window
+will pop up. The orange <em>f</em> indicates a method (also called a function) and pink <em>a</em> indicates an attribute.</p>
+<p>Pandas dataframe is another example of a <code class="docutils literal notranslate"><span class="pre">class</span></code> and in the example above <code class="docutils literal notranslate"><span class="pre">my_data</span></code> is an object.
+In fact all data types (<code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, etc.) are examples of a <code class="docutils literal notranslate"><span class="pre">class</span></code> and <code class="docutils literal notranslate"><span class="pre">object</span></code>.
+And there are attributes and methods associated with
+each <code class="docutils literal notranslate"><span class="pre">class</span></code>. For example, <code class="docutils literal notranslate"><span class="pre">split</span></code> is one of the methods associated with a <code class="docutils literal notranslate"><span class="pre">string</span></code>. <code class="docutils literal notranslate"><span class="pre">append</span></code> is one of
+the methods associated with a <code class="docutils literal notranslate"><span class="pre">list</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="python_essentials.html" class="btn btn-neutral float-left" title="Python Essentials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="if_statement_for_loop.html" class="btn btn-neutral float-right" title="If Statement and For Loop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

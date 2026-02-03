@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrix Analysis &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GIS Analysis" href="gis_analysis.html" />
+    <link rel="prev" title="Statistical Analysis" href="statistical_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Matrix Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-notation-in-python">Matrix Notation in Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#indexing-and-slicing">Indexing and Slicing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#matrix-operations-and-calculations">Matrix Operations and Calculations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transpose">Transpose</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#addition-and-subtraction">Addition and Subtraction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiplication">Multiplication</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#scalar-multiplication">Scalar Multiplication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#element-multiplication">Element Multiplication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matrix-multiplication-dot-product-or-inner-product">Matrix Multiplication (Dot Product or Inner Product)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cross-product-outer-product">Cross Product (Outer Product)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#determinant">Determinant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inverse">Inverse</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solving-system-of-linear-equations">Solving System of Linear Equations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Matrix Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="matrix-analysis">
+<span id="id1"></span><h1>Matrix Analysis<a class="headerlink" href="#matrix-analysis" title="Permalink to this headline"></a></h1>
+<p>It is often useful to store data in matrices for special mathematical calculations. On this page,
+we review matrix notation and calculations (For more information see <a class="reference external" href="https://en.wikipedia.org/wiki/Matrix_(mathematics)">Matrix mathematics</a>). This page concludes by showing the most common matrix analysis in engineering: <em>solving a system of equations</em>.</p>
+<div class="section" id="matrix-notation-in-python">
+<h2>Matrix Notation in Python<a class="headerlink" href="#matrix-notation-in-python" title="Permalink to this headline"></a></h2>
+<p>A matrix is organized with rows and columns. Often mathematicians use capital letters to represent a matrix and write the
+values or <em>elements</em> surrounded by box brackets as shown below. The shape (or dimension) of a matrix is the number of rows and
+columns. For example, <em>A</em> is a 2x2 matrix (because it has 2 rows by 2 columns). <em>B</em> is a 3x5 matrix. <em>C</em> is a 1x3 matrix (also called a row matrix). <em>D</em> is a 4x1 matrix (also called a column matrix).</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+&amp; A = \left[\begin{matrix}3&amp;5\\6&amp;4\end{matrix}\right]
+&amp; B = \left[\begin{matrix}5.2&amp;12.1&amp;8.5&amp;12.3&amp;45.1\\8.6&amp;1.3&amp;23.0&amp;50.6&amp;1.0\\0.0&amp;0.0&amp;12.5&amp;15.3&amp;2.1\end{matrix}\right] \\
+&amp; C = \left[\begin{matrix}12&amp;34&amp;15\end{matrix}\right]
+&amp; D = \left[\begin{matrix}4.6\\16.4\\45.0\\3.5\end{matrix}\right] \\
+\end{align*}\end{split}\]</div>
+<p>In Python, a matrix is defined by adding an extra set of square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> to a numpy array (Numpy also has a specific data structure called “matrix”,
+but the documentation recommends avoiding it). Here are matrices defined in Python:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example matrices.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># A is a 2 by 2 matrix.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># B is a 3 by 5 matrix.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># C is a 1 by 3 matrix (also called a row matrix).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># D is a 4 by 1 matrix (also called a column matrix).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">12.1</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">,</span> <span class="mf">12.3</span><span class="p">,</span> <span class="mf">45.1</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mf">8.6</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">23.0</span><span class="p">,</span> <span class="mf">50.6</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">12.5</span><span class="p">,</span> <span class="mf">34.6</span><span class="p">,</span> <span class="mf">15.8</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">4.6</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mf">16.4</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mf">45.0</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mf">3.5</span><span class="p">]])</span>
+</pre></div>
+</div>
+<p>The indented alignment for each row is to make it easier to see and most IDE’s inlcuding Spyder will do this automatically.</p>
+<p>In Python, it is common for variables, including matrices, to be named with full-words and lower-case letters. For example,
+you might see variables such as <cite>data</cite>, <cite>values</cite>, or <cite>measurements</cite>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>                 <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">31</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="section" id="indexing-and-slicing">
+<h3>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline"></a></h3>
+<p>The elements of a matrix can be referenced according to the row <em>i</em> and column <em>j</em>. In Python the number of rows are
+counted (indexed) starting at zero. In other words, <em>i</em> = 0, 1, 2, …, <em>m</em>. Likewise, the columns begin at at zero, <em>j</em> = 0, 1, 2, …, <em>n</em>. To return
+the whole row or column use a colon <code class="docutils literal notranslate"><span class="pre">:</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example indexing and slicing of matrices (Note indexing begins at 0 in Python).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">shape</span> <span class="c1"># Returns the dimensions.</span>
+<span class="go">(3, 5)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="o">.</span><span class="n">size</span> <span class="c1"># Returns the number of elements.</span>
+<span class="go">15</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># Returns row 1, column 3.</span>
+<span class="go">50.6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="c1"># Returns row 2, all columns.</span>
+<span class="go">array([ 0. ,  0. , 12.5, 15.3,  2.1])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># Returns all rows of column 2.</span>
+<span class="go">array([ 8.5, 23. , 12.5])</span>
+</pre></div>
+</div>
+<p>A submatrix can be sliced from a larger matrix using the form <code class="docutils literal notranslate"><span class="pre">row_start:row_stop,</span> <span class="pre">col_start:col_stop</span></code> This can be confusing; first
+because the colons here have different meaning than the indexing above and second because the stop needs to
+be one index past the row or column that you want (and third because you need to get used to Python indexing starting at zero).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Slicing a submatrix (Note indexing begins at 0 and goes one step past the desired location).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">submatrix_B</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">submatrix_B</span><span class="p">)</span>
+<span class="go">[[23.  50.6]</span>
+<span class="go"> [12.5 15.3]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="matrix-operations-and-calculations">
+<h2>Matrix Operations and Calculations<a class="headerlink" href="#matrix-operations-and-calculations" title="Permalink to this headline"></a></h2>
+<p>The following are the most common operations and calculations. They will be demonstrated on matrices x, y, and z.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+&amp; x = \left[\begin{matrix}2&amp;3&amp;4\\1&amp;1&amp;3\\3&amp;1&amp;5\end{matrix}\right]
+&amp; y = \left[\begin{matrix}1&amp;6&amp;2\\1&amp;6&amp;2\\3&amp;2&amp;5\end{matrix}\right]
+&amp; z = \left[\begin{matrix}3&amp;2\\3&amp;1\\2&amp;4\end{matrix}\right]
+\end{align*}\end{split}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Matrices used in the examples below.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="gp">... </span>              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sometimes a quick way to define matrices is with <code class="docutils literal notranslate"><span class="pre">.reshape(rows,</span> <span class="pre">columns)</span></code> on a numpy array. For example, the matrices
+above could be defined like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Matrices defined using .reshape(rows, columns)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transpose">
+<h3>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline"></a></h3>
+<p>Rotates the matrix, so that rows become columns, and vice versa.
+There are two ways to transpose a matrix. It can be done using a function call <code class="docutils literal notranslate"><span class="pre">np.transpose(Matrix)</span></code> or a method call
+on the matrix object <code class="docutils literal notranslate"><span class="pre">Matrix.transpose()</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example calling a function for transpose.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([[2, 1, 3],</span>
+<span class="go">       [3, 1, 1],</span>
+<span class="go">       [4, 3, 5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="go">array([[3, 3, 2],</span>
+<span class="go">       [2, 1, 4]])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example calling a method on the matrix object to transpose.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="go">array([[2, 1, 3],</span>
+<span class="go">       [3, 1, 1],</span>
+<span class="go">       [4, 3, 5]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="go">array([[3, 3, 2],</span>
+<span class="go">       [2, 1, 4]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="addition-and-subtraction">
+<h3>Addition and Subtraction<a class="headerlink" href="#addition-and-subtraction" title="Permalink to this headline"></a></h3>
+<p>Addition and subtraction occurs on matching <em>i</em>, <em>j</em> elements, consequently addition and subtraction can only be done for matrices that are the same shape.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># x and y can not be added or subtracted with z because they are not the same shape.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># But, x and y can be added or subtracted to each other</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="go">array([[ 3,  9,  6],</span>
+<span class="go">       [ 2,  7,  5],</span>
+<span class="go">       [ 6,  3, 10]])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span>
+<span class="go">array([[ 1, -3,  2],</span>
+<span class="go">       [ 0, -5,  1],</span>
+<span class="go">       [ 0, -1,  0]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiplication">
+<h3>Multiplication<a class="headerlink" href="#multiplication" title="Permalink to this headline"></a></h3>
+<p>There are four types of multiplication.</p>
+<div class="section" id="scalar-multiplication">
+<h4>Scalar Multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline"></a></h4>
+<p>This multiplies a number (called a scalar) with each element.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">10</span> <span class="o">*</span> <span class="n">x</span>
+<span class="go">[[20 30 40]</span>
+<span class="go"> [10 10 30]</span>
+<span class="go"> [30 10 50]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="element-multiplication">
+<h4>Element Multiplication<a class="headerlink" href="#element-multiplication" title="Permalink to this headline"></a></h4>
+<p>This multiples matching <em>i</em>, <em>j</em> elements, consequently element multiplication can only be done for matrices that are the same shape.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># x and y can not be element multiplied with z because they are not the same shape.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># But, x and y can be element multiplied to each other.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+<span class="go">array([[ 2, 18,  8],</span>
+<span class="go">       [ 1,  6,  6],</span>
+<span class="go">       [ 9,  2, 25]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="matrix-multiplication-dot-product-or-inner-product">
+<h4>Matrix Multiplication (Dot Product or Inner Product)<a class="headerlink" href="#matrix-multiplication-dot-product-or-inner-product" title="Permalink to this headline"></a></h4>
+<p>The “inside” dimensions must be equal, i.e. the number of columns of the first matrix must equal the number of rows of the second matrix.
+For example, you could dot multiply a 2x3 with a 3x10. Mathematicians write matrix multiplication with a symbol that looks like a dot.</p>
+<div class="math notranslate nohighlight">
+\[x \bullet y\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">[[17 38 30]</span>
+<span class="go"> [11 18 19]</span>
+<span class="go"> [19 34 33]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+<span class="go">array([[23, 23],</span>
+<span class="go">       [12, 15],</span>
+<span class="go">       [22, 27]])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cross-product-outer-product">
+<h4>Cross Product (Outer Product)<a class="headerlink" href="#cross-product-outer-product" title="Permalink to this headline"></a></h4>
+<p>Both matrices (vectors) must be 1x3 or 3x1. Mathematicians write the cross product with a symbol that looks like a cross.</p>
+<div class="math notranslate nohighlight">
+\[x \times y\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The first row of x and y, since dimensions must be 1x3 or 3x1.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+<span class="go">array([-18,   0,   9])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># If all rows are given, then the cross product is performed for each row.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="go">array([[-18,   0,   9],</span>
+<span class="go">       [-16,   1,   5],</span>
+<span class="go">       [ -5,   0,   3]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="determinant">
+<h3>Determinant<a class="headerlink" href="#determinant" title="Permalink to this headline"></a></h3>
+<p>The determinant can only be calculated for a square matrix. A zero determinant means the matrix is “singular” and cannot be inverted.
+Mathematicians write the determinant with two straight bars.</p>
+<div class="math notranslate nohighlight">
+\[|x|\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">8.000000000000002</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inverse">
+<h3>Inverse<a class="headerlink" href="#inverse" title="Permalink to this headline"></a></h3>
+<p>The inverse can only can be calculated for a square matrix that is “nonsingular”, i.e. the determinant <span class="math notranslate nohighlight">\(|x| \neq 0\)</span>.
+Mathematicians write inverse as an exponent of -1.</p>
+<div class="math notranslate nohighlight">
+\[x^{-1}\]</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">array([[ 0.25 , -1.375,  0.625],</span>
+<span class="go">       [ 0.5  , -0.25 , -0.25 ],</span>
+<span class="go">       [-0.25 ,  0.875, -0.125]])</span>
+</pre></div>
+</div>
+<p>The determinant and inverse functions are in the numpy linear algebra module <code class="docutils literal notranslate"><span class="pre">linalg</span></code>.</p>
+</div>
+</div>
+<div class="section" id="solving-system-of-linear-equations">
+<h2>Solving System of Linear Equations<a class="headerlink" href="#solving-system-of-linear-equations" title="Permalink to this headline"></a></h2>
+<p>A common application of matrix analysis is solving a <a class="reference external" href="https://en.wikipedia.org/wiki/System_of_linear_equations">system of linear equations</a> (also called simultaneous equations).
+In engineering this situation often arises when trying to <em>balance</em> different equations so that each equation is true.
+Consider for example the following equations:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}2q  - r + 5s + t = -3\\
+3q  + 2r + 2s - 6t = -32\\
+q  + 3r + 3s - t = -47\\
+5q  - 2r + 3s + 3t = 49\\\end{split}\]</div>
+<p>Notice that there are four equations and four unknowns. The question is what values of <em>q</em>, <em>r</em>, <em>s</em>, and <em>t</em> will make all the equations correct (balanced)?
+This problem could be solved using a series of substitutions. A quicker approach is to use matrix analysis. The first step is to
+re-write the equations as matrices. Often mathematicians use the variable names <em>A</em>, <em>x</em>, and <em>b</em>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+&amp; A = \left[\begin{matrix}2&amp;-1&amp;5&amp;1\\3&amp;2&amp;2&amp;-6\\1&amp;3&amp;3&amp;-1\\5&amp;-2&amp;-3&amp;3\end{matrix}\right]
+&amp; x = \left[\begin{matrix}q\\r\\s\\t\end{matrix}\right]
+&amp; b = \left[\begin{matrix}-3\\-32\\-47\\49\end{matrix}\right]
+\end{align*}\end{split}\]</div>
+<p>Thus, the system equation is</p>
+<div class="math notranslate nohighlight">
+\[A \bullet x = b\]</div>
+<p>Where <em>x</em> is the column matrix of unknowns. We can solve for <em>x</em> algebraically as follows</p>
+<div class="math notranslate nohighlight">
+\[x = A^{-1} \bullet b\]</div>
+<p>In Python this calculation is done as follows</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">32</span><span class="p">,</span> <span class="o">-</span><span class="mi">47</span><span class="p">,</span> <span class="mi">49</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[[  2.]</span>
+<span class="go"> [-12.]</span>
+<span class="go"> [ -4.]</span>
+<span class="go"> [  1.]]</span>
+</pre></div>
+</div>
+<p>Since this is such a common calculation, there is a function in the linear algebra module that does the dot product and inverse all in one, it is <code class="docutils literal notranslate"><span class="pre">np.linalg.solve()</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">[[  2.]</span>
+<span class="go"> [-12.]</span>
+<span class="go"> [ -4.]</span>
+<span class="go"> [  1.]]</span>
+</pre></div>
+</div>
+<p>The resulting elements of <code class="docutils literal notranslate"><span class="pre">x</span></code> are the values for the unknowns, in this case, <em>q</em>, <em>r</em>, <em>s</em>, and <em>t</em>. In deed, they are the only values
+that will make all the equations valid simultaneously (i.e. the only ones that can balance the equations).
+For clarity we can create a list of the variables in the same order x and then loop over the indexes of x to print each value like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="n">value</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">variables</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="go">q = [2.]</span>
+<span class="go">r = [-12.]</span>
+<span class="go">s = [-4.]</span>
+<span class="go">t = [1.]</span>
+</pre></div>
+</div>
+<p>Often the most difficult step in solving a system of equations is to figure out how to re-write the equations as matrices.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="statistical_analysis.html" class="btn btn-neutral float-left" title="Statistical Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gis_analysis.html" class="btn btn-neutral float-right" title="GIS Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

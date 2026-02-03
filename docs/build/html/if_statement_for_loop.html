@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>If Statement and For Loop &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Defining Functions" href="functions.html" />
+    <link rel="prev" title="Data Types" href="data_types.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">If Statement and For Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#if-statement">If Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#for-loop">For Loop</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#looping-over-a-sequence">Looping Over a Sequence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#looping-over-a-range">Looping Over a Range</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nested-loops">Nested Loops</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accumulating-values">Accumulating Values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collect-values-by-appending-to-a-list">Collect Values by Appending to a List</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#looping-over-indexes">Looping Over Indexes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>If Statement and For Loop</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="if-statement-and-for-loop">
+<span id="if-statement-for-loop"></span><h1>If Statement and For Loop<a class="headerlink" href="#if-statement-and-for-loop" title="Permalink to this headline"></a></h1>
+<p>The two <strong>most important</strong> concepts in any programming language are the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement and <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.
+If you master these two concepts, then you can program anything and everything you would ever want to program.</p>
+<p>Recall that a “program” (or “script” or “procedure” or “algorithm”) is a set of steps that the computer will follow exactly
+as written. The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement and <code class="docutils literal notranslate"><span class="pre">for</span></code> loop provide a means to <strong>control program flow</strong>, i.e. dictate the steps that the computer should follow.
+Over the years computer scientists have thought of other ways to control program flow (such as <code class="docutils literal notranslate"><span class="pre">while</span></code>),
+but these two methods are the most fundamental and powerful (For more information see <a class="reference external" href="https://en.wikipedia.org/wiki/Control_flow">Control Flow</a> ).</p>
+<div class="section" id="if-statement">
+<h2>If Statement<a class="headerlink" href="#if-statement" title="Permalink to this headline"></a></h2>
+<p>For example, suppose an earlier input produced  <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">25</span></code>. Now, you want the program to do a certain calculation
+if <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> and a different calculation otherwise. To control the script in this way, we write <code class="docutils literal notranslate"><span class="pre">if</span></code> and the logical condition. We finish the line with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1"># From a calculation earlier in the script.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="n">y</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="go">0.2</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement ends the first line with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> immediately after the conditional expression. The next line is indented with
+four spaces. If you are using Spyder to write your code, then Tab will automatically insert four spaces.
+Most IDEs do this, yet some coders prefer to hit the space bar four times, rather than use Tab.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">else</span></code> portion is optional.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">99999</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y is a very big number.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Furthermore, you can place <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements between <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> to check more than one case. <code class="docutils literal notranslate"><span class="pre">elif</span></code> is short for “else if”.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="mi">5</span><span class="o">/</span><span class="n">y</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">z</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="s2">&quot;Cannot divide by zero.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Check your input. y should not be negative.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It is useful to conceptualize nested if statements with a branching downward flow chart.</p>
+<img alt="_images/nested_if_statement.jpg" src="_images/nested_if_statement.jpg" />
+<p id="logic-conditions">There are various logic condition operators that can be used to check an expression (or expressions).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 85%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Logic Condition</p></th>
+<th class="head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>strictly less than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>less than or equal</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>strictly greater than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>greater than or equal</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>equal</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>not equal</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">or</span></code></p></td>
+<td><p>combines two expressions. returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if either is <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">and</span></code></p></td>
+<td><p>combines two expressions. returns <code class="docutils literal notranslate"><span class="pre">True</span></code> only if both are <code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">in</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if an item is in a string, list, tuple, np.array, or keys of a dictionary</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code> if an item is NOT in a string, list, tuple, np.array, or keys of a dictionary</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here are some more examples:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Imagine the following values are from an earlier calculation.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stress</span> <span class="o">=</span> <span class="mi">22</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">strain</span> <span class="o">=</span> <span class="mf">6.8</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now check this condition and print these messages.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="mf">0.50</span> <span class="o">&lt;=</span> <span class="n">stress</span> <span class="o">&lt;=</span> <span class="mi">150</span> <span class="ow">and</span> <span class="n">strain</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Safe values.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Danger, limits exceeded.&quot;</span><span class="p">)</span>
+<span class="go">Safe values.</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Imagine a list created in an earlier process.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now check if a number is in the list and print the &quot;Yes&quot; if true.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="mi">12</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yes&quot;</span><span class="p">)</span>
+<span class="go">Yes</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now check if a value is not in the list and append it to the list if it isn&#39;t.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="mi">101</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Check the result.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+<span class="go">[12, 50, 34, 101]</span>
+</pre></div>
+</div>
+<p>The logic condition for a dictionary is against the keys (unless explicitly written against the values).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Imagine a dictionary created from an input file.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The logic condition will be against the keys.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">students</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Mike&quot;</span><span class="p">:</span><span class="mi">23</span><span class="p">,</span> <span class="s2">&quot;Hannah&quot;</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="s2">&quot;Ben&quot;</span><span class="p">:</span><span class="mi">44</span><span class="p">}</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Now check if a key is in the dictionary and print the value for that key if true.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="s2">&quot;Ben&quot;</span> <span class="ow">in</span> <span class="n">students</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">students</span><span class="p">[</span><span class="s2">&quot;Ben&quot;</span><span class="p">])</span>
+<span class="go">44</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="for-loop">
+<h2>For Loop<a class="headerlink" href="#for-loop" title="Permalink to this headline"></a></h2>
+<div class="section" id="looping-over-a-sequence">
+<h3>Looping Over a Sequence<a class="headerlink" href="#looping-over-a-sequence" title="Permalink to this headline"></a></h3>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">for</span></code> statement iterates over the items of any sequence (list, tuple, etc),
+in the order that they appear in the sequence. For example, suppose we want to loop over a list of values.
+We will call the list of values <code class="docutils literal notranslate"><span class="pre">values</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of looping over a list.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">12</span>
+<span class="go">4</span>
+<span class="go">56</span>
+<span class="go">34</span>
+<span class="go">11</span>
+<span class="go">11</span>
+<span class="go">62</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> statement ends the first line with a colon <code class="docutils literal notranslate"><span class="pre">:</span></code> immediately after the sequence. The next line is indented with
+four spaces. If you are using Spyder to write your code, then Tab will automatically insert four spaces.
+Most IDEs do this, yet some coders prefer to hit the space bar four times, rather than use Tab.</p>
+</div>
+<p>The sequence and the iterating variable can have any name. To make your code easier to
+read, <strong>use singular words for the iterating variable and plural for the sequence list</strong>.
+For example, suppose <code class="docutils literal notranslate"><span class="pre">values</span></code>
+is a list of forces on a beam. Then, it might be easier to read the code (by you and others in the future)
+if you use the word <em>force</em> as the iterating variable and <em>forces</em> as the sequence list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The same example looping over a list,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># but this time with a more specific name for the iterating variable and sequence.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">forces</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">62</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">force</span> <span class="ow">in</span> <span class="n">forces</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">force</span><span class="p">)</span>
+<span class="go">12</span>
+<span class="go">4</span>
+<span class="go">56</span>
+<span class="go">34</span>
+<span class="go">11</span>
+<span class="go">11</span>
+<span class="go">62</span>
+</pre></div>
+</div>
+<p>As another example suppose we are calculating the area for five different concrete circular platforms and
+we have a list of radius values. We will loop using one letter <code class="docutils literal notranslate"><span class="pre">r</span></code> for each radius. In this example we need
+to import the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> module to access the value of pi.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">platform_radius_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">53</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">platform_radius_values</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">area</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;radius =&quot;</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="s2">&quot;and area =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">area</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="go">radius = 23 and area = 1661.9</span>
+<span class="go">radius = 44 and area = 6082.1</span>
+<span class="go">radius = 23 and area = 1661.9</span>
+<span class="go">radius = 12 and area = 452.4</span>
+<span class="go">radius = 53 and area = 8824.7</span>
+</pre></div>
+</div>
+<p>Another example looping over text and showing an if statement.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example using singluar for the iterating variable name and plural for the sequence name.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The plural is used to define a list (sequence data type).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruits</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">fruit</span> <span class="o">==</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I love&quot;</span><span class="p">,</span> <span class="n">fruit</span><span class="p">,</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span>
+<span class="go">orange</span>
+<span class="go">apple</span>
+<span class="go">pear</span>
+<span class="go">banana</span>
+<span class="go">I love banana !</span>
+<span class="go">kiwi</span>
+<span class="go">apple</span>
+<span class="go">banana</span>
+<span class="go">I love banana !</span>
+</pre></div>
+</div>
+<p>Another example using an if statement to change the calculation and print statement.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Another example for loop and if statements.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">measurements</span> <span class="o">=</span> <span class="p">[</span><span class="mi">44</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">66</span><span class="p">,</span> <span class="mi">150</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">measurements</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">answer</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">2000</span>
+<span class="gp">... </span>    <span class="k">elif</span> <span class="n">m</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">answer</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="n">answer</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="mf">0.5</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">answer</span><span class="p">)</span>
+<span class="go">44 22.0</span>
+<span class="go">5 2.5</span>
+<span class="go">66 6600</span>
+<span class="go">150 300000</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="looping-over-a-range">
+<h3>Looping Over a Range<a class="headerlink" href="#looping-over-a-range" title="Permalink to this headline"></a></h3>
+<p>Python’s built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> function is a convenient way to loop over integers.
+You can provide the starting value and ending value (the ending value is not included in the range).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of looping with the range() function.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="go">1</span>
+<span class="go">2</span>
+<span class="go">3</span>
+<span class="go">4</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Another example showing the start and the stop-but-not-included values.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="go">20</span>
+<span class="go">21</span>
+<span class="go">22</span>
+<span class="go">23</span>
+<span class="go">24</span>
+</pre></div>
+</div>
+<p>Numpy has <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> that is even better than <code class="docutils literal notranslate"><span class="pre">range()</span></code> because you can provide a third parameter to define the increment size.
+Thus the resulting range need not be integer.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example using np.arange() for half increments.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The arguments are start, stop-but-not-including, and the increment size.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This example creates a numpy array from 3 to 5 by 0.5 increments.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">width</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">area</span> <span class="o">=</span> <span class="mf">12.2</span> <span class="o">*</span> <span class="n">width</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Area =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">area</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;for width =&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+<span class="go">Area = 36.6 for width = 3.0</span>
+<span class="go">Area = 42.7 for width = 3.5</span>
+<span class="go">Area = 48.8 for width = 4.0</span>
+<span class="go">Area = 54.9 for width = 4.5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nested-loops">
+<h3>Nested Loops<a class="headerlink" href="#nested-loops" title="Permalink to this headline"></a></h3>
+<p>It is possible to have any number of <code class="docutils literal notranslate"><span class="pre">for</span></code> loops within other <code class="docutils literal notranslate"><span class="pre">for</span></code> loops.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of a double for loop.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">12.2</span><span class="p">,</span> <span class="mf">15.5</span><span class="p">,</span> <span class="mf">16.7</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">width</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">):</span>
+<span class="gp">... </span>        <span class="n">area</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">width</span>
+<span class="gp">... </span>        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Area =&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">area</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;base =&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;width =&quot;</span><span class="p">,</span> <span class="n">width</span><span class="p">)</span>
+<span class="go">Area = 36.6 base = 12.2 width = 3.0</span>
+<span class="go">Area = 42.7 base = 12.2 width = 3.5</span>
+<span class="go">Area = 48.8 base = 12.2 width = 4.0</span>
+<span class="go">Area = 54.9 base = 12.2 width = 4.5</span>
+<span class="go">Area = 46.5 base = 15.5 width = 3.0</span>
+<span class="go">Area = 54.2 base = 15.5 width = 3.5</span>
+<span class="go">Area = 62.0 base = 15.5 width = 4.0</span>
+<span class="go">Area = 69.8 base = 15.5 width = 4.5</span>
+<span class="go">Area = 50.1 base = 16.7 width = 3.0</span>
+<span class="go">Area = 58.4 base = 16.7 width = 3.5</span>
+<span class="go">Area = 66.8 base = 16.7 width = 4.0</span>
+<span class="go">Area = 75.1 base = 16.7 width = 4.5</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="accumulating-values">
+<h3>Accumulating Values<a class="headerlink" href="#accumulating-values" title="Permalink to this headline"></a></h3>
+<p>Often we don’t want to print the results from every loop, but rather accumulate the results in some way, such as summation or subtraction, and store the accumulation in a variable.
+For example, suppose we are calculating the total cost including tax across a list of items purchased.
+To do this, we initialize a variable equal to zero outside the for loop, and update the variable’s value with each passing loop. For this example the variable is called “total_cost” and on
+each loop it is updated by adding the next cost to itself. The operator <code class="docutils literal notranslate"><span class="pre">+=</span></code> is shorthand for <code class="docutils literal notranslate"><span class="pre">total_cost</span> <span class="pre">=</span> <span class="pre">total_cost</span> <span class="pre">+</span> <span class="pre">cost</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of accumulating a value with a for loop.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total_cost</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tax_rate</span> <span class="o">=</span> <span class="mf">0.06</span>  <span class="c1"># sales tax</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">purchased</span> <span class="o">=</span> <span class="p">[</span><span class="mf">12.65</span><span class="p">,</span> <span class="mf">56.78</span><span class="p">,</span> <span class="mf">45.78</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">purchased</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">cost</span> <span class="o">=</span> <span class="n">item</span> <span class="o">+</span> <span class="n">item</span> <span class="o">*</span> <span class="n">tax_rate</span>
+<span class="gp">... </span>    <span class="n">total_cost</span> <span class="o">+=</span> <span class="n">cost</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">total_cost</span><span class="p">)</span>
+<span class="go">122.1226</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collect-values-by-appending-to-a-list">
+<h3>Collect Values by Appending to a List<a class="headerlink" href="#collect-values-by-appending-to-a-list" title="Permalink to this headline"></a></h3>
+<p>Often we don’t want to print the results from every loop, but rather store the results in a list.
+For example, suppose we are calculating the distance traveled by an object that was pushed off a cliff.
+To do this, we define an empty <code class="docutils literal notranslate"><span class="pre">list</span></code> outside the for loop, and <code class="docutils literal notranslate"><span class="pre">append</span></code> values to the list
+with each passing loop. For this example the empty list is called “distances” (plural) and on
+each loop it is filled by appending a result called “distance” (singular). Each loop <code class="docutils literal notranslate"><span class="pre">t</span></code> is a 2 second interval.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of filling an empty list with a for loop.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Starting elevation in feet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="mf">32.2</span>  <span class="c1"># Acceleration due to gravity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="n">distance</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.5</span>  <span class="o">*</span>  <span class="n">g</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+<span class="go">[9935.6, 9742.4, 9420.4, 8969.6, 8390.0]</span>
+</pre></div>
+</div>
+<p>The items of a list can be accessed by putting the desired index in square brackets. <strong>In Python indexing starts at zero.</strong></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The first item is accessed with index 0.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">9935.6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The second item is accessed with index 1.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="go">9742.4</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Sequenctial data, also called a collection of data, such as lists, tuples, sets, and numpy arrays
+are key to using <code class="docutils literal notranslate"><span class="pre">for</span></code> loops because we iterate over the items in the collection.
+Furthermore, we often want to simultaneously create a new collection of data by appending values
+on each loop. Thus, to understand <code class="docutils literal notranslate"><span class="pre">for</span></code> loops it is important to understand sequential data types
+(See <a class="reference external" href="data_types.html">Data Types</a> for more information). For beginnner programmers it can be
+helpful to explore appending and printing data to lists. For example, the following code block
+is the same as before except this time the print statement is <em>within</em> the loop.
+Consequently, we see the new list grow on each loop.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example showing a list grow on each loop.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Starting elevation in feet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g</span> <span class="o">=</span> <span class="mf">32.2</span>  <span class="c1"># Acceleration due to gravity</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]:</span>
+<span class="gp">... </span>    <span class="n">distance</span> <span class="o">=</span> <span class="n">s</span> <span class="o">-</span> <span class="p">(</span><span class="mf">0.5</span>  <span class="o">*</span>  <span class="n">g</span> <span class="o">*</span> <span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">distance</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">[9935.6]</span>
+<span class="go">[9935.6, 9742.4]</span>
+<span class="go">[9935.6, 9742.4, 9420.4]</span>
+<span class="go">[9935.6, 9742.4, 9420.4, 8969.6]</span>
+<span class="go">[9935.6, 9742.4, 9420.4, 8969.6, 8390.0]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="looping-over-indexes">
+<h3>Looping Over Indexes<a class="headerlink" href="#looping-over-indexes" title="Permalink to this headline"></a></h3>
+<p>Often we want to loop over the <em>indexes</em> of a list so that we can use each index to access values and create a new list. We will
+do this by looping over a range that goes from zero to the length of the list, that is over <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">len(list))</span></code>.
+For example, suppose we have a list of costs for five projects and another list of additional costs for the same
+five projects. We could loop over the indexes of any of the lists because they are all the same length. Lets loop over the indexes of <code class="docutils literal notranslate"><span class="pre">initial_costs</span></code>.
+We will use <code class="docutils literal notranslate"><span class="pre">i</span></code> for the iterator to mean the the <em>index</em> value. Note we must start the range at index 0 because
+counting begins at zero in computer programming . With each loop we will fill (using <code class="docutils literal notranslate"><span class="pre">append</span></code>)
+a new list called <code class="docutils literal notranslate"><span class="pre">final_costs</span></code> that was defined as an empty list outside of the for loop.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">projects</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Project 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Project 2&quot;</span><span class="p">,</span> <span class="s2">&quot;Project 3&quot;</span><span class="p">,</span> <span class="s2">&quot;Project 4&quot;</span><span class="p">,</span> <span class="s2">&quot;Project 5&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">initial_costs</span> <span class="o">=</span> <span class="p">[</span><span class="mi">40500</span><span class="p">,</span> <span class="mi">22100</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">35000</span><span class="p">,</span> <span class="mi">66800</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">extra_costs</span> <span class="o">=</span>  <span class="p">[</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">final_costs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_costs</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="n">cost</span> <span class="o">=</span> <span class="n">initial_costs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">extra</span> <span class="o">=</span> <span class="n">extra_costs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">final</span> <span class="o">=</span> <span class="n">cost</span> <span class="o">+</span> <span class="n">extra</span>
+<span class="gp">... </span>    <span class="n">final_costs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">final</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="nb">print</span><span class="p">(</span><span class="n">projects</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="s2">&quot;cost is&quot;</span><span class="p">,</span> <span class="n">final</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">final_costs</span><span class="p">)</span>
+<span class="go">Project 1 cost is 60500</span>
+<span class="go">Project 2 cost is 22100</span>
+<span class="go">Project 3 cost is 150000</span>
+<span class="go">Project 4 cost is 45000</span>
+<span class="go">Project 5 cost is 106800</span>
+<span class="gp">...</span>
+<span class="go">[60500, 22100, 150000, 45000, 106800]</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Python, like other programming languages, has other techniques to control flow and build efficient programs. The
+<code class="docutils literal notranslate"><span class="pre">if</span></code> statement and <code class="docutils literal notranslate"><span class="pre">for</span></code> loop are the most powerful building blocks. <code class="docutils literal notranslate"><span class="pre">if</span></code> you master these, you will be able to
+program anything <code class="docutils literal notranslate"><span class="pre">for</span></code> a very long time. :)</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_types.html" class="btn btn-neutral float-left" title="Data Types" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="functions.html" class="btn btn-neutral float-right" title="Defining Functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

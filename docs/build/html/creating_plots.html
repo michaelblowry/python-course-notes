@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creating Plots &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reading Input and Writing Output" href="input_output.html" />
+    <link rel="prev" title="Making a Module or Package" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating Plots</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plot">Plot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#collect-values-by-appending-to-a-list">Collect Values by Appending to a List</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#scatter-plot">Scatter Plot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pie-chart">Pie Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bar-chart">Bar Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#horizontal-bar-chart">Horizontal Bar Chart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stacked-bar-chart">Stacked Bar Chart</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Creating Plots</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="creating-plots">
+<span id="id1"></span><h1>Creating Plots<a class="headerlink" href="#creating-plots" title="Permalink to this headline"></a></h1>
+<p>Matplotlib is a powerful and popular package for creating plots and charts. There are many types of plots that can be created. This
+webpage covers the most common:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plot</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scatter</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pie</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">barh</span></code></p></li>
+</ul>
+<p>The first two are used for numeric data and the last three are used for categorical data.
+Matplotlib allows very detailed customization and formatting. This webpage only covers key formatting commands.</p>
+<div class="section" id="plot">
+<h2>Plot<a class="headerlink" href="#plot" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code> plots y versus x with lines and/or markers (points). <code class="docutils literal notranslate"><span class="pre">plot</span></code> is comparable to Excel’s <em>Scatter
+with Line Chart</em> and <em>Line Chart</em>.</p>
+<p>The example below plots two series: <em>y1</em> verses <em>x</em> and <em>y2</em> verses <em>x</em>. This example demonstrates every command that
+students in my course <em>CE 215</em> are required to know.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example Data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creating a plot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example title&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Example x axis label&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Example y axis label&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Example series 1&quot;</span><span class="p">,</span> <span class="s2">&quot;Example series 2&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-.&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-1.png">png</a>, <a class="reference external" href="creating_plots-1.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-1.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-1.png" src="_images/creating_plots-1.png" />
+</div>
+<p>The first line defines <code class="docutils literal notranslate"><span class="pre">figure</span> <span class="pre">1</span></code>. The next two lines add the series to the figure.
+The remaining lines add plot elements. The order of in which the elements are added
+does not matter. Order only matters for the series in order to match the legend order.
+The last line <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> is optional, to specify exactly when Spyder should show the figure.
+If <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> is not written, then Spyder will show the figure at the end of the script.</p>
+<p>Each series is formated by using optional keywords, such as <code class="docutils literal notranslate"><span class="pre">color</span></code>, <code class="docutils literal notranslate"><span class="pre">marker</span></code>, etc.
+For example, <code class="docutils literal notranslate"><span class="pre">color='g'</span></code> makes the line green and <code class="docutils literal notranslate"><span class="pre">marker='o'</span></code> plots circles at the <em>x</em>, <em>y</em> points.
+If a keyword is not provided, then a default value is used. There are many possibilities for each
+keyword and there are additional keywords not shown. It is impossible to remember all the matplotlib commands,
+just as it is impossible to remember all the functions of any of large Python package.
+So the best approach is to become proficient with reading Python documentation. Here is the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html">documentation for plot</a>.</p>
+<div class="section" id="collect-values-by-appending-to-a-list">
+<h3>Collect Values by Appending to a List<a class="headerlink" href="#collect-values-by-appending-to-a-list" title="Permalink to this headline"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">plot</span></code> can be used to plot a function. Consider the following <a class="reference external" href="functions.html#mathematical-functions">mathematical function</a>.
+To get a list of “x” values we can use <code class="docutils literal notranslate"><span class="pre">np.arange</span></code>. One way to get a corresponding list of <em>y</em> values is to loop
+over the numpy array and “fill” an empty <em>y</em> list.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span>  <span class="mf">0.9</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">11</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">4.5</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-2.png">png</a>, <a class="reference external" href="creating_plots-2.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-2.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-2.png" src="_images/creating_plots-2.png" />
+</div>
+<p>As another example, consider the function for calculating velocity and flow in an open channel that was described in
+<a class="reference external" href="functions.html#making-personal-modules">Defining Functions: Making Personal Modules</a>. The code block below shows how a list
+for <em>x</em> (depth_values) and a list for <em>y</em> (flow_values) can be collected with each loop.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">water</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Looping over a function to get x and y values</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">depth_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">P</span><span class="p">,</span> <span class="n">Rh</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="n">depth</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">v</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">velocity_and_flow</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Rh</span><span class="p">,</span> <span class="mf">0.003</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">depth_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">depth</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">flow_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">depth_values</span><span class="p">,</span> <span class="n">flow_values</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Flow in 36 inch corrugated metal pipe&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Depth (inches)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Flow (cfs)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-3.png">png</a>, <a class="reference external" href="creating_plots-3.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-3.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-3.png" src="_images/creating_plots-3.png" />
+</div>
+<p>In the next example, we will evaluate two functions and therefore
+fill two <em>y</em> lists. For each passing loop, a new result is appended to <em>y1</em> and <em>y2</em>. These</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">12</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create a numpy array of x values.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Define empty lists and loop over x to fill the lists.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">result1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">y1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result1</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">result2</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">y2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result2</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plotting.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x values&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y output&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;The first function f(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;The second function g(x)&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-4.png">png</a>, <a class="reference external" href="creating_plots-4.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-4.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-4.png" src="_images/creating_plots-4.png" />
+</div>
+<p>If certain conditions are met, then simple  <a class="reference external" href="functions.html#mathematical-functions">mathematical functions</a> can be plotted very easily <em>without</em> having to use a for loop.
+The conditions are:  (1) the function has only one argument, (2) the argument given is a a numpy array, and
+(3) the function only uses numpy operators, such as <code class="docutils literal notranslate"><span class="pre">np.sin(x)</span></code> instead of other package operators like <code class="docutils literal notranslate"><span class="pre">math.sin(x)</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># For certain conditions, numpy avoids the need for looping.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Through what seems like magic, an internal loop occurs over x.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y2</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plotting mathematical functions with numpy arrays.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;x values&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;y output&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;The first function f(x)&quot;</span><span class="p">,</span> <span class="s2">&quot;The second function g(x)&quot;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>There is a short cut method for formatting a series. The syntax is color, marker, linestyle in quotes all together without spaces or commas.
+This string is given immediately after x and y. Here are some example short cut strings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example formatting short cut strings.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;b:&#39;</span>    <span class="c1"># blue, no markers, dotted line</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;ro--&#39;</span>  <span class="c1"># red, circle markers, dashed line</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;k^-.&#39;</span>  <span class="c1"># black, triangle markers, dash-dot line</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;+&#39;</span>     <span class="c1"># default color, plus markers, no line</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example using formatting short cut strings.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;ro--&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-5.png">png</a>, <a class="reference external" href="creating_plots-5.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-5.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-5.png" src="_images/creating_plots-5.png" />
+</div>
+<div class="admonition tip" id="popup-tip">
+<p class="admonition-title">Tip</p>
+<p>Spyder outputs plots into the console by default. This is called an Inline plot.
+The alternative is to output each figure to a popup window.
+Inline plots are convenient when you have multiple figures and don´t want to clutter your computer screen with popup windows.</p>
+<p>To switch to popup windows, do the following:</p>
+<ul class="simple">
+<li><p>Go to <em>Tools/Preferences/IPython console/Graphics</em></p></li>
+<li><p>Change <em>Graphic backend</em> to Automatic</p></li>
+<li><p>Close (x out) the Console to restart the Kernel (Python brains)</p></li>
+</ul>
+<p>To switch back to Inline, do the above but change <em>Graphic backend</em> to Inline.</p>
+<p>Plots in a popup window are convenient because you can interact with the plot, like zooming in/out, panning the
+view, and changing the formatting colors and sizes.</p>
+<p><strong>Zooming in/out</strong> is especially helpful when trying to visually identify
+locations on a curve, such as roots, minima, and maxima. Click the magnifying glass icon. Draw a rectangle with
+the left mouse button to zoom in. Draw a rectangle with
+the right mouse button to zoom out.</p>
+<p><strong>Zooming by panning</strong> is more tricky. Click the icon that looks like a cross with arrows. The left mouse button is
+for panning. The right mouse button is for zooming. Press the right mouse button and move your mouse right or left
+to zoom in or out on the x-axis, respectively. Press the right mouse button and move your mouse up or down to
+zoom in or out on the y-axis, respectively.</p>
+</div>
+</div>
+</div>
+<div class="section" id="scatter-plot">
+<h2>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">scatter</span></code> plots y versus x with markers (points). There are two reasons you would use <code class="docutils literal notranslate"><span class="pre">scatter</span></code> instead of <code class="docutils literal notranslate"><span class="pre">plot</span></code>. 1. Because the x values
+are not in consecutive order, like with observed data used for regression modeling or 2. Because you want the points to vary
+in size or color (sometimes called bubbled chart).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example Data</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.83</span><span class="p">,</span> <span class="mf">1.09</span><span class="p">,</span> <span class="mf">1.41</span><span class="p">,</span> <span class="mf">0.99</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">0.64</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">2.71</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">38</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Creating a scatter plot.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;+&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Example Scatter Plot&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Example x axis label&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Example y axis label&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-6.png">png</a>, <a class="reference external" href="creating_plots-6.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-6.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-6.png" src="_images/creating_plots-6.png" />
+</div>
+</div>
+<div class="section" id="pie-chart">
+<h2>Pie Chart<a class="headerlink" href="#pie-chart" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pie</span></code> plots x as wedges of a pie. The size of each wedge is based on the value of x. Wedge size = x/sum(x).</p>
+<p>Think of x as the value for each category.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The basic pie chart is simply each wedge size determined from a list of values.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-7.png">png</a>, <a class="reference external" href="creating_plots-7.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-7.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-7.png" src="_images/creating_plots-7.png" />
+</div>
+<p>There are various optional keyword arguments that can enhance a pie chart. Two commonly used optional arguments are <code class="docutils literal notranslate"><span class="pre">labels</span></code>, which needs to be in the
+exact same order as the pie wedge values, and <code class="docutils literal notranslate"><span class="pre">autopct='%0.0f%%'</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Housing&quot;</span><span class="p">,</span> <span class="s2">&quot;Car&quot;</span><span class="p">,</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Savings&quot;</span><span class="p">,</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">categories</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%0.0f%%</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-8.png">png</a>, <a class="reference external" href="creating_plots-8.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-8.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-8.png" src="_images/creating_plots-8.png" />
+</div>
+<p>Alternatively, the categories could be defined in a legend and then use <code class="docutils literal notranslate"><span class="pre">labels=x</span></code> to place the values on the wedges.
+The following is a pie chart with various visual enhancements.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Housing&quot;</span><span class="p">,</span> <span class="s2">&quot;Car&quot;</span><span class="p">,</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Savings&quot;</span><span class="p">,</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%0.0f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">shadow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">categories</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Budget&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-9.png">png</a>, <a class="reference external" href="creating_plots-9.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-9.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-9.png" src="_images/creating_plots-9.png" />
+</div>
+</div>
+<div class="section" id="bar-chart">
+<h2>Bar Chart<a class="headerlink" href="#bar-chart" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">bar</span></code> creates a vertical bar chart. (This is called a Column Chart in Excel).</p>
+<p>Each bar is a category along the x axis with a height on the y axis. In other words, we plot bar height=y for each category x.  (This notation is different than matplotlib, see the note below.)
+So, in the example below, we rename categories to be called x and the values are y. <strong>The order for x and y must match</strong>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example bar chart with errorbars showing the range.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Housing&quot;</span><span class="p">,</span> <span class="s2">&quot;Car&quot;</span><span class="p">,</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Savings&quot;</span><span class="p">,</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">categories</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Budget&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Category&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dollars&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">1500</span><span class="p">,</span> <span class="mi">25000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-10.png">png</a>, <a class="reference external" href="creating_plots-10.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-10.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-10.png" src="_images/creating_plots-10.png" />
+</div>
+<p>We might want to add error marks to each bar tip. These will be applied against the y values, with the keyword <code class="docutils literal notranslate"><span class="pre">yerr</span></code>
+and their size is determined by <code class="docutils literal notranslate"><span class="pre">capsize</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">error</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">error</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-11.png">png</a>, <a class="reference external" href="creating_plots-11.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-11.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-11.png" src="_images/creating_plots-11.png" />
+</div>
+</div>
+<div class="section" id="horizontal-bar-chart">
+<h2>Horizontal Bar Chart<a class="headerlink" href="#horizontal-bar-chart" title="Permalink to this headline"></a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">barh</span></code> to create a horizontal bar chart.</p>
+<p>Each bar is a category along the y axis with a width on the x axis.  In other words, we plot bar width=x for each category y. (This notation is different than matplotlib, see the note below.)
+So, in the example below, we rename categories to be called y and the values are x. <strong>The order for x and y must match</strong>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Housing&quot;</span><span class="p">,</span> <span class="s2">&quot;Car&quot;</span><span class="p">,</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Savings&quot;</span><span class="p">,</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">categories</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">error</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">error</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Horizontal Bar Chart&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Category&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Dollars&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">25000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-12.png">png</a>, <a class="reference external" href="creating_plots-12.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-12.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-12.png" src="_images/creating_plots-12.png" />
+</div>
+<p>The errorbars for a horizontal bar chart are in the x direction so the keyword is <code class="docutils literal notranslate"><span class="pre">xerr</span></code>.</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">bar</span></code> and <code class="docutils literal notranslate"><span class="pre">barh</span></code> the error could be a low and high value, i.e. a non uniform range. In this case,
+the error keyword should be given a list of two lists.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Housing&quot;</span><span class="p">,</span> <span class="s2">&quot;Car&quot;</span><span class="p">,</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Savings&quot;</span><span class="p">,</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">categories</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">low_error</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">high_error</span> <span class="o">=</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">8000</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">error</span> <span class="o">=</span> <span class="p">[</span><span class="n">low_error</span><span class="p">,</span> <span class="n">high_error</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">error</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Horizontal Bar Chart with Non Uniform Error Marks&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Category&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Dollars&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">25000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-13.png">png</a>, <a class="reference external" href="creating_plots-13.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-13.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-13.png" src="_images/creating_plots-13.png" />
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pay careful attention to the order of <em>x</em> and <em>y</em> when using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. The documentation and parameter order can be confusing.</p>
+<p>Typically we refer to a plot as <em>y</em> <strong>vs</strong> <em>x</em> (vertical axis <strong>vs</strong> horizontal axis). However, note the parameter order for <code class="docutils literal notranslate"><span class="pre">plot</span></code> and <code class="docutils literal notranslate"><span class="pre">scatter</span></code> is written as <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>.</p>
+<p>For categorical data we think of <em>categories</em> and <em>values</em>.
+- For <code class="docutils literal notranslate"><span class="pre">pie</span></code> the parameter order is <code class="docutils literal notranslate"><span class="pre">(values,</span> <span class="pre">categories)</span></code>.
+- For a vertical bar chart, we can think of y = values and x = categories. For <code class="docutils literal notranslate"><span class="pre">bar</span></code> the parameter order is <code class="docutils literal notranslate"><span class="pre">(categories,</span> <span class="pre">values)</span></code>.
+- For a horizontal bar chart, we can think of y = categories and x = values. Yet, for <code class="docutils literal notranslate"><span class="pre">barh</span></code> the parameter order is still <code class="docutils literal notranslate"><span class="pre">(categories,</span> <span class="pre">values)</span></code></p>
+</div>
+</div>
+<div class="section" id="stacked-bar-chart">
+<h2>Stacked Bar Chart<a class="headerlink" href="#stacked-bar-chart" title="Permalink to this headline"></a></h2>
+<p>Stacked bar charts can be done with <code class="docutils literal notranslate"><span class="pre">bar</span></code> and <code class="docutils literal notranslate"><span class="pre">barh</span></code>.
+To create a “stacked bar chart”, simply plot the taller series first and the smaller series second.</p>
+<p>For example, suppose there was an increase in the annual expenditures and we want to plot the new values stacked ontop of the
+original values. The increase for each category is: [12000, 4000, 2500, 300, 1600, 800, 1900].</p>
+<p>We will need to first create a new list for the new total expenditures by adding the increase to the original values.
+We use <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">len(sequence))</span></code> to loop over the indices of the values and fill a new list using append
+(there is an easier way with numpy arrays, but the goal here is to demonstrate <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">len(sequence))</span></code>,
+which is an important <code class="docutils literal notranslate"><span class="pre">for</span></code> loop concept. See <a class="reference external" href="if_statement_for_loop.html#for-loop">For Loop</a>).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of looping over the indices of a sequence.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Housing&quot;</span><span class="p">,</span> <span class="s2">&quot;Car&quot;</span><span class="p">,</span> <span class="s2">&quot;Food&quot;</span><span class="p">,</span> <span class="s2">&quot;Savings&quot;</span><span class="p">,</span> <span class="s2">&quot;Entertainment&quot;</span><span class="p">,</span> <span class="s2">&quot;Medical&quot;</span><span class="p">,</span> <span class="s2">&quot;Other&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">categories</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20500</span><span class="p">,</span> <span class="mi">8500</span><span class="p">,</span> <span class="mi">7500</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">3000</span><span class="p">,</span> <span class="mi">3500</span><span class="p">,</span> <span class="mi">5000</span><span class="p">]</span>  <span class="c1"># Expenditure amount.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_increase</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12000</span><span class="p">,</span> <span class="mi">4000</span><span class="p">,</span> <span class="mi">2500</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1900</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="n">increase</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">y_increase</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">new_y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">increase</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of a stacked bar chart.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">14</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">new_y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>  <span class="c1"># The taller bars first, in back.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1"># The shorter bars second, in front.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Stacked Bar Chart&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Category&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Dollars&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s2">&quot;Increase&quot;</span><span class="p">,</span> <span class="s2">&quot;Original&quot;</span><span class="p">],</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="creating_plots-14.png">png</a>, <a class="reference external" href="creating_plots-14.hires.png">hires.png</a>, <a class="reference external" href="creating_plots-14.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/creating_plots-14.png" src="_images/creating_plots-14.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Making a Module or Package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="input_output.html" class="btn btn-neutral float-right" title="Reading Input and Writing Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Statistical Analysis &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Matrix Analysis" href="matrix_analysis.html" />
+    <link rel="prev" title="Data Analysis" href="data_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Statistical Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#descriptive-statistics">Descriptive Statistics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amount-and-frequency-statistics">Amount and Frequency Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#central-tendency-statistics">Central Tendency Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dispersion-statistics">Dispersion Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#histogram">Histogram</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-statistics">Time Statistics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spatial-statistics">Spatial Statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#building-and-using-models">Building and Using Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-statsmodels">Introduction to StatsModels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-regression">Linear Regression</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#y-and-x-style"><em>y</em> and <em>X</em> Style</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#formula-style">Formula Style</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#negative-binomial-regression">Negative Binomial Regression</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hypothesis-testing">Hypothesis Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#t-test">t-Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chi-squared-test">Chi-squared Test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linear-regression-test">Linear Regression Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Statistical Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="statistical-analysis">
+<span id="id1"></span><h1>Statistical Analysis<a class="headerlink" href="#statistical-analysis" title="Permalink to this headline"></a></h1>
+<p>Statistical analysis is done for three reasons:</p>
+<ol class="arabic simple">
+<li><p><strong>Descriptive Statistics</strong> - <em>What does the data tell us?</em></p></li>
+<li><p><strong>Building and Using Models</strong> - <em>Can the data be used to estimate values or predict the future?</em></p></li>
+<li><p><strong>Hypothesis Testing</strong> - <em>Are the descriptive statistics and models just coincidence for this sample?</em></p></li>
+</ol>
+<p>This page describes how to perform statistical analysis using Python. Since this is a complicated topic, I include more text
+compared to other pages. My intent is to provide basic contextual information, but I do not elaborate on the mathematics which
+can be found in an intermediate statistics textbook.</p>
+<div class="section" id="descriptive-statistics">
+<h2>Descriptive Statistics<a class="headerlink" href="#descriptive-statistics" title="Permalink to this headline"></a></h2>
+<p>Descriptive Statistics are calculations used to describe or summarize a collection of data. This is, by far, the most common
+type of statistical analysis that a practicing engineer will ever do (Rarely do engineers build models, besides maybe for their
+MS thesis, and even less frequently do engineers conduct hypothesis tests). Descriptive Statistics are all around us in our every day
+lives–in the news, sporting events, and discussions we have with friends and family. Consequently, engineering students (and everyone)
+should take the time to fully understand Descriptive Statistics.</p>
+<p>A “statistic” is a number. All statistics shown on this page are calculated using <code class="docutils literal notranslate"><span class="pre">pandas</span></code> DataFrame <em>methods</em>, which means they need to be called by using
+dot and parenthesis <code class="docutils literal notranslate"><span class="pre">.()</span></code> (See <a class="reference external" href="data_types.html#class-and-object">Data Types:Class and Object</a>). A few of the methods, like mode, return
+more than one thing. It might be helpful to review the documentation for each method (See <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas.DataFrame</a>).</p>
+<p>Descriptive Statistics can be grouped into five categories, each seeking to answer a certain question based on the data.</p>
+<ul class="simple">
+<li><p>Amount and Frequency Statistics - <em>How much and how often?</em></p></li>
+<li><p>Central Tendency Statistics - <em>What is typical?</em></p></li>
+<li><p>Dispersion Statistics - <em>What is the variation?</em></p></li>
+<li><p>Time Statistics - <em>When?</em></p></li>
+<li><p>Spatial Statistics - <em>Where?</em></p></li>
+</ul>
+<p>The examples below will use data about wage rates for all public employees in the City of Seattle
+(This data is updated every year).
+See <a class="reference external" href="input_output.html#csv-files">Reading Input and Writing Output: csv files</a></p>
+<p>For an introduction to <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> see <a class="reference external" href="creating_plots.html">Creating Plots</a> and
+<a class="reference external" href="data-analysis.html">Data Analysis</a>, respectively.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Part2_Python\Output&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The csv file in a folder on your computer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">csv_file</span> <span class="o">=</span> <span class="n">input_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\City_of_Seattle_Wage_Data.csv&#39;</span>  <span class="c1"># Note the backslash to separate the path and file name.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example reading a csv file to create a DataFrame called &quot;df&quot;.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Peek at the data.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="go">                 Department     ...      Hourly Rate</span>
+<span class="go">0  Finance &amp; Admin Services     ...             54.78</span>
+<span class="go">1  Finance &amp; Admin Services     ...             25.54</span>
+<span class="go">2  Finance &amp; Admin Services     ...             28.55</span>
+<span class="go">3  Finance &amp; Admin Services     ...             28.55</span>
+<span class="go">4  Finance &amp; Admin Services     ...             27.49</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="go">Index([&#39;Department&#39;, &#39;Last Name&#39;, &#39;First Name&#39;, &#39;Job Title&#39;, &#39;Hourly Rate &#39;], dtype=&#39;object&#39;)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">(12113, 5)</span>
+</pre></div>
+</div>
+<div class="section" id="amount-and-frequency-statistics">
+<h3>Amount and Frequency Statistics<a class="headerlink" href="#amount-and-frequency-statistics" title="Permalink to this headline"></a></h3>
+<p>These statistics answer the question: <em>“How much or how often?”</em>
+These statistics include <strong>sum</strong>, <strong>count</strong>, and <strong>percent</strong>. There are others not included on this webpage.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example calculating sum. Note the parenthesis after sum.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>  <span class="c1"># (Oddly, there is a blank space after Hourly Rate.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># What is approximate annual budget that Seattle pays for wages?</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The 2019 results shown here.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annual_wages</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="mi">52</span> <span class="o">*</span> <span class="mi">40</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;$&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">annual_wages</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">$ 1037147587.2</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example calculating a count.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">department_count</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Department&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">department_count</span><span class="p">)</span>
+<span class="go">Police Department                 1950</span>
+<span class="go">Seattle City Light                1755</span>
+<span class="go">Parks &amp; Recreation                1509</span>
+<span class="go">Seattle Public Utilities          1367</span>
+<span class="go">Fire Department                   1100</span>
+<span class="go">Seattle Dept of Transportation     964</span>
+<span class="go">Information Technology             692</span>
+<span class="go">Seattle Center                     649</span>
+<span class="go">Finance &amp; Admin Services           570</span>
+<span class="go">Human Services Department          380</span>
+<span class="go">Construction &amp; Inspections         374</span>
+<span class="go">Legislative Department             115</span>
+<span class="go">Seattle Dept of Human Resource     107</span>
+<span class="go">Education &amp; Early Learning          75</span>
+<span class="go">Neighborhoods                       57</span>
+<span class="go">Planning &amp; Comm Development         47</span>
+<span class="go">Office of Economic Development      46</span>
+<span class="go">Arts &amp; Culture                      45</span>
+<span class="go">Office of Housing                   43</span>
+<span class="go">City Budget Office                  42</span>
+<span class="go">Mayor&#39;s Office                      36</span>
+<span class="go">Employees&#39; Retirement System        34</span>
+<span class="go">Sustainability &amp; Environment        29</span>
+<span class="go">Office for Civil Rights             28</span>
+<span class="go">Office of Labor Standards           22</span>
+<span class="go">Ethics &amp; Elections Commission       12</span>
+<span class="go">Intergovernment Relations           11</span>
+<span class="go">City Auditor                        11</span>
+<span class="go">Community Police Commission          9</span>
+<span class="go">Civil Service Commissions            9</span>
+<span class="go">Immigrant &amp; Refugee Affairs          9</span>
+<span class="go">Office of Inspector General          7</span>
+<span class="go">Hearing Examiner                     5</span>
+<span class="go">Police Relief &amp; Pension Fund         4</span>
+<span class="go">Name: Department, dtype: int64</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example counting a specific value.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fire_department_count</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Department&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()[</span><span class="s1">&#39;Fire Department&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">fire_department_count</span><span class="p">)</span>
+<span class="go">1100</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example calculating a percent.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># What percent of jobs are in the fire department?</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fd_percent</span> <span class="o">=</span> <span class="n">fire_department_count</span> <span class="o">/</span> <span class="n">department_count</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">fd_percent</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+<span class="go">9.0 %</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="central-tendency-statistics">
+<h3>Central Tendency Statistics<a class="headerlink" href="#central-tendency-statistics" title="Permalink to this headline"></a></h3>
+<p>These statistics answer the question: <em>“What is the variation for a value?”</em>
+These statistics include <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong>. There are others not included on this webpage.
+Central tendency is a weird way to say “what is the general center of the data”. The term orginated in the 1920s.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Examples of central tendency statistics.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note print is not included in these examples,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># so either paste them into the console or hit F9 for each line.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="c1"># Oddly, there is a blank space after Hourly Rate.</span>
+<span class="go">41.971904565343024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="go">41.65</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<span class="go">0    16.11</span>
+<span class="go">dtype: float64</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>All descriptive statistics shown on this page are performed on a column of a DataFrame.
+For demonstration these are shown by indexing the column, such as <code class="docutils literal notranslate"><span class="pre">df['Hourly</span> <span class="pre">Rate</span> <span class="pre">'].mean()</span></code>.
+A cleaner approach is to create a new DataFrame and then perform the statistic. For example, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example of first creating a one column DataFrame (actually called a Series).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wage</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wage</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wage</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wage</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dispersion-statistics">
+<h3>Dispersion Statistics<a class="headerlink" href="#dispersion-statistics" title="Permalink to this headline"></a></h3>
+<p>These statistics answer the question: <em>“What is the typical, middle, or central value?”</em>
+These statistics include <strong>minimum</strong>, <strong>maximum</strong>, <strong>variance</strong>, <strong>standard deviaion</strong>, <strong>skew</strong>, and <strong>quantile</strong> (also called <strong>percentile</strong>).  There are others not included on this webpage.
+Dispersion is also called variation or spread.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Examples of dispersion statistics.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Note print() is not included in these examples,</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># so either paste them into the console or hit F9 for each line.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># (Oddly, there is a blank space after Hourly Rate.)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="go">5.53</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="go">162.84</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<span class="go">225.24101469300507</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="go">15.008031672841215</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">skew</span><span class="p">()</span>
+<span class="go">0.49389507432581775</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># The lower 1%.</span>
+<span class="go">23.32</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="mf">0.99</span><span class="p">)</span> <span class="c1"># The lower 99%, meaning 1% have a higher wage.</span>
+<span class="go">81.6487999999998</span>
+</pre></div>
+</div>
+<p>Standard deviation is the square root of variance. Often standard deviation is more useful to calculate than variance because one can think of the
+68-95-99 rule which says that roughly 68% of the data is within 1 standard deviation of the mean,
+95% of the data is within 2 standard deviation of the mean,
+and 99% of the data is within 3 standard deviation of the mean.</p>
+</div>
+<div class="section" id="histogram">
+<h3>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline"></a></h3>
+<p>A histogram is chart depicting the ditribution of numerical data. Hitograms are super useful because they can tell
+<em>amount</em>, <em>central tendency</em>, and <em>dispersion</em> all in one chart!</p>
+<p>Pandas has a method for creating a histogram <code class="docutils literal notranslate"><span class="pre">df.hist()</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example creating a historgram.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">input_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output_folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Part2_Python\Output&#39;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The csv file in a folder on your computer.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">csv_file</span> <span class="o">=</span> <span class="n">input_folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\City_of_Seattle_Wage_Data.csv&#39;</span>  <span class="c1"># Note the backslash to separate the path and file name.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wage</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Hourly Rate &#39;</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wage</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">150</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Wage&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="statistical_analysis-2.png">png</a>, <a class="reference external" href="statistical_analysis-2.hires.png">hires.png</a>, <a class="reference external" href="statistical_analysis-2.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/statistical_analysis-2.png" src="_images/statistical_analysis-2.png" />
+</div>
+<p>The documentation <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.hist.html">pandas.DataFrame.hist</a>
+says that this method is actually calling a function from <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>. So alternatively, you could use <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> directly, in which case
+the DataFrame is an argument to the function <code class="docutils literal notranslate"><span class="pre">plt.hist(x)</span></code>. Either way there is a keyword parameter <code class="docutils literal notranslate"><span class="pre">bins</span></code> that lets you
+control the number of bins. The default is 10. There are also various algorithms available for finding the best number of bins, such as
+<code class="docutils literal notranslate"><span class="pre">bins='auto'</span></code>. Also, note that some histograms are so skewed that plotting every bin produces a historgram that looks empty.
+This is not the case for the example data above, but even still I include <code class="docutils literal notranslate"><span class="pre">.xlim(10,</span> <span class="pre">150)</span></code> to demonstrate how to limit the range of bins to be plotted.</p>
+</div>
+<div class="section" id="time-statistics">
+<h3>Time Statistics<a class="headerlink" href="#time-statistics" title="Permalink to this headline"></a></h3>
+<p>These statistics answer the question: <em>“When has something occured?”</em>
+These statistics are the same as those above, but catergorized with a time variable, such as the day of the week or month.</p>
+</div>
+<div class="section" id="spatial-statistics">
+<h3>Spatial Statistics<a class="headerlink" href="#spatial-statistics" title="Permalink to this headline"></a></h3>
+<p>These statistics answer the question: <em>“Where has something occured?”</em>
+These statistics are the same as those above, but catergorized with a spatial variable, such as state or county boundaries.</p>
+</div>
+</div>
+<div class="section" id="building-and-using-models">
+<h2>Building and Using Models<a class="headerlink" href="#building-and-using-models" title="Permalink to this headline"></a></h2>
+<p>Mathematical models are representations of real-world phenomena and are used to estimate values or predict the future.
+Models can be devised based on basic principles and theory, such as the relationship between the volume and temperature of a gas, <span class="math notranslate nohighlight">\(PV = nRT\)</span>.</p>
+<p><em>Statistical models</em> are built based on data. In fact, <em>Descriptive Statistics</em> are statistical models. For example,
+suppose I want to estimate (or predict) the walking speed of a person (Something a transportation engineer needs to do
+when deciding how long to show the walk signal at an intersection). I can collect a sample of walking speeds and
+use the average speed as my “model”. Or perhaps I would prefer the median speed as my model. Review the section above on
+<em>Descriptive Statistics</em> and you will see how every statistic can be construed as a “model”.</p>
+<p>The walking speed model might be improved by separating the mean speed for males and females. Further improvement is
+possible by also including age in the model. How about additionally distinguishing between tourists and people walking to work?
+Or including whether they are in a big city or a small town? Now we have a sophisticated model: you tell me a person’s
+sex, age, if they are a tourist or not, and if they are in a big city or small town; and I will estimate their walking speed.
+There might be yet additional <em>explanatory variables</em> that could improve the model further. The point is that models can be
+improved (but not necessarily) with more explanatory variables.</p>
+<p>There are a few reasons why you should find a balance between having too few and too many explanatory variables in a statistical model.
+First, is that some “explanatory” variables might not actually <em>explain</em> the
+phenomena very well (For example, adding a person’s weight to the walking speed model is probably not going to produce a <em>significant</em> improvement. Likewise, adding
+hair color probably has no contribution to improving the model). Second, more
+explanatory variables requires greater detail during data collection, which is already typically time consuming and expensive anyway
+(For example, when collecting walking speeds, now you would have to stop people and ask their age, etc.). Third, more explanatory variables
+can make models unnecessarily complicated for practical use (For example, transportation engineers don’t need to be thinking of all these additional things
+when deciding the signal timing of an intersection. At most, they want to know the average waking speed and then slightly increase
+or decrease the value based on rough information about whether there are high numbers of children or elderly expected).
+Fourth, too many explanatory variables can cause “overfitting”. This is the situation where a model is really good for
+describing the sample data, but not very good when transfered to other datasets. In summary, the “best” model has the fewest number of
+explanatory variables, but with the greatest explanatory power – this is called <em>parsimony</em>.</p>
+<p>There are many ways to build statistical models. The most common approach is called regression, of which there many variants. This page
+shows linear regression and negative binomial regression. These are the most common regression methods used by engineers
+(In reality, practicing engineers don’t <em>build</em> models very often, if ever, during their career, but they might <em>use</em> models so it
+is good to know how regression models are built).</p>
+<div class="section" id="introduction-to-statsmodels">
+<h3>Introduction to StatsModels<a class="headerlink" href="#introduction-to-statsmodels" title="Permalink to this headline"></a></h3>
+<p>StatsModels is a powerful and popular package for statistical analysis.There are two ways (styles) to do regression using StatsModels. The first
+style uses matrix-like variables <em>y</em> and <em>X</em>. The second style involves writing a “formula”.
+The choice of which style to use depends on personal preference. The first style requires <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">statsmodels.api</span> <span class="pre">as</span> <span class="pre">sm</span></code> and the second style
+requires <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">statsmodels.formula.api</span> <span class="pre">as</span> <span class="pre">smf</span></code>. Pandas DataFrames can be used with both styles. Likewise, statsmodels works well
+with matplotlib and numpy. For an introduction to matplotlib and pandas see <a class="reference external" href="creating_plots.html">Creating Plots</a> and
+<a class="reference external" href="data-analysis.html">Data Analysis</a>, respectively.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+</pre></div>
+</div>
+<p>The first statsmodels import is for the <em>y</em> and <em>X</em> style method. The second statsmodels import is for the formula style method.</p>
+</div>
+<div class="section" id="linear-regression">
+<h3>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline"></a></h3>
+<p>Consider for example a dataset of house sales.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Read in example data.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">folder_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\mlowry\OneDrive - University of Idaho\Courses\CE215\Data_Files&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">excel_file</span> <span class="o">=</span> <span class="n">folder_path</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\House_Sales_Data.xlsx&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sheet</span> <span class="o">=</span> <span class="s2">&quot;House_Data&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Peek at the data.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="go">   case  sold_price  bedrooms  bathrooms  square_feet  lot_acres  \</span>
+<span class="go">0     1    402742.0         2        2.0         1895       0.25</span>
+<span class="go">1     2    506299.0         3        1.0         1693       0.50</span>
+<span class="go">2     3    451800.0         2        2.5         2188       0.50</span>
+<span class="go">3     4    764500.0         5        2.5         3285       0.50</span>
+<span class="go">4     5    713900.0         4        2.5         2624       0.25</span>
+<span class="go">   beach_distance  fireplace  garage  view  hottub</span>
+<span class="go">0             4.4          1       1     0       0</span>
+<span class="go">1             0.6          0       1     1       0</span>
+<span class="go">2             8.4          0       1     0       1</span>
+<span class="go">3             7.8          1       1     0       0</span>
+<span class="go">4             0.2          1       1     1       0</span>
+<span class="go">Index([&#39;case&#39;, &#39;sold_price&#39;, &#39;bedrooms&#39;, &#39;bathrooms&#39;, &#39;square_feet&#39;,</span>
+<span class="go">       &#39;lot_acres&#39;, &#39;beach_distance&#39;, &#39;fireplace&#39;, &#39;garage&#39;, &#39;view&#39;, &#39;hottub&#39;],</span>
+<span class="go">      dtype=&#39;object&#39;)</span>
+<span class="go">(78, 11)</span>
+</pre></div>
+</div>
+<p>The last four attributes are indicator variables where 0 = ‘no’ and 1 = ‘yes’.</p>
+<p>If you hire a real estate agent to sell your home,
+they might use the recent sold price from nearby sales to help determine the best listing price for your home.
+A simple “model” would be to list your home based on the mean or median price of recent sales. A better model will incorporate
+attributes of your home. For example, the size in square feet. The plot below illustrates that as square footage increases so does sold price.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Calculate average sold price.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sold_price</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="go">558132.1024992522</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sold_price</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+<span class="go">558250.0</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Plot price vs. square feet.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">square_feet</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">sold_price</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Square Feet&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Sold Price&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>(<a class="reference external" href="statistical_analysis-4.png">png</a>, <a class="reference external" href="statistical_analysis-4.hires.png">hires.png</a>, <a class="reference external" href="statistical_analysis-4.pdf">pdf</a>)</p>
+<div class="figure align-default">
+<img alt="_images/statistical_analysis-4.png" src="_images/statistical_analysis-4.png" />
+</div>
+<p>An even better model will incorporate additional attributes of your house (i.e. explantory variables) to <em>explain</em> the value of your house.</p>
+<div class="section" id="y-and-x-style">
+<h4><em>y</em> and <em>X</em> Style<a class="headerlink" href="#y-and-x-style" title="Permalink to this headline"></a></h4>
+<p>This style involves (1) defining <em>y</em> and <em>X</em>, (2) adding a constant to <em>X</em>, (3) creating the model object, (4) fitting
+the model, and (5) printing the results.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example linear regression.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sold_price</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;bedrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;square_feet&#39;</span><span class="p">,</span><span class="s1">&#39;lot_acres&#39;</span><span class="p">,</span> <span class="s1">&#39;beach_distance&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;fireplace&#39;</span><span class="p">,</span> <span class="s1">&#39;garage&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">,</span> <span class="s1">&#39;hottub&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="go">                            OLS Regression Results</span>
+<span class="go">==============================================================================</span>
+<span class="go">Dep. Variable:             sold_price   R-squared:                       0.947</span>
+<span class="go">Model:                            OLS   Adj. R-squared:                  0.940</span>
+<span class="go">Method:                 Least Squares   F-statistic:                     134.0</span>
+<span class="go">Date:                Tue, 23 Apr 2019   Prob (F-statistic):           1.09e-39</span>
+<span class="go">Time:                        09:54:13   Log-Likelihood:                -912.96</span>
+<span class="go">No. Observations:                  78   AIC:                             1846.</span>
+<span class="go">Df Residuals:                      68   BIC:                             1869.</span>
+<span class="go">Df Model:                           9</span>
+<span class="go">Covariance Type:            nonrobust</span>
+<span class="go">==================================================================================</span>
+<span class="go">                     coef    std err          t      P&gt;|t|      [0.025      0.975]</span>
+<span class="go">----------------------------------------------------------------------------------</span>
+<span class="go">const           6.958e+04   1.97e+04      3.524      0.001    3.02e+04    1.09e+05</span>
+<span class="go">bedrooms         5.43e+04   2945.973     18.433      0.000    4.84e+04    6.02e+04</span>
+<span class="go">bathrooms       2.072e+04   4547.543      4.557      0.000    1.16e+04    2.98e+04</span>
+<span class="go">square_feet       94.3759      5.500     17.159      0.000      83.401     105.351</span>
+<span class="go">lot_acres       3.856e+04   3702.981     10.412      0.000    3.12e+04    4.59e+04</span>
+<span class="go">beach_distance -5809.7007   1502.376     -3.867      0.000   -8807.644   -2811.757</span>
+<span class="go">fireplace       1.328e+04   7432.380      1.787      0.078   -1549.120    2.81e+04</span>
+<span class="go">garage          2.327e+04   8003.158      2.908      0.005    7302.271    3.92e+04</span>
+<span class="go">view            4.106e+04   8455.003      4.856      0.000    2.42e+04    5.79e+04</span>
+<span class="go">hottub          4899.3342   7729.584      0.634      0.528   -1.05e+04    2.03e+04</span>
+<span class="go">==============================================================================</span>
+</pre></div>
+</div>
+<p>The adjused R-squared is very good at 0.94. Two explanatory variables have p-values above 0.05, indicating that they might not
+provide any statistical significance to the prediction and could be removed from the model. The documentation for <a class="reference external" href="https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.RegressionResults.html">statsmodels.regression.linear_model.RegressionResults</a>
+says the “RegressionResults” object has various attributes that can be accessed individually, such as <code class="docutils literal notranslate"><span class="pre">results.params</span></code>, <code class="docutils literal notranslate"><span class="pre">results.rsquared</span></code>, and <code class="docutils literal notranslate"><span class="pre">results.resid</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Reduced model.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sold_price</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;bedrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">,</span> <span class="s1">&#39;square_feet&#39;</span><span class="p">,</span><span class="s1">&#39;lot_acres&#39;</span><span class="p">,</span> <span class="s1">&#39;beach_distance&#39;</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="s1">&#39;garage&#39;</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">]]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The model results can be used to predict a sales price. For example, suppose we want to determine the best listing price for a house
+that has these attributes: 3 bedroom, 1 bathroom, 1,700 square feet, ¾ acre, 4 miles to beach, fireplace, garage, no view, no hottub.
+The first step is to construct a Python <code class="docutils literal notranslate"><span class="pre">list</span></code> for this specific house. The indices of the list must correspond to the indices of
+the model. Furthermore, the list must begin with a 1 for the constant.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># This is the data that will be used for a prediction.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># It is a list in the same order as the X defintion.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Must include 1 at the beginning for the constant.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Could be a list of lists, for multiple preditions.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">house</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1700</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prediction is a numpy array for every list provided.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># In this case only one list is provided so the answer is at index [0].</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prediction</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">house</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated house sale price is&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+<span class="go">Estimated house sale price is 452594.03</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="formula-style">
+<h4>Formula Style<a class="headerlink" href="#formula-style" title="Permalink to this headline"></a></h4>
+<p>This is an alternative style. This example is identical to the one above. This style involves (1) writing a formula,
+(2) creating the model object, (3) fitting
+the model, and (4) printing the results.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example linear regression.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;sold_price ~ bedrooms + bathrooms + square_feet + lot_acres + beach_distance + fireplace + garage + view + hottub&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>  <span class="c1"># Note this is the smf import. Also note that ols is lowercase for this style.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>As was described in the example above, we might want to reduce the model by removing the explanatory variables with p-values
+above 0.05. We will can then use the model to estimate the expected selling price of a particular house. This time, however,
+the prediction requires creating a pandas DataFrame or dictionary.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Reduced model.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;sold_price ~ bedrooms + bathrooms + square_feet + lot_acres + beach_distance + garage + view&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This is the data that will be used for a prediction.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># It can be a pandas DataFrame or a dictionary</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The column names or dictionary keys must correspond to the formula.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Order does not matter and additional items will be ignored.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The prediction will only use the columns or keys that are specified in the model.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">house</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bedrooms&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;bathrooms&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;square_feet&#39;</span><span class="p">:</span><span class="mi">1700</span><span class="p">,</span> <span class="s1">&#39;lot_acres&#39;</span><span class="p">:</span><span class="mf">0.75</span><span class="p">,</span> <span class="s1">&#39;beach_distance&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;fireplace&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;garage&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;view&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;hottub&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Prediction is a numpy array for every set of values provided.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># In this case only one set of values is provided so the answer is at index [0].</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">prediction</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">house</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimated house sale price is&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="negative-binomial-regression">
+<h3>Negative Binomial Regression<a class="headerlink" href="#negative-binomial-regression" title="Permalink to this headline"></a></h3>
+<p>Negative binomial regression should be used when the dependent variable is a positive integer–for example, anything that
+involves predicting <em>counts</em>, such as predicting the number of crashes on a roadway (it is not logical to predict negative crashes or partial crashes).</p>
+<p>Coming soon.</p>
+</div>
+</div>
+<div class="section" id="hypothesis-testing">
+<h2>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this headline"></a></h2>
+<p>Hypothesis tests are calculation to determine if Descriptive Statistics and Statistical Models are just coincidence for the data sample.
+For example, suppose I want to know the difference in average height for male and female college students.
+I can collect a sample of data and compare the mean values. But is my result the <em>true difference</em> or is it
+just a coincidence of the sample that I happened to observe? In other words, if I were to collect more data might I get a different result?
+Amazingly, brilliant statiticians have devised a way to calculate the probability of wheter the observed
+descriptive statistic or model is merely a coincidence. However, there is one important caveat: the hypothesis calculation
+is based on the data sample itself, so hypothesis conclusions must be qualified with nuanced words of probablity, such as <em>maybe</em>, <em>likely</em>, and <em>probably</em>.</p>
+<p>More coming soon.</p>
+<div class="section" id="t-test">
+<h3>t-Test<a class="headerlink" href="#t-test" title="Permalink to this headline"></a></h3>
+<p>Coming soon.</p>
+</div>
+<div class="section" id="chi-squared-test">
+<h3>Chi-squared Test<a class="headerlink" href="#chi-squared-test" title="Permalink to this headline"></a></h3>
+<p>Coming soon.</p>
+</div>
+<div class="section" id="linear-regression-test">
+<h3>Linear Regression Test<a class="headerlink" href="#linear-regression-test" title="Permalink to this headline"></a></h3>
+<p>Coming soon.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="data_analysis.html" class="btn btn-neutral float-left" title="Data Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="matrix_analysis.html" class="btn btn-neutral float-right" title="Matrix Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

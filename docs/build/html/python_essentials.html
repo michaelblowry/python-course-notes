@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Essentials &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Data Types" href="data_types.html" />
+    <link rel="prev" title="Setup and Getting Started" href="setup_instructions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Python Essentials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#writing-code-comments-and-documentation">Writing Code Comments and Documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docstring">Docstring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#decorative-block-comment">Decorative Block Comment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#block-comment">Block Comment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#inline-comment">Inline Comment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#import-modules">Import Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#math-calculations-and-printing">Math Calculations and Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pythonic-style">Pythonic Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Python Essentials</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="python-essentials">
+<span id="id1"></span><h1>Python Essentials<a class="headerlink" href="#python-essentials" title="Permalink to this headline"></a></h1>
+<p>A person who is fluent in a different computer language or someone learning for the first time needs to answer the following
+ten essential questions about Python. The first four are answered on this page:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#writing-code-comments-and-documentation">How do I write comments and other documentation?</a></p></li>
+<li><p><a class="reference external" href="#import-modules">How do I import modules (packages)?</a></p></li>
+<li><p><a class="reference external" href="#math-calculations-and-printing">How do I calculate basic math and print results to the screen?</a></p></li>
+<li><p><a class="reference external" href="#pythonic-style">How do I write code in a style others can read?</a></p></li>
+</ol>
+<p>The next six questions are answered on subsequent pages:</p>
+<ol class="arabic simple" start="5">
+<li><p><a class="reference external" href="data_types.html">How do I define different types of data?</a></p></li>
+<li><p><a class="reference external" href="if_statement_for_loop.html#if-statement">How do I control flow with “if statements”?</a></p></li>
+<li><p><a class="reference external" href="if_statement_for_loop.html#for-loop">How do I repeat procedures with “for loops”?</a></p></li>
+<li><p><a class="reference external" href="functions.html">How do I define functions?</a></p></li>
+<li><p><a class="reference external" href="creating_plots.html">How do I create plots?</a></p></li>
+<li><p><a class="reference external" href="input_output.html">How do I read input and write output?</a></p></li>
+</ol>
+<p>The organization of this website
+corresponds to the syllabus schedule for my <em>CE 215</em> course.</p>
+<p>Additionally, this website has pages about mathematical
+analysis (solving roots, minima/maxima, derivatives, and integration), data analysis,
+statistical analysis (linear regression), matrix analyis, and gis analysis.
+These additional topics might not be relevant for some readers and could be skipped.</p>
+<div class="section" id="writing-code-comments-and-documentation">
+<h2>Writing Code Comments and Documentation<a class="headerlink" href="#writing-code-comments-and-documentation" title="Permalink to this headline"></a></h2>
+<p>In any computer language “comments” are used to document the program so that you or someone else can understand the
+code when reading it later. Comments <em>do</em> nothing, i.e. no data is read into the computer and no calculations are
+performed. Everything in a comment is ignored when you hit <em>Run</em>. In Python, the primary way to designate a comment
+is to type the hash character <code class="docutils literal notranslate"><span class="pre">#</span></code> followed by the comment. In Spyder, comments created with a hashtag are given a gray color.
+The other way to provide documentation is to surround text with three double-quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>, which Spyder gives a green color.</p>
+<p>The following is a description of four types of comments and documentation, from the most general to the most specific: Docstring, Decorative Block Comment, Block Comment, and Inline Comment.</p>
+<div class="section" id="docstring">
+<h3>Docstring<a class="headerlink" href="#docstring" title="Permalink to this headline"></a></h3>
+<p><em>Docstrings</em> (Documentation Strings) are used to describe broad, general code overview explanations. Docstrings begin and end with three double-quotes <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>.
+They are used at the beginning of a script and within functions (See <a class="reference external" href="functions.html">Defining Functions</a>). Spyder
+automatically creates a docstring at the beginning of a new Python file. In Spycer docstrings are given a green color.</p>
+<img alt="_images/spyder-auto-docstring.png" src="_images/spyder-auto-docstring.png" />
+<p>You should add text to Spyder’s auto-generated docstring. The first line should be a short name for the script followed by a blank line, for example the
+assignment number. The next few lines should provide description, for example the course name, the date, and your name.</p>
+<img alt="_images/spyder-auto-docstring-enhanced.png" src="_images/spyder-auto-docstring-enhanced.png" />
+</div>
+<div class="section" id="decorative-block-comment">
+<h3>Decorative Block Comment<a class="headerlink" href="#decorative-block-comment" title="Permalink to this headline"></a></h3>
+<p><em>Decorative Block Comments</em> are the next level of code explanation. They are used to separate code into sections,
+similar to Headings in Word documents. There is not a specific way to do
+a decorative block comment, instead computer programmers use their creativity to decide how to “decorate” the comment.
+Spyder, provides a decorative block comment that is entered by clicking Edit/Add block comment (The shortcut is Ctrl+4). Descriptive text
+is written in the middle section. For example, to lable and separate problems in an assignment.</p>
+<img alt="_images/decorative-block-comment.png" src="_images/decorative-block-comment.png" />
+</div>
+<div class="section" id="block-comment">
+<h3>Block Comment<a class="headerlink" href="#block-comment" title="Permalink to this headline"></a></h3>
+<p><em>Block Comments</em> are used to explain complicated “blocks” of code. They begin with the <code class="docutils literal notranslate"><span class="pre">#</span></code> with one space before the comment.
+They are on their own line, but can be multiple lines long. They start with a capital letter and end with a period and are preferably sentences.</p>
+</div>
+<div class="section" id="inline-comment">
+<h3>Inline Comment<a class="headerlink" href="#inline-comment" title="Permalink to this headline"></a></h3>
+<p><em>Inline Comments</em> are used sparingly with the intent to only provide clarity
+for things that are not obvious, such as units for a variable. They are on the same line as what they are explaining.
+They have two spaces before the <code class="docutils literal notranslate"><span class="pre">#</span></code> and one space afterward. They start with a capital letter and end with a period and are preferably sentences.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># This is a block comment. These lines of code explain this small block of code.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Block comments precede a block of code to provide explanation.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># Base dimension in inches. This is an inline comment.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="mf">8.6</span>  <span class="c1"># Height in inches. This is another inline comment.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">h</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="go">34.4</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To copy code blocks from this website, click <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;</span></code> in the upper right corner. Then, select the code and hit
+Ctrl c to copy. Then, in the Spyder Console or Editor place your cursor and hit Ctrl v to paste. In some examples on this website <code class="docutils literal notranslate"><span class="pre">print()</span></code> is not included, so
+if you are pasting into the Editor, you may need to add <code class="docutils literal notranslate"><span class="pre">print()</span></code> to explicitly print something to the console.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python programmers try to write code that is very easy to read. Consequently, “Pythonic” style uses full words for variable names
+as much as possible. For example rather than using <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> you could use <code class="docutils literal notranslate"><span class="pre">base</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code>. For
+long scripts this is especially nice because you might forget what <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">h</span></code> stand for later in the code. Pythonic
+style uses all lowercase with multi-word variables separated with an underscore.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">base</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="mi">18</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cross_area</span> <span class="o">=</span> <span class="n">base</span> <span class="o">*</span> <span class="n">height</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">cross_area</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-modules">
+<h2>Import Modules<a class="headerlink" href="#import-modules" title="Permalink to this headline"></a></h2>
+<p>In Python, a <em>module</em> can be imported to provide special capabilities. A <em>package</em> is a collection of modules.
+Packages and modules are written by different groups of people and are often put on the internet for free download
+and use. The Anaconda installation for Python includes many of the most popular packages and modules (See <a class="reference external" href="setup_instructions.html#how-do-i-install-python?">How do I
+install Python?</a>). The contents and organization of a
+package/module is typically documented on a website created by the authors of the
+package/module (There are also “built-in” modules with explanation on the <a class="reference external" href="https://docs.python.org">Python website</a>.)</p>
+<p>For illustration, the <code class="docutils literal notranslate"><span class="pre">networkx</span></code> package provides the ability to create and analyze networks.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This code block creates a small street network.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This code block is shown here to illustrate how to import and use a package.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span> <span class="o">=</span> <span class="n">networkx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span> <span class="c1"># Creates an empty network to be filled with the following lines.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">street_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<span class="gp">... </span>               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">street_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">networkx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Draws the network shown below.</span>
+</pre></div>
+</div>
+<img alt="_images/networkx.png" src="_images/networkx.png" />
+<p>The code block above uses capabilities from <code class="docutils literal notranslate"><span class="pre">networkx</span></code>. The first is <code class="docutils literal notranslate"><span class="pre">Graph()</span></code> which provides a means to
+create an empty network. Another is <code class="docutils literal notranslate"><span class="pre">draw</span></code> to draw a figure of the network. These capabilities were
+accessed by writing the name of the package or module plus <code class="docutils literal notranslate"><span class="pre">.</span></code> plus the name of the capability, ie. <code class="docutils literal notranslate"><span class="pre">networkx.Graph()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">networkx.draw()</span></code>. Sometimes it is tedious to write the whole name of the package or module, so programmers choose
+to do the import with an alias. The alias is usually only two letters to save time writing. Many packages and
+modules have typical alias names. For example, <code class="docutils literal notranslate"><span class="pre">nx</span></code> is the typical alias used for <code class="docutils literal notranslate"><span class="pre">networkx</span></code>. The
+word <code class="docutils literal notranslate"><span class="pre">as</span></code> specifies the alias. For example, the above code block could also be written like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This time the module was imported with an alias name. The alias follows the word &quot;as&quot;.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">street_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<span class="gp">... </span>               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">street_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another way to import with less writing is to use <code class="docutils literal notranslate"><span class="pre">from</span></code>. The syntax is <code class="docutils literal notranslate"><span class="pre">from</span></code> package <code class="docutils literal notranslate"><span class="pre">import</span></code> capability. This
+approach saves time writing because for the rest of the script you only need to write the capability. Any object
+from a higher level package or module can be imported this way. For example, if you create your own module with a bunch
+of functions, then you can import just one of the functions like this: <code class="docutils literal notranslate"><span class="pre">from</span></code> module <code class="docutils literal notranslate"><span class="pre">import</span></code> function.</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span></code> format, the example above can be written like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">Graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">networkx</span> <span class="kn">import</span> <span class="n">draw</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># This is shows the syntax &#39;from&#39; package &#39;import&#39;.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">street_list</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">),(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span>
+<span class="gp">... </span>               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">)]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">city</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">street_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">draw</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In my course <em>CE 215</em> we frequently use the packages <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> which
+are imported like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>The packages <cite>matplotlib`</cite>, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">pandas</span></code> are essential packages for math, science, engineering, and data analysis. Note that all three are
+typically imported using alias names as shown.</p>
+<p>In my course <em>CE 215</em> we also use a package called <code class="docutils literal notranslate"><span class="pre">scipy</span></code>. This is another popular scientific package with many useful
+modules. The <code class="docutils literal notranslate"><span class="pre">scipy</span></code> documentation says to use the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span></code> format. The following modules
+are used in <em>CE 215</em> (to be placed just below pandas in the import code block above).</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+</pre></div>
+</div>
+<p>We will also use <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> which is imported like this:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+</pre></div>
+</div>
+<p>Although people import packages in a variety of ways, the
+<a class="reference external" href="https://google.github.io/styleguide/pyguide.html#313-imports-formatting">Google Style Guide</a> recommends to:</p>
+<ul class="simple">
+<li><p>Place all imports at the top of the script</p></li>
+<li><p>Include one line space below the introductory docstring, one line space between import groups, and two line spaces after all imports.</p></li>
+<li><p>Only import one module per line.</p></li>
+<li><p>First import built-in modules in alphabetical order, then third-party modules in alphabetical order, and finally personal modules.</p></li>
+</ul>
+<p>For example:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">environmental</span> <span class="k">as</span> <span class="n">ee</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">geotech</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">structures</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">water</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>The packages <code class="docutils literal notranslate"><span class="pre">os</span></code> and <code class="docutils literal notranslate"><span class="pre">sys</span></code> are common built-in packages, included above for illustration.
+The <code class="docutils literal notranslate"><span class="pre">civil</span></code> package contains personal modules that the students will create, included here for illustration.</p>
+</div>
+<div class="section" id="math-calculations-and-printing">
+<h2>Math Calculations and Printing<a class="headerlink" href="#math-calculations-and-printing" title="Permalink to this headline"></a></h2>
+<p>The official Python Tutorial begins its introduction by showing how the Console (also called the Interpreter) can be used as a calculator
+(See <a class="reference external" href="https://docs.python.org/3.7/tutorial/introduction.html">An Informal Introduction to Python</a>).</p>
+<p>Indeed the Console can be useful for quick calculations or to check output. But for long procedures (i.e. multiple
+calculations in a sequence) it is better to use the Editor. The Editor allows you to save the code as a “script” and re-run
+the script later. Furthermore, if you only use the Console, then once you close Spyder all the variables will be lost.</p>
+<p>Math in Python follows the usual order of operations, namely:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 73%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Order of Operation (and note)</p></th>
+<th class="head"><p>Python Symbol</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><ol class="arabic simple">
+<li><p>Parentheses (only curly brackets can be used)</p></li>
+</ol>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">(</span> <span class="pre">)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="2">
+<li><p>Exponents (double asterisk ** not caret ^)</p></li>
+</ol>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">**</span></code></p></td>
+</tr>
+<tr class="row-even"><td><ol class="arabic simple" start="3">
+<li><p>Multiplication and Division (from left to right)</p></li>
+</ol>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">*</span></code> and <code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><ol class="arabic simple" start="4">
+<li><p>Addition and Subtraction (from left to right)</p></li>
+</ol>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Note an exponent in Python is different than Excel and other languages. It may take some getting used to.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example math equation.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">answer</span> <span class="o">=</span> <span class="mf">5.3</span> <span class="o">+</span> <span class="p">(</span><span class="mf">4.6</span> <span class="o">-</span> <span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="o">/</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<span class="go">6.504999999999999</span>
+</pre></div>
+</div>
+<p>We can improve the way output looks by using <code class="docutils literal notranslate"><span class="pre">round()</span></code> to a specified number of decimals places. One approach is to
+overwrite the answer with the rounded version just before printing. The second parameter of <code class="docutils literal notranslate"><span class="pre">round()</span></code> is the number of digits.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># The same example, rounded to three digits.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">answer</span> <span class="o">=</span> <span class="mf">5.3</span> <span class="o">+</span> <span class="p">(</span><span class="mf">4.6</span> <span class="o">-</span> <span class="mf">2.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">3</span><span class="o">/</span><span class="mi">6</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">answer</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<span class="go">6.505</span>
+</pre></div>
+</div>
+<p>Better still, we can include explanatory text in the print statement. The <code class="docutils literal notranslate"><span class="pre">print()</span></code> function can include any number of
+items, separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>. The output from <code class="docutils literal notranslate"><span class="pre">print()</span></code> will include blank space between items.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Shows how to print multiple things together.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The answer is&quot;</span><span class="p">,</span> <span class="n">answer</span><span class="p">,</span> <span class="s2">&quot;feet.&quot;</span><span class="p">)</span>
+<span class="go">The answer is 6.505 feet.</span>
+</pre></div>
+</div>
+<p>If we are printing more than one result, then we might want to include blank lines between output or groups of output.
+There are two ways to print a blank line. One way is to write <code class="docutils literal notranslate"><span class="pre">print(&quot;</span> <span class="pre">&quot;)</span></code> by itself. The other way is to include
+<code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> in the print statement to  cause a hard return.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Print statements with blank lines inserted using a blank space &quot; &quot; and hard return &quot;\n&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mf">12.5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">**</span><span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x3</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x4</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The first answer is&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The second answer is&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The third answer is&quot;</span><span class="p">,</span> <span class="n">x3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The fourth answer is&quot;</span><span class="p">,</span> <span class="n">x4</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">The first answer is 160.25</span>
+<span class="go">The second answer is 50.0</span>
+<span class="gp">...</span>
+<span class="go">The third answer is -8.5</span>
+<span class="go">The fourth answer is 20.5</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>The hard return <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code> can be included anywhere in <code class="docutils literal notranslate"><span class="pre">print()</span></code>. And it is possible to have more than one <code class="docutils literal notranslate"><span class="pre">\n</span></code>.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The answer is&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;and also&quot;</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="s2">&quot;feet&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">round()</span></code> there are other built-in functions that are useful for math, such as absolute value <code class="docutils literal notranslate"><span class="pre">abs()</span></code>, summation <code class="docutils literal notranslate"><span class="pre">sum()</span></code>,
+maximum <code class="docutils literal notranslate"><span class="pre">max()</span></code>, minimum <code class="docutils literal notranslate"><span class="pre">min()</span></code>, convert to integer <code class="docutils literal notranslate"><span class="pre">int()</span></code>, convert to floating point <code class="docutils literal notranslate"><span class="pre">float()</span></code>, and convert to string <code class="docutils literal notranslate"><span class="pre">str()</span></code>.</p>
+<p>Trigonometry functions can be done in a variety of ways, but the perferred method is to use the <code class="docutils literal notranslate"><span class="pre">numpy</span></code> package, for example
+<code class="docutils literal notranslate"><span class="pre">np.sin()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.cos()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.tan()</span></code>, and <code class="docutils literal notranslate"><span class="pre">np.pi</span></code> (Note pi does not have parenthesis). To use these functions,
+include <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code> at the top of the script.</p>
+<p>For example, the following is an example of how numpy is used.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># This is imported only once, at the top of the script.</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phi</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1"># Angle in degrees.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>  <span class="c1"># Note you can overwrite a variable while using the variable.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># The answer is not exactly 0.5 because numpy approximates pi to 14 decimal places.</span>
+<span class="go">0.49999999999999994</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pythonic-style">
+<h2>Pythonic Style<a class="headerlink" href="#pythonic-style" title="Permalink to this headline"></a></h2>
+<p>Python code can be written with great flexibility in style. Think of style like the way we talk (both the words we use and how we use them).
+I might talk differently in a casual conversation with my childhood friend compared to a formal meeting at work.</p>
+<p>“Pythonic Style” almost always puts a space before and after <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, and <code class="docutils literal notranslate"><span class="pre">=</span></code>. The intent is to make the equation
+easier to read. However, judgment should be used because sometimes it is easier to read without blank spaces. For example,
+I rarely put a space before and after <code class="docutils literal notranslate"><span class="pre">/</span></code>. Nor do I add blank spaces when variables are clearly added or subtracted within parenthesis, such <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">(a+b)</span> <span class="pre">*</span> <span class="pre">(c-d)</span></code>.</p>
+<p>Pythonic style also uses (as much as possible) variable names that are full words, in all lower-case, and with underscores between words, thus you would preferably use
+<code class="docutils literal notranslate"><span class="pre">inside_diameter</span></code> instead of <code class="docutils literal notranslate"><span class="pre">D</span></code> for a variable name. However, sometimes for pure math, or when a formula involves well-recognized
+variables, then it is acceptable to use single character names (But, never use the characters ‘l’ (lowercase letter el),
+‘O’ (uppercase letter oh), or ‘I’ (uppercase letter eye) as single character variable name because they can be misread.)</p>
+<p>Variables with a numeric subscript can be written with or without an underscoure, such as <code class="docutils literal notranslate"><span class="pre">x_1</span></code> or <code class="docutils literal notranslate"><span class="pre">x1</span></code>, but variables
+with subscripts that are words or letters for subscript should be written with an underscore, such as <code class="docutils literal notranslate"><span class="pre">t_start</span></code> or <code class="docutils literal notranslate"><span class="pre">time_s</span></code> or <code class="docutils literal notranslate"><span class="pre">t_s</span></code> (But NOT <code class="docutils literal notranslate"><span class="pre">ts</span></code>).</p>
+<p>For example compare the following three code blocks:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Bad Pythonic Style *Do NOT write math like this!*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tw</span><span class="o">=</span><span class="mf">.24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf</span><span class="o">=</span><span class="mf">.36</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span><span class="o">=</span><span class="mf">5.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span><span class="o">=</span><span class="mf">10.17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">=</span><span class="n">d</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">tf</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">I</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">12</span><span class="o">*</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">d</span><span class="o">**</span><span class="mi">3</span><span class="o">-</span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">tw</span><span class="p">)</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="go">116.5272480000001</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Good Pythonic Style</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t_web</span> <span class="o">=</span> <span class="mf">0.24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t_flange</span> <span class="o">=</span> <span class="mf">0.36</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="mf">5.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">d</span> <span class="o">=</span> <span class="mf">10.17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">d</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">t_flange</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">inertia</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">t_web</span><span class="p">)</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Moment of inertia&quot;</span><span class="p">,</span> <span class="n">inertia</span><span class="p">)</span>
+<span class="go">Moment of inertia 116.5272480000001</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Best Pythonic Style (But sometimes this might be excessive, so use judgment).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Variable names should be lower case and separated by an underscore.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># But for some math equations, single character names might be more appropriate.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Moment of inertia calculation for an I-beam. All input values are in inches.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">web_thickness</span> <span class="o">=</span> <span class="mf">0.24</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flange_thickness</span> <span class="o">=</span> <span class="mf">0.36</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">base</span> <span class="o">=</span> <span class="mf">5.75</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">depth</span> <span class="o">=</span> <span class="mf">10.17</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">height</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">flange_thickness</span>
+<span class="go">..</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment_of_inertia</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">12</span> <span class="o">*</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">depth</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="p">(</span><span class="n">base</span> <span class="o">-</span> <span class="n">web_thickness</span><span class="p">)</span> <span class="o">*</span> <span class="n">height</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">moment_of_inertia</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">moment_of_inertia</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The moment of inertia =&quot;</span><span class="p">,</span> <span class="n">moment_of_inertia</span><span class="p">,</span> <span class="s2">&quot;in^4&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="go">The moment of inertia = 116.5 in^4</span>
+</pre></div>
+</div>
+<p>The “best” Pythonic style has:</p>
+<ul class="simple">
+<li><p>docstring at top with overview information, including author and date</p></li>
+<li><p>imports at top alphabetical</p></li>
+<li><p>all comments start with a capital letter and end with a period and are preferably sentences</p></li>
+<li><p>block comments precede complicated blocks of code</p></li>
+<li><p>decorative block comments are used as section headings</p></li>
+<li><p>inline comments are used sparingly only for non-obvious information</p></li>
+<li><p>inline comments have two spaces before the <code class="docutils literal notranslate"><span class="pre">#</span></code> and one space afterward</p></li>
+<li><p>use blank lines sparingly, two blank lines between major blocks (never more than 2 blank lines)</p></li>
+<li><p>variable names are preferably full words, unless mathematic or standard equations</p></li>
+<li><p>variable names are lower case (unless well-known mathematic variable) and words are separated by an underscore</p></li>
+<li><p>variable names never use capital I or lowercase l or lowercase o or capital O and avoid lowercase i except as an iterator</p></li>
+<li><p>adequate, but not excessive space between variables</p></li>
+<li><p>good judgment for spaces before and after <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, and <code class="docutils literal notranslate"><span class="pre">/</span></code></p></li>
+<li><p>include a leading zero for floating point less than one, such as <code class="docutils literal notranslate"><span class="pre">0.3</span></code></p></li>
+<li><p>always a space before and after <code class="docutils literal notranslate"><span class="pre">=</span></code></p></li>
+<li><p>always one space after a comma <code class="docutils literal notranslate"><span class="pre">,</span></code>, such as in a list</p></li>
+<li><p>output uses <code class="docutils literal notranslate"><span class="pre">round()</span></code> to reduce the decimals</p></li>
+<li><p>print statements include sufficient information and will print nicely</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">print(&quot;</span> <span class="pre">&quot;)</span></code> or <code class="docutils literal notranslate"><span class="pre">print(&quot;\n&quot;)</span></code> to provide appropriate blank lines to output</p></li>
+</ul>
+<p>See <a class="reference external" href="functions.html#python-functions">Defining Functions: Python Functions</a> for more Pythonic style, as well
+as the official Python style guide called <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="setup_instructions.html" class="btn btn-neutral float-left" title="Setup and Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="data_types.html" class="btn btn-neutral float-right" title="Data Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

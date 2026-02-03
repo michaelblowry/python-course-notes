@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Making a Module or Package &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating Plots" href="creating_plots.html" />
+    <link rel="prev" title="Defining Functions" href="functions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Making a Module or Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gis_analysis.html">GIS Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Making a Module or Package</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="making-a-module-or-package">
+<span id="modules"></span><h1>Making a Module or Package<a class="headerlink" href="#making-a-module-or-package" title="Permalink to this headline"></a></h1>
+<p>A procedure (i.e. a block of code) that will be used in more than one script should be defined as a function and
+moved to a <em>module</em> so it can be imported. A collection of modules is a <em>package</em>. Modules and Packages are never “run” on their own, i.e. they are
+not used for calculations per se. Instead, they are imported into a <strong>different</strong> script and used by calling their functions and attributes.
+Good Pythonic style dictates that modules and packages are imported in alphabetical order at the top of the script in which they are used.</p>
+<p>When developing code, follow these rules to decide if the code should be a.) procedure, b.) function in a script, c.) module, or d.) package:</p>
+<ul class="simple">
+<li><p>a.) If the code will be used only once, then there is no reason to define it as a function, so just keep it as a simple <strong>procedure</strong>.</p></li>
+<li><p>b.) If the code will be used more than once in the same script, then it should be defined as a <strong>function</strong> at the top of the script.</p></li>
+<li><p>c.) If the code will be used across multiple scripts, then it should be defined in a separate script (i.e. a <strong>module</strong>) to be imported.</p></li>
+<li><p>d.) If the code is very complex, then it should be organized across multiple scripts and placed in a folder (i.e. a <strong>package</strong>) to be imported.</p></li>
+</ul>
+<div class="section" id="id1">
+<h2>Modules<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>A module is a script with functions (and classes) that can be imported and used in other scripts.</p>
+<p>For illustration, the module below is saved as <code class="docutils literal notranslate"><span class="pre">water.py</span></code>. It begins with a docstring.
+The first line of the docstring should be a short name for the module, followed by a blank line.
+The next few lines of the docstring are a description of the module. Next, are any imports needed for this module (in alphabetical order).
+Next, are “attributes” or constants that can be called and used in other scripts.
+And then finally, the various functions are listed, separated by two blank lines. The module itself is never <em>run</em>,
+but rather imported into other scripts.</p>
+<p>This example module is the next stage in the development of the function shown in <a class="reference external" href="functions.html#python-functions">Defining Functions: Python Functions</a>.
+The function was improved by splitting and enhancing the code for better versatility.</p>
+<p>The functions in this module can be used to calculate the velocity (ft/s) and flow (ft^3/s) of water through pipes and open channels. The first four
+functions return two values: wetted perimeter and hydraulic radius for different cross section types and dimensions.</p>
+<img alt="_images/open-channel-cross-sections.png" src="_images/open-channel-cross-sections.png" />
+<p>The final
+function returns two values: velocity and flow. Note this is an improvement to what is shown in <a class="reference external" href="functions.html#python-functions">Defining Functions</a>
+because (1) it allows for different cross sections and (2) can return more information.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;Water engineering module.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">Provides functions for water engineering analysis and design.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">@Author Mike Lowry.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">3/25/2019</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">&gt;&gt;&gt; </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">minimum_velocity</span> <span class="o">=</span> <span class="mf">2.5</span>  <span class="c1"># Below this velocity plants might begin to grow (ft/s).</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">maximum_velocity</span> <span class="o">=</span> <span class="mf">6.0</span>  <span class="c1"># Above this scouring damage might occur (ft/s).</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">pipe</span><span class="p">(</span><span class="n">diameter</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="gp">... </span>     <span class="sd">&quot;&quot;&quot;Calculates wetted perimeter and hydraulic radius in a pipe.&quot;&quot;&quot;</span>
+<span class="gp">... </span>     <span class="k">if</span> <span class="n">depth</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="gp">... </span>         <span class="n">depth</span> <span class="o">=</span> <span class="n">diameter</span> <span class="c1"># Pipe flowing full.</span>
+<span class="gp">...</span>
+<span class="gp">... </span>     <span class="n">r</span> <span class="o">=</span> <span class="n">diameter</span><span class="o">/</span><span class="mi">2</span>
+<span class="gp">... </span>     <span class="n">theta</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">((</span><span class="n">r</span><span class="o">-</span><span class="n">depth</span><span class="p">)</span><span class="o">/</span><span class="n">r</span><span class="p">)</span>
+<span class="gp">... </span>     <span class="n">A</span> <span class="o">=</span> <span class="p">((</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)))</span><span class="o">/</span><span class="mi">2</span>  <span class="c1"># Water flow area.</span>
+<span class="gp">... </span>     <span class="n">P</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">*</span> <span class="n">r</span>
+<span class="gp">... </span>     <span class="n">Rh</span> <span class="o">=</span> <span class="n">A</span><span class="o">/</span><span class="n">P</span>
+<span class="gp">... </span>     <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">Rh</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">rectangle_channel</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+<span class="gp">... </span>     <span class="sd">&quot;&quot;&quot;Calculates wetted perimeter and hydraulic radius in a rectangle channel.&quot;&quot;&quot;</span>
+<span class="gp">... </span>     <span class="n">P</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">depth</span> <span class="o">+</span> <span class="n">width</span>
+<span class="gp">... </span>     <span class="n">Rh</span> <span class="o">=</span> <span class="p">(</span><span class="n">depth</span> <span class="o">*</span> <span class="n">width</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">width</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">depth</span><span class="p">)</span>
+<span class="gp">... </span>     <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">Rh</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">trapezoid_channel</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">theta_degrees</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+<span class="gp">... </span>     <span class="sd">&quot;&quot;&quot;Calculates wetted perimeter and hydraulic radius in a trapezoid channel.&quot;&quot;&quot;</span>
+<span class="gp">... </span>     <span class="n">theta_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta_degrees</span><span class="p">)</span>
+<span class="gp">... </span>     <span class="n">P</span> <span class="o">=</span> <span class="n">base</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">depth</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_radians</span><span class="p">))</span>
+<span class="gp">... </span>     <span class="n">Rh</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">depth</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_radians</span><span class="p">)</span> <span class="o">+</span>
+<span class="gp">... </span>           <span class="n">depth</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_radians</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_radians</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">depth</span><span class="p">)</span>
+<span class="gp">... </span>     <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">Rh</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">triangle_channel</span><span class="p">(</span><span class="n">theta_degrees</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+<span class="gp">... </span>     <span class="sd">&quot;&quot;&quot;Calculates wetted perimeter and hydraulic radius in a triangle channel.&quot;&quot;&quot;</span>
+<span class="gp">... </span>     <span class="n">theta_radians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">theta_degrees</span><span class="p">)</span>
+<span class="gp">... </span>     <span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">depth</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta_radians</span><span class="p">)</span>
+<span class="gp">... </span>     <span class="n">Rh</span> <span class="o">=</span> <span class="p">(</span><span class="n">depth</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta_radians</span><span class="p">))</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="gp">... </span>     <span class="k">return</span> <span class="n">P</span><span class="p">,</span> <span class="n">Rh</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">velocity_and_flow</span><span class="p">(</span><span class="n">wetted_perimeter</span><span class="p">,</span> <span class="n">hydraulic_radius</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">roughness_n</span><span class="p">,</span> <span class="n">units</span><span class="o">=</span><span class="s2">&quot;US&quot;</span><span class="p">):</span>
+<span class="gp">... </span>     <span class="sd">&quot;&quot;&quot;Calculates flow and velocity of water in a pipe or open channel.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">     Args:</span>
+<span class="gp">... </span><span class="sd">         wetted_perimeter: Wetted perimeter in inches or cm.</span>
+<span class="gp">... </span><span class="sd">         hydraulic_radius: Hydraulic radius in inches or cm.</span>
+<span class="gp">... </span><span class="sd">         slope: Slope of the pipe in ft/ft or m/m</span>
+<span class="gp">... </span><span class="sd">         roughness_n: Manning&#39;s roughness coefficient for pipe material.</span>
+<span class="gp">... </span><span class="sd">         units: US or SI. Default is US.</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">     Returns:</span>
+<span class="gp">... </span><span class="sd">         Q: Flow in cfs or m^3/sec</span>
+<span class="gp">... </span><span class="sd">         v: Velocity in ft/s or m/sec</span>
+<span class="gp">...</span><span class="sd"></span>
+<span class="gp">... </span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="gp">... </span>     <span class="k">if</span> <span class="n">units</span><span class="o">==</span><span class="s2">&quot;US&quot;</span><span class="p">:</span>
+<span class="gp">... </span>         <span class="n">c</span> <span class="o">=</span> <span class="mf">1.49</span>  <span class="c1"># Conversion constant.</span>
+<span class="gp">... </span>         <span class="n">P</span> <span class="o">=</span> <span class="n">wetted_perimeter</span><span class="o">/</span><span class="mi">12</span>
+<span class="gp">... </span>         <span class="n">Rh</span> <span class="o">=</span> <span class="n">hydraulic_radius</span><span class="o">/</span><span class="mi">12</span>
+<span class="gp">... </span>     <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>         <span class="n">c</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="gp">... </span>         <span class="n">P</span> <span class="o">=</span> <span class="n">wetted_perimeter</span><span class="o">/</span><span class="mi">100</span>
+<span class="gp">... </span>         <span class="n">Rh</span> <span class="o">=</span> <span class="n">hydraulic_radius</span><span class="o">/</span><span class="mi">100</span>
+<span class="gp">...</span>
+<span class="gp">... </span>     <span class="n">n</span> <span class="o">=</span> <span class="n">roughness_n</span>
+<span class="gp">... </span>     <span class="n">S</span> <span class="o">=</span> <span class="n">slope</span>
+<span class="gp">...</span>
+<span class="gp">... </span>     <span class="c1"># Calculations.</span>
+<span class="gp">... </span>     <span class="n">A</span> <span class="o">=</span> <span class="n">Rh</span> <span class="o">*</span> <span class="n">P</span>
+<span class="gp">... </span>     <span class="n">v</span> <span class="o">=</span> <span class="n">c</span><span class="o">/</span><span class="n">n</span> <span class="o">*</span> <span class="n">Rh</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="gp">... </span>     <span class="n">Q</span> <span class="o">=</span> <span class="n">v</span> <span class="o">*</span> <span class="n">A</span>
+<span class="gp">...</span>
+<span class="gp">... </span>     <span class="k">return</span> <span class="n">v</span><span class="p">,</span> <span class="n">Q</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>The module can be imported into a <strong>different</strong> python file. The functions are
+called by writing the name of the module <code class="docutils literal notranslate"><span class="pre">.</span></code> the name of the function. In the example
+below, the pipe function is called. It returns two values: the wetted perimeter and hydraulic radius.
+Next, those values are used in the call for the function that returns velocity and flow.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example import and calculation in a different script.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">water</span>
+<span class="gp">...</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wp</span><span class="p">,</span> <span class="n">hr</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vel</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">velocity_and_flow</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span> <span class="n">hr</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Velocity&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vel</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;ft/s and Flow&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cfs&quot;</span><span class="p">)</span>
+<span class="go">Velocity 2.3 ft/s and Flow 2.7 cfs</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Functions can return any data type, including lists and tuples. Coincidentally, all the functions in the
+example module return two items. Often, tuples are used to return more than one item. A tuple is
+a sequence with every item separated by a comma. The output tuple can be “unpacked” by indexing or directly when calling the function.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># There are two ways to &quot;unpack&quot; functions that return more than one item.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># One way is to use indexing.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wp</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hr</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">velocity_and_flow</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span> <span class="n">hr</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">velocity</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">flow</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Velocity&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">velocity</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;ft/s and Flow&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cfs&quot;</span><span class="p">)</span>
+<span class="go">Velocity 2.3 ft/s and Flow 2.7 cfs</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The other way is to unpack the tuple directly when calling the function.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wp</span><span class="p">,</span> <span class="n">hr</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="mi">36</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">vel</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">water</span><span class="o">.</span><span class="n">velocity_and_flow</span><span class="p">(</span><span class="n">wp</span><span class="p">,</span> <span class="n">hr</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Velocity&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">vel</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;ft/s and Flow&quot;</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;cfs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The module needs to be in Spyder’s working directory, which by default is the same as the script’s directory.</p>
+<p>The moment you type the dot <code class="docutils literal notranslate"><span class="pre">.</span></code> after the module name, Spyder will pop up a window listing all the attributes and functions that are in the module
+(Some versions of Spyder require hitting Tab after the dot).</p>
+<img alt="_images/civil-module.png" src="_images/civil-module.png" />
+<p>Likewise, when you type the open parenthesis <code class="docutils literal notranslate"><span class="pre">(</span></code> for a function, Spyder will pop up a window listing the function arguments.</p>
+<img alt="_images/civil-module-function.png" src="_images/civil-module-function.png" />
+<p>Once a module has been imported, you can access module and function level doctrings with the built-in <code class="docutils literal notranslate"><span class="pre">help</span></code> function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">water</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">water</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">help</span><span class="p">(</span><span class="n">water</span><span class="o">.</span><span class="n">pipe</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All modules can be imported with an alias. For example, <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">water</span> <span class="pre">as</span> <span class="pre">we</span></code> (for water engineering).</p>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline"></a></h2>
+<p>A package is a collection of modules in a folder.</p>
+<p>For example, the module <code class="docutils literal notranslate"><span class="pre">water.py</span></code> could be put in a folder called <code class="docutils literal notranslate"><span class="pre">civil</span></code> with other modules, such as <code class="docutils literal notranslate"><span class="pre">environmental.py</span></code>,
+<code class="docutils literal notranslate"><span class="pre">structures.py</span></code>, <code class="docutils literal notranslate"><span class="pre">geotech.py</span></code>, etc. Each module can then be imported using the dot format <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">civil.water</span></code> or the
+<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span></code> format (See <a class="reference external" href="python_essentials.html#import-modules">Python Essentials: Import Modules</a>).</p>
+<p>The package folder must be in the working directory. Module and package names should be one word, all lowercase letters.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Example import from a package of civil engineering modules.</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">environmental</span> <span class="k">as</span> <span class="n">ee</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">geotech</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">structures</span> <span class="k">as</span> <span class="n">se</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">civil</span> <span class="kn">import</span> <span class="n">water</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Code Development:</strong>
+Code often evolves over time. A block of code might begin as a simple sequential procedure and eventually become
+a sophisticated package with hundreds of lines of code across multiple sub-modules. The “developer” or team of developers might spend months or years, slowly building and expanding the code.</p>
+<ul class="simple">
+<li><p><strong>Stage 1:</strong> Write the code as a procedure.</p></li>
+<li><p><strong>Stage 2:</strong> Test and re-test to make sure the results are correct.</p></li>
+<li><p><strong>Stage 3:</strong> Decide what variables should be parameters (arguments).</p></li>
+<li><p><strong>Stage 4:</strong> Indent the code and add the <code class="docutils literal notranslate"><span class="pre">def</span></code> line (i.e. function name and parameters).</p></li>
+<li><p><strong>Stage 5:</strong> Determine the <code class="docutils literal notranslate"><span class="pre">return</span></code> value(s).</p></li>
+<li><p><strong>Stage 6:</strong> Decide if any parameters should be given default values (must be at end of def line).</p></li>
+<li><p><strong>Stage 7:</strong> Optionally, use words for parameters and reassign their values to letters within the function.</p></li>
+<li><p><strong>Stage 8:</strong> Write a simple docstring that is a one-line descriptive sentence.</p></li>
+<li><p><strong>Stage 9:</strong> Optionally, write a more elaborate docstring with <em>Args:</em> and <em>Returns:</em> and add other comments.</p></li>
+<li><p><strong>Stage 10:</strong> Move the function to a module (a python file named with one word all lowercase)</p></li>
+<li><p><strong>Stage 11:</strong> Write docstring for the module.</p></li>
+<li><p><strong>Stage 12:</strong> Expand and split the function to improve module versatility.</p></li>
+<li><p><strong>Stage 13:</strong> Create a package by putting modules in a folder (and sub-modules in sub-folders). The folder name should be one word all lowercase.</p></li>
+<li><p><strong>Stage 14:</strong> Continue to improve the functions, modules, and package.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="functions.html" class="btn btn-neutral float-left" title="Defining Functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="creating_plots.html" class="btn btn-neutral float-right" title="Creating Plots" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

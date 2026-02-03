@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GIS Analysis &mdash; Python for Civil Engineers 2023 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/copybutton.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Additional Topics" href="additional_topics.html" />
+    <link rel="prev" title="Matrix Analysis" href="matrix_analysis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Python for Civil Engineers
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Fundamental Topics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup_instructions.html">Setup and Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_essentials.html">Python Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_types.html">Data Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="if_statement_for_loop.html">If Statement and For Loop</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functions.html">Defining Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Making a Module or Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_plots.html">Creating Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input_output.html">Reading Input and Writing Output</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Analysis Topics:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mathematical_analysis.html">Mathematical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_analysis.html">Data Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statistical_analysis.html">Statistical Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matrix_analysis.html">Matrix Analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GIS Analysis</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setup-and-getting-started">Setup and Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#folder-organization">Folder Organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tool-development-work-flow">Tool Development Work Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stage-1-preparation-create-folders-set-up-arcgis-pro-and-spyder">Stage 1. Preparation: Create Folders, Set up ArcGIS Pro and Spyder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stage-2-write-a-script-as-a-sequential-program">Stage 2. Write a Script as a Sequential Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stage-3-restructure-and-document-as-function-s-within-the-script-s">Stage 3. Restructure and Document as Function(s) within the Script(s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stage-4-create-a-python-toolbox">Stage 4. Create a Python Toolbox</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-comments">Additional Comments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional_topics.html">Additional Topics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Python for Civil Engineers</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>GIS Analysis</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="gis-analysis">
+<span id="id1"></span><h1>GIS Analysis<a class="headerlink" href="#gis-analysis" title="Permalink to this headline"></a></h1>
+<p>This page shows how to create a GIS tool that can be used in ArcGIS Pro. The example can be downloaded here.</p>
+<div class="section" id="setup-and-getting-started">
+<h2>Setup and Getting Started<a class="headerlink" href="#setup-and-getting-started" title="Permalink to this headline"></a></h2>
+<p>ArcGIS Pro comes with an installation of Python 3.6. The installation includes two packages, one called <code class="docutils literal notranslate"><span class="pre">arcpy</span></code> and another called <code class="docutils literal notranslate"><span class="pre">arcgis</span></code>. However, Spyder will
+not be able to see the these packages because the Anaconda installation that is <a class="reference external" href="setup_instructions.html#how-do-i-install-python">described on this website</a> will set up Spyder to use
+the python that comes with Anaconda. Consequently, if you attempt to <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">arcpy</span></code> you will get <code class="docutils literal notranslate"><span class="pre">ImportError:</span> <span class="pre">No</span> <span class="pre">module</span> <span class="pre">named</span> <span class="pre">arcpy</span></code>.</p>
+<p>The best solution I have found is to switch the Python interpreter that Spyder is using. To do this follow these steps (this might
+require administrator privileges on your computer depending on how ArcGIS was installed):</p>
+<p><strong>Step 1.</strong> Create a clone of the ArcGIS Pro Python environment.
+Every installation of Python and associated packages is called an “environment”. Anaconda installs a base environment and ArcGIS Pro installs another environment.
+To avoid screwing up the default ArcGIS Pro environment, you must “clone” it and make changes to the clone. In ArcGIS Pro, go to
+Project/Python/Manage Environments/Clone Default (This will take a long time to complete. If it crashes you might need to find old clones and delete them manually).
+Make a note of the directory (folder) path to the cloned enviroment because you will need it in Step 3.
+Choose (select) the clone env and hit OK. You will need to restart Pro.</p>
+<img alt="_images/arcgispro-clone.png" src="_images/arcgispro-clone.png" />
+<p><strong>Step 2.</strong> Install python packages into the cloned environment.
+The default ArcGIS Pro python environment (and now the clone) includes a few common packages like numpy and panadas. However, there might be other
+packages that you want to install that are not included by default.</p>
+<p>There is one package that must be installed to be able to use Spyder. It is called <code class="docutils literal notranslate"><span class="pre">spyder-kernels</span></code>. To install this package
+(and any others that might be desired), open Anaconda Navigator. You should see <code class="docutils literal notranslate"><span class="pre">arcgispro-py3-clone</span></code> listed under Environments.
+Click on the triangle next to the enviroment and hit Open Terminal. In the terminal write <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">spyder-kernels=0.*</span></code>.</p>
+<p>Package installation is also described in
+<a class="reference external" href="additional_topics.html#installing-and-updating-packages">Additional Topics: Installing and Updating Packages</a></p>
+<p><strong>Step 3.</strong> Switch the interpreter that Spyder uses to the cloned environment.
+Now you need to switch the interpreter that Spyder uses. Go to Tools/Preferences/Python interpreter and click “Use the following Python interpreter”.
+Browse to the python.exe that was created in Step 1. In my case the path is
+<code class="docutils literal notranslate"><span class="pre">'C:\\Users\\mlowry\\AppData\\Local\\ESRI\\conda\\envs\\arcgispro-py3-clone\\python.exe'</span></code></p>
+<p>Now restart (x out) the Console interpreter kernel.</p>
+<p>After the steps above, Spyder is using the python installed with ArcGIS Pro, which does not include all the many packages that are automatically included with Anaconda.
+Consequently, you will need to install anything you might need that is not already there. Follow, the procedure described in Step 2 as needed.</p>
+<p><strong>Step 4.</strong> Turn off showing reloaded list.</p>
+<p><code class="docutils literal notranslate"><span class="pre">arcpy</span></code> will be reloaded everytime you run a script in Spyder. By default the modules of reloaded packages are printed to the Console when you hit <em>Run</em>.
+You can turn this off. Go to Tools/Preferences/Python interpreter. Uncheck Show reloaded modules list</p>
+</div>
+<div class="section" id="folder-organization">
+<h2>Folder Organization<a class="headerlink" href="#folder-organization" title="Permalink to this headline"></a></h2>
+<p>There are lots of ways to organize scripts and data. The following is based on suggestions from ESRI and others.</p>
+<p>The outside folder can have any name that desribes this set of tools. For illustration I use the generic name “GIS_Tools”.
+<em>All other folders should have the exact name shown, including the exact capatilization, underscores, and hyphens.</em></p>
+<img alt="_images/gis-folders-expanded.png" src="_images/gis-folders-expanded.png" />
+<p><code class="docutils literal notranslate"><span class="pre">toolpackage</span></code> will be a Python package just like <code class="docutils literal notranslate"><span class="pre">numpy</span></code> or <code class="docutils literal notranslate"><span class="pre">panadas</span></code>. All the scripts you will write will be located in <code class="docutils literal notranslate"><span class="pre">toolpackage</span></code>. The script names should be descriptive and in lowercase. This example has scripts <code class="docutils literal notranslate"><span class="pre">spatial_census.py</span></code>
+and <code class="docutils literal notranslate"><span class="pre">trail_surrounding.py</span></code>. <code class="docutils literal notranslate"><span class="pre">toolpackage</span></code> also includes files called <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> and <code class="docutils literal notranslate"><span class="pre">config.py</span></code> (The folders __pycache__ and .spyproject are made when using Spyder).
+The init file is a strange thing: it is a blank file. Oddly it is needed to tell python to look in this folder to import other scripts.
+The config file does the following (1) specifies any settings that might be desired when running your tools, (2) identifies the path to tool_data,
+(3) tells python to first look in python_packages to import packages, and (4) specifies the scratch folder and gdb to use.</p>
+<img alt="_images/toolpackage.png" src="_images/toolpackage.png" />
+<p><code class="docutils literal notranslate"><span class="pre">tool_data</span></code> contains folders needed by the script: <code class="docutils literal notranslate"><span class="pre">files</span></code> contains files that the script will read, <code class="docutils literal notranslate"><span class="pre">scratch</span></code> is where intermediate files are written,
+<code class="docutils literal notranslate"><span class="pre">site-packages</span></code> is for python packages that might not be installed (this only works in certain situations, the better approach is to
+install the packages into the clone environment. See <a class="reference external" href="additional_topics.html#installing-and-updating-packages">Additional Topics: Installing and Updating Packages</a>.), and
+<code class="docutils literal notranslate"><span class="pre">symbology</span></code> contains layer files for applying symbology.</p>
+<p>Additionally, create a folder called ExampleData. Then, using ArcGIS Pro create a project in ExampleData called TestProject.</p>
+<img alt="_images/arcgispro-TestProject.png" src="_images/arcgispro-TestProject.png" />
+<p>During tool development, output will go into TestProject. The TestProject.gdb will get full of junk feature classes as the tool is run
+over and over again. Consequently, create a separate folder for input.</p>
+<img alt="_images/exampledata-folder.png" src="_images/exampledata-folder.png" />
+</div>
+<div class="section" id="tool-development-work-flow">
+<h2>Tool Development Work Flow<a class="headerlink" href="#tool-development-work-flow" title="Permalink to this headline"></a></h2>
+<p>This section describes the different stages of development. Each stage can take multiple hours or even days.</p>
+<div class="section" id="stage-1-preparation-create-folders-set-up-arcgis-pro-and-spyder">
+<h3>Stage 1. Preparation: Create Folders, Set up ArcGIS Pro and Spyder<a class="headerlink" href="#stage-1-preparation-create-folders-set-up-arcgis-pro-and-spyder" title="Permalink to this headline"></a></h3>
+<p>First, create the folder structure and files described above.</p>
+<p>Next, Open TestProject in ArcGIS Pro. Right click Folders in Catalog and Add the folders Input and GIS_Tools.</p>
+<img alt="_images/arcgispro-folder-connections.png" src="_images/arcgispro-folder-connections.png" />
+<p>Finally, now you can begin developing your tool in Spyder. Open Spyder and go to Projects/New Projects… Check Existing directory. Browse to the outside folder, i.e. GIS_Tools. Now you can see all relevant files in the Project explorer.</p>
+</div>
+<div class="section" id="stage-2-write-a-script-as-a-sequential-program">
+<h3>Stage 2. Write a Script as a Sequential Program<a class="headerlink" href="#stage-2-write-a-script-as-a-sequential-program" title="Permalink to this headline"></a></h3>
+<p>Create a new .py file and begin writing the code as a sequential program. Run it in Spyder and inspect the output.
+Continue to improve the code until it is doing what you want.</p>
+<p>The following is an example of the end of this stage.
+This is after hours of writing, running, and re-writing.</p>
+<img alt="_images/gis-sequence.png" src="_images/gis-sequence.png" />
+</div>
+<div class="section" id="stage-3-restructure-and-document-as-function-s-within-the-script-s">
+<h3>Stage 3. Restructure and Document as Function(s) within the Script(s)<a class="headerlink" href="#stage-3-restructure-and-document-as-function-s-within-the-script-s" title="Permalink to this headline"></a></h3>
+<p>Spend time thinking about how to divide the sequence of code into functions. It might make sense to even put some functions in different .py files (modules).
+The modules can be imported using <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">toolpackage</span> <span class="pre">import</span> <span class="pre">module_name</span></code>. Once functions are defined, spend some time writing docstring(s) and comments.</p>
+<p>The next task is kind of strange: At the bottom of the script (below the functions that have been created) write <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">__name__</span> <span class="pre">==</span> <span class="pre">'__main__':</span></code>.
+Then move the paths for ExampleData and all other paramater assignments to the very bottom. Finally, below this call the function(s) from above.
+Run it in Spyder and inspect the output. Continue to improve the code until it is doing what you want.</p>
+<p>The following is an example of the end of this stage.
+This is after hours of writing, running, and re-writing.</p>
+<img alt="_images/gis-function.png" src="_images/gis-function.png" />
+</div>
+<div class="section" id="stage-4-create-a-python-toolbox">
+<h3>Stage 4. Create a Python Toolbox<a class="headerlink" href="#stage-4-create-a-python-toolbox" title="Permalink to this headline"></a></h3>
+<p>The final stage is to create a Python Toolbox. In ArcGIS Pro, right click on the outside folder (i.e. GIS_Tools) and
+click New/Python Toolbox (Don’t worry about naming it at this point).</p>
+<p>Go to Spyder and you will see the .pyt in Project explorer. Here (or using File Explorer) rename it.</p>
+<img alt="_images/gis-toolbox.png" src="_images/gis-toolbox.png" />
+</div>
+</div>
+<div class="section" id="additional-comments">
+<h2>Additional Comments<a class="headerlink" href="#additional-comments" title="Permalink to this headline"></a></h2>
+<p>More coming soon.</p>
+<p>Messages from <code class="docutils literal notranslate"><span class="pre">arcpy.AddMessage()</span></code> will not be printed to the Spyder Console.
+If you want to see them, then go to Run/Run configurations per file/Select Execute in an external system terminal.
+You will probably also want to check Interact with the PYthon console after exectuion so you can inspect variables and test code still.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="matrix_analysis.html" class="btn btn-neutral float-left" title="Matrix Analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="additional_topics.html" class="btn btn-neutral float-right" title="Additional Topics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, 2023, Mike Lowry.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
