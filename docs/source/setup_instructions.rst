@@ -11,23 +11,24 @@ that Python is the best programming language to learn for a wide variety of anal
 
 Python is...
 
-- one of the easiest computer languages to learn (and can be a stepping stone for other languages),
-- very fast and powerful for data analysis and engineering design problems,
+- one of the easiest computer languages to learn,
+- similar to other languages and can be a stepping stone to others if desired,
+- very fast and powerful for data analysis and solving engineering problems,
 - easy to share and collaborate with team members,
 - used by most big tech companies, including Google, Facebook, and Netflix,
 - easily integrated with other software, including Excel, ArcGIS, and VISSIM, and
 - has thousands of extra "packages" that people are continually improving and providing for free on the internet.
 
 If you do a Google search for best computer languages, you will find Python is often ranked number one or
-least in the top five. For example, here are the rankings from IEEE (Institute of Electrical and Electronics Engineers):
-`Top Programming Languages. <https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2018>`_
-(Note on the IEEE page you can change the rankings based on various aspects, including the number of jobs available.)
+least in the top five. If you focus your search on computer languages for science, math, engineering, and data analysis, 
+then Python is king. Various organizations publish annual rankings of computer languages.
+`google search best computer languages. <https://www.google.com/search?q=best+computer+languages>`_
 
 
 What is Python?
 ---------------
-There are lots and lots of computer languages. New languages are being created by smart computer scientists every year. \
-The first "modern" language is simply called "*C*". The reason is because in 1972 the guys at Bell Labs that invented it \
+There are lots of computer languages. New languages are being created by smart computer scientists every year. \
+The first "modern" language was simply called "*C*". The reason is because in 1972 the guys at Bell Labs who invented it \
 had previously created a language that they called "*A*" and then they created something better that they called
 "*B*".
 When they got to "*C*" it was so good they stopped trying to improve it. *C* became the main programming
@@ -49,15 +50,15 @@ Declarative programming     can efficiently query databases
 Object-oriented programming uses objects called classes
 =========================== =======================================================
 
-A computer scientist named Guido van Rossum wanted to create a computer language that could efficiently be used with
+A computer scientist named Guido van Rossum wanted to create a computer language that could efficiently be used with *all*
 these programming methods. More importantly he wanted the language to be easy to read and write. In 1991 he released
 Python, which he named after *Monty Python* the comedy TV show and movie series.
 
 .. image:: images/guido-small.png
 
 
-How do I install it?
---------------------
+How do I install Python?
+------------------------
 There are many versions of Python, many ways to install it, and many many add-in extra "modules" or "packages" \
 (also called libraries in other computer languages) that can be additionally installed.
 
@@ -95,11 +96,10 @@ the three windows (calle panes) shown below.
 
 .. image:: images/spyder-open.jpg
 
-The first window pane is the Editor where you will type code that can be saved and used later.
-The second window pane is the Console where you can also type code, but it is not saved. Code written in the Editor and code \
+The first window pane is the Editor where you will write code that can be saved and used later.
+The second window pane is the Console where you can also write code, but it is not saved. Code written in the Editor and code \
 written in the Console is output to the Console. The Console is also called the Interpreter.
-The third window pane is a good place to read help files or to explore data that has been read into the system. This is window \
-might not be useful so could be closed.
+The third window pane is where you can read help files and explore the data that you are using.
 
 I recommend that today and throughout your learning that you explore the Spyder GUI (graphical user interface), \
 i.e. close and move windows, push different buttons and menus, etc. Don't worry, you won't break it. And you can always \
@@ -109,13 +109,12 @@ certain panes on or off, which can be done at View/Panes.
 Write your first computer program
 ---------------------------------
 Begin by typing in the Console ``a = 5``. Hit enter.
-Now type ``b = 6`` and hit enter again.
+Now write ``b = 6`` and hit enter again.
 
 The variables ``a`` and ``b`` are now stored in your computer. You can see this by looking at the Variable explorer in
-the upper right pane. Now type ``a + b`` and hit enter to see how Python can be used as calculator.
+the upper right pane. Now write ``a + b`` and hit enter to see how Python can be used as calculator.
 
 .. image:: images/variable-explorer.png
-
 
 
 .. note::
@@ -134,32 +133,60 @@ the upper right pane. Now type ``a + b`` and hit enter to see how Python can be 
     .. image:: images/idle-prompt.png
 
 
-
 "The" official Python Tutorial begins its introduction by showing how the Console (also called the Interpreter) can be used as a calculator.
 See `An Informal Introduction to Python <https://docs.python.org/3.7/tutorial/introduction.html>`_
 
-Indeed the Console can be useful for quick calculations or to check output. But for long procedures (i.e. multiple calculations in a sequence) \
-it is better to use the Editor. The Editor allows you to save the code as a "script" and re-run the script later. Furthermore, if you only use the Console, then once you \
-close Spyder all the variables will be lost.
+Indeed the Console can be useful for quick calculations or to check output. But for long procedures (i.e. multiple calculations in a sequence)
+it is better to use the Editor. The Editor allows you to save the code as a "script" and re-run the script later. Furthermore,
+if you only use the Console, then once you close Spyder all the variables will be lost.
 
-Now type ``a = 500`` and ``b = 600`` in the Editor. This is a program and doesn't do anything until we *Run* the
-program. Also, type ``print(a + b)``. And, for fun, also type ``print("Hello World")`` (There is a long running
-tradition in computer programming that your first program should say "Hello World".) To run your program, hit the
-green play button. You will first need to save your script. For this class, you will put scripts in your U: drive folder
-CE215/Python. Name the file with your last name, the word Practice, and the lab number (all
-separated by underscores)
-. The script will automatically be given a .py extension. So your file will be: *Lastname_Practice_1.1.py*
+Now write your first program in the Editor. Write ``a = 500`` and ``b = 600`` as shown below. This is a program and doesn't do anything until we *Run* the
+program. Also, write ``print(a + b)``. And, for fun, also write ``print("Hello World")`` (There is a tradition in
+computer programming that your first program should say "Hello World".) To run your program, hit the
+green play button. You will first need to save your script. For my course *CE 215*, you will put scripts in your U: drive folder
+CE215/Python. Name the file with your last name, the word Practice, and the lab number (all separated by underscores).
+The script will automatically be given a .py extension. So this first program file will be: *Lastname_Practice_1.1.py*
+
+.. image:: images/hello-world-note.png
 
 The output from running your script will be shown in the Console. You can check the values of ``a`` and ``b`` in the
 Variable Editor.
 
-.. image:: images/hello-world.png
+.. note::
+    This is called a "script" or a "program" just like when you go to the theater and the actors
+    follow the sequential lines of their script and the play follows the program. Python reads each line of the program from from top to bottom
+    . When using the console we could simply write ``a + b`` to print the result. However, when using a script we need to
+    explicitly say when to do something. ``print()`` is how we tell the script to print something to the console.
 
 
-This is called a "script" or a "program" just like when you go to the theater and the actors
-follow the sequential lines of their script or program. Python reads each line of the program from from top to bottom
-. When using the console we could simply type ``a + b`` to print the result. However, when using a script we need to
-explicitly say when to print something.
+Now what? How to use this website and where to get help.
+--------------------------------------------------------
+This website is *not* intended to be a tutorial with step by step exercises (that happens in class), instead it is intended to be a reference for past and current
+students and anyone else interested in Python. That said, if you are new to Python, then you should consider clicking
+through each page in order. This website follows a typical sequence found in most textbooks and online tutorials. If you are stuck on a
+topic, then search online and you will probably find at least a dozen other websites trying to explain the exact same thing.
+
+Here is a list of websites you should go check out for more information (These will likely come up as you search the internet for help in the future).
+
+=================================================================================================================== =========================================================================
+Website                                                                                                             Description
+=================================================================================================================== =========================================================================
+`The Python Tutorial <https://docs.python.org/3/tutorial/>`_                                                        The official tutorial by the people in charge.
+`Stack Overflow <https://stackoverflow.com/>`_                                                                      Where anything you could ever ask has already been answered.
+`GitHub <https://github.com/>`_                                                                                     Where people share code and data. Many Python packages/modules are here.
+`PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_                                                                An important style guide from the people in charge.
+`Google's Style Guide <http://google.github.io/styleguide/pyguide.html>`_                                           Another style guide I try to follow and you should also.
+`Matplotlib <https://matplotlib.org/tutorials/introductory/pyplot.html#sphx-glr-tutorials-introductory-pyplot-py>`_ Essential package for science and engineering, for creating plots.
+`NumPy <https://docs.scipy.org/doc/numpy/user/quickstart.html>`_                                                    Essential package for science and engineering, for creating arrays.
+`Pandas <https://pandas.pydata.org/pandas-docs/stable/getting_started/tutorials.html>`_                             Essential package for science and engineering, for creating dataframes.
+`SciPy <https://docs.scipy.org/doc/scipy/reference/tutorial/index.html>`_                                           Essential package for science and engineering, for mathematical analysis.
+`StatsModels <http://www.statsmodels.org/stable/index.html>`_                                                       Essential package for science and engineering, for statistical analysis.
+`GIS StackExchange <https://gis.stackexchange.com/>`_                                                               The GIS-focused version of Stack Overflow.
+=================================================================================================================== =========================================================================
+
+.. tip::
+    To copy code blocks from this website, click ``>>>`` in the upper right corner. Then, select the code and hit
+    Ctrl c to copy. Then, in the Spyder Console or Editor place your cursor and hit Ctrl v to paste. In some examples on this website ``print()`` is not included, so
+    if you are pasting into the Editor, you may need to add ``print()`` to explicitly print something to the console.
 
 
-.. code-links::

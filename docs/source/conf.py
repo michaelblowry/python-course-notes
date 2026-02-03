@@ -19,14 +19,14 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'CE 215 Python Notes'
-copyright = '2018, Mike Lowry'
+project = 'Python for Civil Engineers'
+copyright = '2018, 2023, Mike Lowry'
 author = 'Mike Lowry'
 
 # The short X.Y version
 version = ''
 # The full version, including alpha/beta/rc tags
-release = '0.0.1'
+release = '2023'
 
 
 # -- General configuration ---------------------------------------------------
@@ -44,7 +44,7 @@ extensions = [
     'IPython.sphinxext.ipython_console_highlighting',
     'IPython.sphinxext.ipython_directive',
     'nb2plots'
-]
+    ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -119,6 +119,7 @@ latex_elements = {
     #
     # 'papersize': 'letterpaper',
 
+
     # The font size ('10pt', '11pt' or '12pt').
     #
     # 'pointsize': '10pt',
@@ -186,4 +187,11 @@ epub_exclude_files = ['search.html']
 # Add the 'copybutton' javascript, to hide/show the prompt in code
 # examples
 def setup(app):
-    app.add_javascript('copybutton.js')
+    #app.add_javascript('copybutton.js')
+    app.add_js_file('copybutton.js')
+
+
+#rinoh_documents = [('index',            # top-level file (index.rst)
+#                    'target',           # output (target.pdf)
+#                    'Document Title',   # document title
+#                    'John A. Uthor')]   # document author

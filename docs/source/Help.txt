@@ -1,0 +1,8 @@
+
+Use command prompt to navigate to the folder that has the Makefile.
+C:\Users\mlowry\Dropbox\Tools\GitHub\python-course-notes\docs
+
+
+make clean
+
+make html
